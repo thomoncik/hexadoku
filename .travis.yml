@@ -1,19 +1,15 @@
 sudo: required
 language: cpp
 
-env:
-    - SETUP_CURSES="sudo apt install -y libncurses5-dev libncursesw5-dev"
-
 compiler:
     - gcc
 
 before_install:
-    - sudo apt update
-    - eval "${SETUP_CURSES}"
     - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
     - sudo apt-get update -qq
 
 install:
+    - sudo apt install -y libncurses5-dev libncursesw5-dev
     - sudo apt-get install -qq g++-4.8
     - export CXX="g++-4.8"
 
