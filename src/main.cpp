@@ -3,6 +3,8 @@
 #include <iostream>
 #include <iomanip>
 
+#include <string>
+
 #include "../include/GfxStream.hpp"
 #include "../include/Position.hpp"
 #include "../include/Color.hpp"

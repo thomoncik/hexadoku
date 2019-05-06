@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.9.2)
 project(hexadoku)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 set(CURSES_USE_NCURSES TRUE)
 find_package(Curses REQUIRED)
 include_directories(${CURSES_INCLUDE_DIR})
