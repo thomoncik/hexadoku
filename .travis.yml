@@ -1,8 +1,23 @@
+sudo: required
 language: cpp
-compiler:
-  - clang
-script: mkdir build && cd build && cmake .. && make
 
+env:
+    - SETUP_CURSES="sudo apt remove -y libncursesw5-dev"
+    - SETUP_CURSES="sudo apt install -y libncursesw5-dev"
+
+compiler:
+    - clang
+
+before_install:
+    - sudo apt update
+    - eval "${SETUP_CURSES}"
+
+script:
+    - mkdir build && cd build
+    - cmake ..
+    - make
+    
+    
 notifications:
   email:
     recipients:
