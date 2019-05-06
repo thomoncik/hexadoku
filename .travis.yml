@@ -1,7 +1,8 @@
 language: cpp
 compiler:
   - clang
-script: make && make test
+script: mkdir build && cd build && cmake .. && make
+
 notifications:
   email:
     recipients:
