@@ -2,7 +2,7 @@
 
 ColorStarter colorStarter;
 
-std::map<std::pair<NCURSES_COLOR_T, NCURSES_COLOR_T>, NCURSES_PAIRS_T> Color::definedColorPairs;
+std::map<std::pair<NCURSES_COLOR_T, NCURSES_COLOR_T>, short> Color::definedColorPairs;
 
 const Color Color::Black(COLOR_BLACK);
 const Color Color::White(COLOR_WHITE);

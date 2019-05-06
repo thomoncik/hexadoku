@@ -29,9 +29,9 @@ public:
     static const Color Cyan;
 
 private:
-    static std::map<std::pair<NCURSES_COLOR_T, NCURSES_COLOR_T>, NCURSES_PAIRS_T> definedColorPairs;
+    static std::map<std::pair<NCURSES_COLOR_T, NCURSES_COLOR_T>, short> definedColorPairs;
 
-    NCURSES_PAIRS_T colorPair;
+    short colorPair;
 };
 
 #endif //HEXADOKU_COLOR_HPP
