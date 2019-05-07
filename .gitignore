@@ -1,9 +1,11 @@
 # Created by .ignore support plugin (hsz.mobi)
+build
+bin
+
 ### CMake template
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
-Testing
 Makefile
 cmake_install.cmake
 install_manifest.txt
@@ -70,7 +72,6 @@ fabric.properties
 # Compiled Object files
 *.slo
 *.lo
-*.o
 *.obj
 
 # Precompiled Headers
@@ -94,6 +95,9 @@ fabric.properties
 
 # Executables
 *.exe
-*.out
 *.app
-.idea/workspace.xml
+.idea/.name
+.idea/Hexadoku.iml
+.idea/codeStyles/
+.idea/misc.xml
+.idea/modules.xml
