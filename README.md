@@ -9,16 +9,12 @@ git clone https://github.com/thomoncik/hexadoku.git
 mkdir hexadoku/build
 cd hexadoku/build
 cmake ..
-sudo make install
+make install
 ```
 
 ## Usage
 
-Just type
-```bash
-hexadoku
-```
-and enjoy.
+Just type ```./hexadoku``` in bin directory and enjoy.
 
 ## Contributing
 (-)
