@@ -1,6 +1,8 @@
 set(TARGET_NAME hexadoku)
 
-set(SOURCE_FILES main.cpp Attributes.cpp Color.cpp GfxStream.cpp Position.cpp)
+set(SOURCE_FILES main.cpp Attributes.cpp Color.cpp GfxStream.cpp Position.cpp AbstractState.cpp MainMenuState.cpp)
+
+
 add_executable(hexadoku ${SOURCE_FILES})
 target_link_libraries(hexadoku curses)
 
