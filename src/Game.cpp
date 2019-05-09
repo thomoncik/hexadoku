@@ -4,8 +4,8 @@
 #include "../include/Game.hpp"
 #include "../include/MainMenuState.hpp"
 
-Game::Game() : state(std::make_unique<MainMenuState>()) {
-
+Game::Game() {
+    this->state = std::unique_ptr<AbstractState>(new MainMenuState());
 }
 
 void Game::Run() {
