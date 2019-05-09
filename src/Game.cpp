@@ -4,7 +4,7 @@
 #include "../include/Game.hpp"
 #include "../include/MainMenuState.hpp"
 
-Game::Game() : state(std::make_shared<MainMenuState>()) {
+Game::Game() : state(std::make_unique<MainMenuState>()) {
 
 }
 
@@ -22,6 +22,6 @@ void Game::Run() {
     }
 }
 
-void Game::SetState(std::shared_ptr<AbstractState> newState) {
+void Game::SetState(std::unique_ptr<AbstractState> newState) {
     this->state = std::move(newState);
 }

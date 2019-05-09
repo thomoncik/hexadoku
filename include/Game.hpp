@@ -4,6 +4,8 @@
 #include <stack>
 #include <memory>
 
+#include "AbstractState.hpp"
+
 class AbstractState;
 
 class Game {
@@ -12,10 +14,10 @@ public:
 
     void Run();
 
-    void SetState(std::shared_ptr<AbstractState> newState);
+    void SetState(std::unique_ptr<AbstractState> newState);
 
 private:
-    std::shared_ptr<AbstractState> state;
+    std::unique_ptr<AbstractState> state;
 };
 
 #endif //HEXADOKU_GAME_HPP

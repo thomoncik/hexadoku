@@ -34,12 +34,25 @@ public:
     }
 
     static GfxStream out;
+    static const unsigned SCREEN_WIDTH;
+    static const unsigned SCREEN_HEIGHT;
 
 
     template<typename _CharT, typename _Traits>
     inline static std::basic_ostream<_CharT, _Traits> &nodecor(std::basic_ostream<_CharT, _Traits> &__os) {
         attrset(A_NORMAL);
         __os << Color::White << Position(0, 0);
+        return __os;
+    }
+
+    template<typename _CharT, typename _Traits>
+    inline static std::basic_ostream<_CharT, _Traits> &clrscr(std::basic_ostream<_CharT, _Traits> &__os) {
+        attrset(A_NORMAL);
+        __os << Color::White << Position(0, 0);
+        for (unsigned i = 1; i < GfxStream::SCREEN_WIDTH * GfxStream::SCREEN_HEIGHT; ++i) {
+            __os << " ";
+        }
+        __os << Position(0, 0);
         return __os;
     }
 };

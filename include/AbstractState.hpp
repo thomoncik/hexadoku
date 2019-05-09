@@ -2,6 +2,7 @@
 #define HEXADOKU_ABSTRACTSTATE_HPP
 
 #include "Game.hpp"
+class Game;
 
 class AbstractState {
 public:
