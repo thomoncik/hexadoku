@@ -1,19 +1,6 @@
-#include <streambuf>
-#include <ncurses.h>
-#include <iostream>
-#include <iomanip>
-
-#include <string>
-#include <memory>
-
-#include "../include/MainMenuState.hpp"
+#include "../include/Game.hpp"
 
 int main(int argc, char **argv) {
-    std::shared_ptr<AbstractState> state = std::make_shared<MainMenuState>();
-
-    while (true) {
-        state->Draw();
-        state->HandleInput(getch());
-        state->Update();
-    }
+    Game game;
+    game.Run();
 }

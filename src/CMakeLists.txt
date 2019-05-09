@@ -1,6 +1,6 @@
 set(TARGET_NAME hexadoku)
 
-set(SOURCE_FILES main.cpp Attributes.cpp Color.cpp GfxStream.cpp Position.cpp AbstractState.cpp MainMenuState.cpp)
+set(SOURCE_FILES main.cpp Attributes.cpp Color.cpp GfxStream.cpp Position.cpp AbstractState.cpp MainMenuState.cpp Game.cpp)
 
 
 add_executable(hexadoku ${SOURCE_FILES})

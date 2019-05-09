@@ -19,11 +19,11 @@ public:
 
     MainMenuState();
 
-    void Update() override;
+    void Update(Game &game) override;
 
-    void HandleInput(char input) override;
+    void HandleInput(Game &game, char input) override;
 
-    void Draw() override;
+    void Draw(Game &game) override;
 
 private:
     unsigned selectedOption;

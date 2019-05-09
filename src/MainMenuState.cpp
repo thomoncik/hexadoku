@@ -22,21 +22,21 @@ const std::map<MainMenuState::Option, std::string> MainMenuState::MENU_OPTIONS =
 MainMenuState::MainMenuState() : selectedOption(0) {
 }
 
-void MainMenuState::Update() {
+void MainMenuState::Update(Game &game) {
 
 }
 
-void MainMenuState::HandleInput(char input) {
+void MainMenuState::HandleInput(Game &game, char input) {
     if (input == 'j') {
         this->selectedOption = (this->selectedOption + 1) % MENU_OPTIONS.size();
     } else if (input == 'k') {
         this->selectedOption == 0 ? (this->selectedOption = MENU_OPTIONS.size() - 1) : (this->selectedOption--);
     } else if (input == 'q') {
-        exit(EXIT_SUCCESS);
+        game.SetState(nullptr);
     }
 }
 
-void MainMenuState::Draw() {
+void MainMenuState::Draw(Game &game) {
     GfxStream::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
     GfxStream::out << MainMenuState::HEXADOKU_LOGO << GfxStream::nodecor;
 
