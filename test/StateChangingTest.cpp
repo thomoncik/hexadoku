@@ -18,7 +18,7 @@ SCENARIO("States can be changed", "[Game]") {
             game.SetState(&state.get());
 
             THEN("OnEntry is called from new state") {
-                Verify(Method(state, OnEntry));
+                Verify(Method(state, OnEntry)).Once();
             }
         }
     }
