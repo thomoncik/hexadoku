@@ -5,7 +5,7 @@
 #include "../include/MainMenuState.hpp"
 
 Game::Game() {
-    this->state = std::unique_ptr<AbstractState>(new MainMenuState());
+    this->state = new MainMenuState();
 }
 
 void Game::Run() {
@@ -22,6 +22,18 @@ void Game::Run() {
     }
 }
 
-void Game::SetState(std::unique_ptr<AbstractState> newState) {
-    this->state = std::move(newState);
+void Game::SetState(AbstractState *newState) {
+    if (this->state != nullptr) {
+        this->state->OnExit(*this);
+    }
+
+    this->state = newState;
+
+    if (this->state != nullptr) {
+        this->state->OnEntry(*this);
+    }
+}
+
+AbstractState *Game::GetState() {
+    return this->state;
 }

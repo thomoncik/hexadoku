@@ -1,9 +1,6 @@
 #ifndef HEXADOKU_GAME_HPP
 #define HEXADOKU_GAME_HPP
 
-#include <stack>
-#include <memory>
-
 #include "AbstractState.hpp"
 
 class AbstractState;
@@ -14,10 +11,12 @@ public:
 
     void Run();
 
-    void SetState(std::unique_ptr<AbstractState> newState);
+    void SetState(AbstractState *newState);
+
+    AbstractState *GetState();
 
 private:
-    std::unique_ptr<AbstractState> state;
+    AbstractState *state;
 };
 
 #endif //HEXADOKU_GAME_HPP

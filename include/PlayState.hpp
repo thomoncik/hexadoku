@@ -12,11 +12,15 @@ class PlayState : public AbstractState {
 public:
     PlayState();
 
+    void OnEntry(Game &game) override;
+
     void Update(Game &game) override;
 
     void HandleInput(Game &game, char input) override;
 
     void Draw(Game &game) override;
+
+    void OnExit(Game &game) override;
 };
 
 
