@@ -10,4 +10,4 @@ add_executable(tests ${SOURCE_FILES} ${TEST_SOURCES})
 target_link_libraries(tests Catch)
 target_link_libraries(tests curses)
 
-add_test(NAME tests COMMAND tests)
+add_test(NAME tests COMMAND tests -d yes --order lex)
