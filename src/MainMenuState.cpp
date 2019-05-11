@@ -13,7 +13,7 @@ const std::map<MainMenuState::Option, std::string> MainMenuState::MENU_OPTIONS =
 };
 
 MainMenuState::MainMenuState() : selectedOption(0) {
-
+    
 }
 
 void MainMenuState::OnEntry(Game &game) {
