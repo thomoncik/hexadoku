@@ -16,6 +16,8 @@ public:
 
     void SetState(std::unique_ptr<AbstractState> newState);
 
+    AbstractState *GetState();
+
 private:
     std::unique_ptr<AbstractState> state;
 };

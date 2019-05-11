@@ -19,6 +19,10 @@ MainMenuState::MainMenuState() : selectedOption(0) {
     gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
 }
 
+void MainMenuState::OnEntry(Game &game) {
+
+}
+
 void MainMenuState::Update(Game &game) {
 
 }
@@ -54,4 +58,8 @@ void MainMenuState::Draw(Game &game) {
         gfx::out << Position(30, 13 + i) << std::setw(14);
         gfx::out << optionIterator->second << gfx::nodecor;
     }
+}
+
+void MainMenuState::OnExit(Game &game) {
+
 }

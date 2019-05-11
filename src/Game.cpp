@@ -23,5 +23,17 @@ void Game::Run() {
 }
 
 void Game::SetState(std::unique_ptr<AbstractState> newState) {
+    if (this->state != nullptr) {
+        this->state->OnExit(*this);
+    }
+
     this->state = std::move(newState);
+
+    if (this->state != nullptr) {
+        this->state->OnEntry(*this);
+    }
+}
+
+AbstractState *Game::GetState() {
+    return this->state.get();
 }
