@@ -1,4 +1,4 @@
-set(TEST_SOURCES main.cpp TestFoo.cpp StateChangingTest.cpp)
+set(TEST_SOURCES main.cpp StateChangingTest.cpp)
 
 set(SOURCE_FILES ../src/Views/Board.cpp ../src/Views/BoardCell.cpp ../src/Views/BoardSection.cpp
         ../src/AbstractState.cpp ../src/Assets.cpp ../src/Attributes.cpp ../src/Color.cpp ../src/Game.cpp
