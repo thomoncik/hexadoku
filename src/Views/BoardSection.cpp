@@ -3,7 +3,9 @@
 //
 
 #include "../../include/Views/BoardSection.hpp"
-BoardSection::BoardSection(int size) : size(size), cells(std::vector<BoardCell>(9)) {}
+//BoardSection::BoardSection(int size) : size(size), cells(std::vector<BoardCell>(size)) {}
+
+BoardSection::BoardSection(int size) : size(size), cells(std::vector<BoardCell>(size)) {}
 
 void BoardSection::SetSelected(bool isSelectd, int row, int column) {
     cells[row * size + column].SetSelected(isSelectd);
