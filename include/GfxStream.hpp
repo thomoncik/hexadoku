@@ -1,60 +1,54 @@
 #ifndef HEXADOKU_GFXSTREAM_HPP
 #define HEXADOKU_GFXSTREAM_HPP
 
-
 #include <ostream>
 #include <ncurses.h>
+#include <iostream>
+
 #include "Position.hpp"
 #include "Color.hpp"
 
 class GfxStreamBuffer : public std::streambuf {
 public:
-    GfxStreamBuffer() = default;
-
-    int overflow(int c) override {
-        return printw("%c", c);
+    int overflow(int character) override {
+        return printw("%c", character);
     }
 };
 
 class GfxStream : public std::ostream {
 public:
-    GfxStreamBuffer tbuf_;
-    std::ostream &src_;
-    std::streambuf *const srcbuf_;
-
-    explicit GfxStream(std::ostream &o) : src_(o), srcbuf_(o.rdbuf()), std::ostream(&tbuf_) {
-        o.rdbuf(rdbuf());
-        curs_set(0);
-        noecho();
-    }
-
-    ~GfxStream() override {
-        src_.rdbuf(srcbuf_);
-        endwin();
-    }
-
-    static GfxStream out;
     static const unsigned SCREEN_WIDTH;
     static const unsigned SCREEN_HEIGHT;
 
+    explicit GfxStream(std::ostream &stream);
 
-    template<typename _CharT, typename _Traits>
-    inline static std::basic_ostream<_CharT, _Traits> &nodecor(std::basic_ostream<_CharT, _Traits> &__os) {
-        attrset(A_NORMAL);
-        __os << Color::White << Position(0, 0);
-        return __os;
-    }
+    ~GfxStream() override;
 
-    template<typename _CharT, typename _Traits>
-    inline static std::basic_ostream<_CharT, _Traits> &clrscr(std::basic_ostream<_CharT, _Traits> &__os) {
-        attrset(A_NORMAL);
-        __os << Color::White << Position(0, 0);
-        for (unsigned i = 1; i < GfxStream::SCREEN_WIDTH * GfxStream::SCREEN_HEIGHT; ++i) {
-            __os << " ";
-        }
-        __os << Position(0, 0);
-        return __os;
-    }
+    void ShowInput();
+
+    void HideInput();
+
+private:
+    GfxStreamBuffer gfxBuffer;
+    std::ostream &sourceStream;
+    std::streambuf *const sourceBuffer;
 };
+
+namespace gfx {
+    template<typename _CharT, typename _Traits>
+    std::basic_ostream<_CharT, _Traits> &nodecor(std::basic_ostream<_CharT, _Traits> &stream) {
+        attrset(A_NORMAL);
+        return stream << Color::White << Position(0, 0);
+    }
+
+    template<typename _CharT, typename _Traits>
+    std::basic_ostream<_CharT, _Traits> &clear(std::basic_ostream<_CharT, _Traits> &stream) {
+        attrset(A_NORMAL);
+        stream << Color::White << Position(0, 0) << std::string(GfxStream::SCREEN_WIDTH * GfxStream::SCREEN_HEIGHT - 1, ' ');
+        return stream << Position(0, 0);
+    }
+
+    extern GfxStream out;
+}
 
 #endif //HEXADOKU_GFXSTREAM_HPP

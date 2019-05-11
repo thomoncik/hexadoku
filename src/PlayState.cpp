@@ -5,7 +5,7 @@
 #include <memory>
 
 PlayState::PlayState() {
-    GfxStream::out << GfxStream::clrscr;
+    gfx::out << gfx::clear;
 }
 
 void PlayState::Update(Game &game) {
@@ -20,9 +20,9 @@ void PlayState::HandleInput(Game &game, char input) {
 }
 
 void PlayState::Draw(Game &game) {
-    GfxStream::out << Color::Red;
+    gfx::out << Color::Red;
     for (int i = 0; i < 10; ++i) {
-        GfxStream::out << Position(10, 10 + i) << "----------";
+        gfx::out << Position(10, 10 + i) << "----------";
     }
-    GfxStream::out << GfxStream::nodecor;
+    gfx::out << gfx::nodecor;
 }

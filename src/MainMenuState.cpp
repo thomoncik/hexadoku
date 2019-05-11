@@ -21,10 +21,10 @@ const std::map<MainMenuState::Option, std::string> MainMenuState::MENU_OPTIONS =
 };
 
 MainMenuState::MainMenuState() : selectedOption(0) {
-    GfxStream::out << GfxStream::clrscr;
+    gfx::out << gfx::clear;
 
-    GfxStream::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
-    GfxStream::out << MainMenuState::HEXADOKU_LOGO << GfxStream::nodecor;
+    gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
+    gfx::out << MainMenuState::HEXADOKU_LOGO << gfx::nodecor;
 }
 
 void MainMenuState::Update(Game &game) {
@@ -57,9 +57,9 @@ void MainMenuState::Draw(Game &game) {
     auto optionIterator = MainMenuState::MENU_OPTIONS.begin();
     for (unsigned i = 0; i < MainMenuState::MENU_OPTIONS.size(); ++i, ++optionIterator) {
         if (this->selectedOption == i) {
-            GfxStream::out << Attribute::STANDOUT;
+            gfx::out << Attribute::STANDOUT;
         }
-        GfxStream::out << Position(30, 13 + i) << std::setw(14);
-        GfxStream::out << optionIterator->second << GfxStream::nodecor;
+        gfx::out << Position(30, 13 + i) << std::setw(14);
+        gfx::out << optionIterator->second << gfx::nodecor;
     }
 }
