@@ -2,6 +2,7 @@
 #define HEXADOKU_MAINMENUSTATE_HPP
 
 #include "AbstractState.hpp"
+#include "Assets.hpp"
 
 #include <string>
 #include <map>
@@ -14,7 +15,6 @@ public:
         EXIT,
     };
 
-    static const std::string HEXADOKU_LOGO;
     static const std::map<MainMenuState::Option, std::string> MENU_OPTIONS;
 
     MainMenuState();
