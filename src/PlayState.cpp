@@ -5,7 +5,7 @@
 #include <memory>
 
 PlayState::PlayState() {
-    gfx::out << gfx::clrscr;
+    gfx::out << gfx::clear;
 }
 
 void PlayState::Update(Game &game) {

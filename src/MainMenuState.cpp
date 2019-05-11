@@ -21,7 +21,7 @@ const std::map<MainMenuState::Option, std::string> MainMenuState::MENU_OPTIONS =
 };
 
 MainMenuState::MainMenuState() : selectedOption(0) {
-    gfx::out << gfx::clrscr;
+    gfx::out << gfx::clear;
 
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
     gfx::out << MainMenuState::HEXADOKU_LOGO << gfx::nodecor;

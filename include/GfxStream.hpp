@@ -42,7 +42,7 @@ namespace gfx {
     }
 
     template<typename _CharT, typename _Traits>
-    std::basic_ostream<_CharT, _Traits> &clrscr(std::basic_ostream<_CharT, _Traits> &stream) {
+    std::basic_ostream<_CharT, _Traits> &clear(std::basic_ostream<_CharT, _Traits> &stream) {
         attrset(A_NORMAL);
         stream << Color::White << Position(0, 0) << std::string(GfxStream::SCREEN_WIDTH * GfxStream::SCREEN_HEIGHT - 1, ' ');
         return stream << Position(0, 0);
