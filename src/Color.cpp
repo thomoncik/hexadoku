@@ -27,6 +27,8 @@ Color::Color(NCURSES_COLOR_T foreground, NCURSES_COLOR_T background) {
 }
 
 std::ostream &operator<<(std::ostream &stream, const Color &color) {
+    #ifndef TESTING
     attron(COLOR_PAIR(color.colorPair));
+    #endif
     return stream;
 }

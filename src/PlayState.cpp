@@ -18,8 +18,7 @@ void PlayState::Update(Game &game) {
 
 void PlayState::HandleInput(Game &game, char input) {
     if (input == 'q') {
-        std::unique_ptr<AbstractState> mainMenuState(new MainMenuState());
-        game.SetState(std::move(mainMenuState));
+        game.SetState(new MainMenuState());
     }
 }
 

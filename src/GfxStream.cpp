@@ -13,21 +13,29 @@ namespace gfx {
 }
 
 GfxStream::~GfxStream() {
+    #ifndef TESTING
     sourceStream.rdbuf(sourceBuffer);
     endwin();
+    #endif
 }
 
 GfxStream::GfxStream(std::ostream &stream) : sourceStream(stream), sourceBuffer(stream.rdbuf()), std::ostream(&gfxBuffer) {
+    #ifndef TESTING
     stream.rdbuf(rdbuf());
     curs_set(0);
     nodelay(stdscr, TRUE);
     this->HideInput();
+    #endif
 }
 
 void GfxStream::ShowInput() {
+    #ifndef TESTING
     echo();
+    #endif
 }
 
 void GfxStream::HideInput() {
+    #ifndef TESTING
     noecho();
+    #endif
 }

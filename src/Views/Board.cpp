@@ -3,21 +3,32 @@
 //
 
 #include "../../include/Views/Board.hpp"
+
 const int Board::STANDARD_SIZE = 9;
 const int Board::HEXADOKU_SIZE = 16;
-Board::Board(int size) : size(size), sectionSize((size == STANDARD_SIZE) ? 3 : 4), sections(std::vector<BoardSection>(size, BoardSection(size))) {}
+
+Board::Board(int size) : size(size), sectionSize((size == STANDARD_SIZE) ? 3 : 4),
+                         sections(std::vector<BoardSection>(size, BoardSection(size))) {}
+
 int Board::getSize() {
     return size;
 }
+
 void Board::SetSelected(bool isSelected, int row, int column) {
-    sections[row / sectionSize * sectionSize + column / sectionSize].SetSelected(isSelected, row % sectionSize, column % sectionSize);
+    const int sectionId = row / sectionSize * sectionSize + column / sectionSize;
+    sections[sectionId].SetSelected(isSelected, row % sectionSize, column % sectionSize);
 }
+
 void Board::SetIsCorrect(bool isCorrect, int row, int column) {
-    sections[row / sectionSize * sectionSize + column / sectionSize].SetIsCorrect(isCorrect, row % sectionSize, column % sectionSize);
+    const int sectionId = row / sectionSize * sectionSize + column / sectionSize;
+    sections[sectionId].SetIsCorrect(isCorrect, row % sectionSize, column % sectionSize);
 }
+
 void Board::SetValue(int value, int row, int column) {
-    sections[row / sectionSize * sectionSize + column / sectionSize].SetValue(value, row % sectionSize, column % sectionSize);
+    const int sectionId = row / sectionSize * sectionSize + column / sectionSize;
+    sections[sectionId].SetValue(value, row % sectionSize, column % sectionSize);
 }
+
 std::vector<int> Board::ValuesInRow(int row) {
     std::vector<int> values;
     int rowForSection = row % sectionSize;
@@ -30,6 +41,7 @@ std::vector<int> Board::ValuesInRow(int row) {
     values.insert(std::end(values), std::begin(thirdSectionValues), std::end(thirdSectionValues));
     return values;
 }
+
 std::vector<int> Board::ValuesInColumn(int column) {
     std::vector<int> values;
     int columnForSection = column % sectionSize;

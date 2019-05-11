@@ -11,7 +11,11 @@
 class GfxStreamBuffer : public std::streambuf {
 public:
     int overflow(int character) override {
+    #ifndef TESTING
         return printw("%c", character);
+    #else
+        return character;
+    #endif
     }
 };
 

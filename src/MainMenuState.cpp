@@ -13,14 +13,14 @@ const std::map<MainMenuState::Option, std::string> MainMenuState::MENU_OPTIONS =
 };
 
 MainMenuState::MainMenuState() : selectedOption(0) {
+
+}
+
+void MainMenuState::OnEntry(Game &game) {
     gfx::out << gfx::clear;
 
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
     gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
-}
-
-void MainMenuState::OnEntry(Game &game) {
-
 }
 
 void MainMenuState::Update(Game &game) {
@@ -33,19 +33,19 @@ void MainMenuState::HandleInput(Game &game, char input) {
     } else if (input == 'k') {
         this->selectedOption == 0 ? (this->selectedOption = MENU_OPTIONS.size() - 1) : (this->selectedOption--);
     } else if (input == ' ') {
-        std::unique_ptr<AbstractState> newState;
+        AbstractState *newState;
         switch (static_cast<MainMenuState::Option>(this->selectedOption)) {
             case Option::NEW_GAME:
-                newState = std::unique_ptr<AbstractState>(new GamemodeMenuState());
+                newState = new GamemodeMenuState();
                 break;
             case Option::BOARD_CREATOR:
-                newState = std::unique_ptr<AbstractState>(new GamemodeMenuState());
+                newState = new GamemodeMenuState();
                 break;
             case Option::EXIT:
                 newState = nullptr;
                 break;
         }
-        game.SetState(std::move(newState));
+        game.SetState(newState);
     }
 }
 

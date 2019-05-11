@@ -8,8 +8,10 @@
 
 struct ColorStarter {
     ColorStarter() {
+        #ifndef TESTING
         initscr();
         start_color();
+        #endif
     }
 };
 

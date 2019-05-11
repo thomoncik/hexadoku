@@ -17,6 +17,10 @@ const std::map<GamemodeMenuState::Option, std::string> GamemodeMenuState::GAMEMO
 };
 
 GamemodeMenuState::GamemodeMenuState() : selectedOption(0) {
+
+}
+
+void GamemodeMenuState::OnEntry(Game &game) {
     gfx::out << gfx::clear;
 
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
@@ -33,22 +37,22 @@ void GamemodeMenuState::HandleInput(Game &game, char input) {
     } else if (input == 'k') {
         this->selectedOption == 0 ? (this->selectedOption = GAMEMODE_OPTIONS.size() - 1) : (this->selectedOption--);
     } else if (input == ' ') {
-        std::unique_ptr<AbstractState> newState;
+        AbstractState* newState;
         switch (static_cast<GamemodeMenuState::Option>(this->selectedOption)) {
             case Option::STANDARD:
-                newState = std::unique_ptr<AbstractState>(new PlayState());
+                newState = new PlayState();
                 break;
             case Option::HEXADOKU:
-                newState = std::unique_ptr<AbstractState>(new PlayState());
+                newState = new PlayState();
                 break;
             case Option::LOAD_YOUR_OWN:
-                newState = std::unique_ptr<AbstractState>(new PlayState());
+                newState = new PlayState();
                 break;
             case Option::BACK:
-                newState = std::unique_ptr<AbstractState>(new MainMenuState());
+                newState = new MainMenuState();
                 break;
         }
-        game.SetState(std::move(newState));
+        game.SetState(newState);
     }
 }
 
@@ -61,4 +65,8 @@ void GamemodeMenuState::Draw(Game &game) {
         gfx::out << Position(30, 13 + i) << std::setw(20);
         gfx::out << optionIterator->second << gfx::nodecor;
     }
+}
+
+void GamemodeMenuState::OnExit(Game &game) {
+
 }
