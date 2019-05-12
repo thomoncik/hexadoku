@@ -12,7 +12,7 @@
 #include <string>
 #include <map>
 
-class GamemodeMenuState : public AbstractState {
+class GameModeMenuState : public AbstractState {
 public:
     enum class Option {
         STANDARD = 0,
@@ -21,9 +21,9 @@ public:
         BACK,
     };
 
-    static const std::map<GamemodeMenuState::Option, std::string> GAMEMODE_OPTIONS;
+    static const std::map<GameModeMenuState::Option, std::wstring> GAMEMODE_OPTIONS;
 
-    GamemodeMenuState();
+    GameModeMenuState();
 
     void Update(Game &game) override;
 

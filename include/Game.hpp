@@ -14,10 +14,10 @@ public:
 
     void Run();
 
-    void SetState(std::unique_ptr<AbstractState> newState);
+    void SetState(AbstractState *newState);
 
 private:
-    std::unique_ptr<AbstractState> state;
+    AbstractState *state;
 };
 
 #endif //HEXADOKU_GAME_HPP

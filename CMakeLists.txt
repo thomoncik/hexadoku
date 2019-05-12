@@ -4,6 +4,7 @@ project(hexadoku)
 enable_testing()
 set(CMAKE_CXX_STANDARD 14)
 
+set(CURSES_NEED_WIDE TRUE)
 set(CURSES_USE_NCURSES TRUE)
 find_package(Curses REQUIRED)
 include_directories(${CURSES_INCLUDE_DIR})

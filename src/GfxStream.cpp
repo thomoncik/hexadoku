@@ -1,15 +1,14 @@
-#include "../include/GfxStream.hpp"
-
 #include <iostream>
 
+#include "../include/GfxStream.hpp"
 #include "../include/Color.hpp"
 #include "../include/Position.hpp"
 
-const unsigned GfxStream::SCREEN_WIDTH = 24;
-const unsigned GfxStream::SCREEN_HEIGHT = 80;
-
 namespace gfx {
-    GfxStream out(std::cout);
+    const unsigned SCREEN_WIDTH = 80;
+    const unsigned SCREEN_HEIGHT = 24;
+
+    GfxStream out(std::wcout);
 }
 
 GfxStream::~GfxStream() {
@@ -17,7 +16,7 @@ GfxStream::~GfxStream() {
     endwin();
 }
 
-GfxStream::GfxStream(std::ostream &stream) : sourceStream(stream), sourceBuffer(stream.rdbuf()), std::ostream(&gfxBuffer) {
+GfxStream::GfxStream(std::wostream &stream) : sourceStream(stream), sourceBuffer(stream.rdbuf()), std::wostream(&gfxBuffer) {
     stream.rdbuf(rdbuf());
     curs_set(0);
     nodelay(stdscr, TRUE);

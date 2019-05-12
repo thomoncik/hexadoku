@@ -8,7 +8,11 @@ class Position {
 public:
     Position(int x, int y);
 
-    friend std::ostream &operator<<(std::ostream &stream, const Position &position);
+    template<typename _CharT, typename _Traits>
+    friend std::basic_ostream<_CharT, _Traits> &operator<<(std::basic_ostream<_CharT, _Traits> &stream, const Position &position) {
+        move(position.y, position.x);
+        return stream;
+    }
 
 private:
     int x;
