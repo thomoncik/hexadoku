@@ -14,7 +14,9 @@ public:
     static const int STANDARD_SIZE;
     static const int HEXADOKU_SIZE;
     Board(int size);
-    int getSize();
+    int GetSize() const;
+    int GetSectionSize() const;
+    const BoardSection& GetSection(int index) const;
     void SetSelected(bool isSelectd, int row, int column);
     void SetValue(int value, int row, int column);
     void SetIsCorrect(bool isCorrect, int row, int column);

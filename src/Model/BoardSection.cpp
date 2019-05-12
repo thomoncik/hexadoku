@@ -2,10 +2,14 @@
 // Created by Jakub Kiermasz on 2019-05-11.
 //
 
-#include "../../include/Views/BoardSection.hpp"
+#include "../../include/Model/BoardSection.hpp"
 //BoardSection::BoardSection(int size) : size(size), cells(std::vector<BoardCell>(size)) {}
 
 BoardSection::BoardSection(int size) : size(size), cells(std::vector<BoardCell>(size)) {}
+
+int BoardSection::GetSize() const {
+    return size;
+}
 
 void BoardSection::SetSelected(bool isSelectd, int row, int column) {
     cells[row * size + column].SetSelected(isSelectd);

@@ -40,13 +40,13 @@ void GamemodeMenuState::HandleInput(Game &game, char input) {
         AbstractState* newState;
         switch (static_cast<GamemodeMenuState::Option>(this->selectedOption)) {
             case Option::STANDARD:
-                newState = new PlayState();
+                newState = new PlayState(Board::STANDARD_SIZE);
                 break;
             case Option::HEXADOKU:
-                newState = new PlayState();
+                newState = new PlayState(Board::HEXADOKU_SIZE);
                 break;
             case Option::LOAD_YOUR_OWN:
-                newState = new PlayState();
+                newState = new PlayState(Board::STANDARD_SIZE);
                 break;
             case Option::BACK:
                 newState = new MainMenuState();

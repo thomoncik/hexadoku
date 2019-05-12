@@ -11,6 +11,7 @@
 class BoardSection {
 public:
     BoardSection(int size);
+    int GetSize() const ;
     void SetSelected(bool isSelected, int row, int column);
     void SetValue(int value, int row, int column);
     void SetIsCorrect(bool isCorrect, int row, int column);
