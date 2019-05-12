@@ -1,5 +1,6 @@
 #include <utility>
-
+#include <chrono>
+#include <thread>
 #include <ncurses.h>
 #include "../include/Game.hpp"
 #include "../include/MainMenuState.hpp"
@@ -19,6 +20,7 @@ void Game::Run() {
         if (this->state != nullptr) {
             this->state->Update(*this);
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(5));
     }
 }
 

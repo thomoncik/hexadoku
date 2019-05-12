@@ -1,6 +1,6 @@
 set(TARGET_NAME hexadoku)
 
-set(SOURCE_FILES main.cpp Views/Board.cpp Views/BoardCell.cpp Views/BoardSection.cpp
+set(SOURCE_FILES main.cpp Model/Board.cpp Model/BoardCell.cpp Model/BoardSection.cpp
         AbstractState.cpp Assets.cpp Attributes.cpp Color.cpp Game.cpp GamemodeMenuState.cpp
         GfxStream.cpp MainMenuState.cpp PlayState.cpp Position.cpp)
 

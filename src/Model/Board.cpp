@@ -2,18 +2,22 @@
 // Created by Jakub Kiermasz on 2019-05-11.
 //
 
-#include "../../include/Views/Board.hpp"
-
+#include "../../include/Model/Board.hpp"
 const int Board::STANDARD_SIZE = 9;
 const int Board::HEXADOKU_SIZE = 16;
 
 Board::Board(int size) : size(size), sectionSize((size == STANDARD_SIZE) ? 3 : 4),
                          sections(std::vector<BoardSection>(size, BoardSection(size))) {}
 
-int Board::getSize() {
+int Board::GetSize() const {
     return size;
 }
-
+int Board::GetSectionSize() const {
+    return sectionSize;
+}
+const BoardSection& Board::GetSection(int index) const {
+    return sections[index];
+}
 void Board::SetSelected(bool isSelected, int row, int column) {
     const int sectionId = row / sectionSize * sectionSize + column / sectionSize;
     sections[sectionId].SetSelected(isSelected, row % sectionSize, column % sectionSize);

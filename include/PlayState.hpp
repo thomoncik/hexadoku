@@ -6,11 +6,12 @@
 #define HEXADOKU_PLAYSTATE_HPP
 
 #include "AbstractState.hpp"
+#include "Model/Board.hpp"
 
 
 class PlayState : public AbstractState {
 public:
-    PlayState();
+    PlayState(int boardSize);
 
     void OnEntry(Game &game) override;
 
@@ -21,6 +22,10 @@ public:
     void Draw(Game &game) override;
 
     void OnExit(Game &game) override;
+private:
+    Board board;
+    void DisplayBoard(int posX, int posY);
+    void DisplaySection(const BoardSection & bs, int posX, int posY, bool shouldPrintRightEdge, bool shouldPrintBottomEdge);
 };
 
 

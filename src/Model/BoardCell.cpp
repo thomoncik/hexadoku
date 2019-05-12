@@ -2,7 +2,7 @@
 // Created by Jakub Kiermasz on 2019-05-11.
 //
 
-#include "../../include/Views/BoardCell.hpp"
+#include "../../include/Model/BoardCell.hpp"
 const int BoardCell::EMPTY_VALUE = 0;
 BoardCell::BoardCell() : isSelected(false), isCorrect(true) {}
 void BoardCell::SetValue(int value) {
