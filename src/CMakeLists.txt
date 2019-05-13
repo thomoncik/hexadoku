@@ -1,8 +1,8 @@
 set(TARGET_NAME hexadoku)
 
 set(SOURCE_FILES main.cpp Model/Board.cpp Model/BoardCell.cpp Model/BoardSection.cpp
-        AbstractState.cpp Assets.cpp Attributes.cpp Color.cpp Game.cpp GamemodeMenuState.cpp
-        GfxStream.cpp MainMenuState.cpp PlayState.cpp Position.cpp)
+        AbstractState.cpp Assets.cpp Attributes.cpp Color.cpp Game.cpp
+        GfxStream.cpp PlayState.cpp Position.cpp MenuState.cpp)
 
 add_executable(hexadoku ${SOURCE_FILES})
 target_link_libraries(hexadoku curses)
