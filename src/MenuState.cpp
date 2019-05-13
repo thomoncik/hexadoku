@@ -33,8 +33,7 @@ void MenuState::HandleInput(Game &game, char input) {
     } else if (input == 'k') {
         this->selectedOption == 0 ? (this->selectedOption = this->options.size() - 1) : (this->selectedOption--);
     } else if (input == ' ') {
-        AbstractState *newState = this->options.at(this->selectedOption).second;
-        game.SetState(newState);
+        game.SetState(this->options[this->selectedOption].second);
     }
 }
 
@@ -53,20 +52,20 @@ void MenuState::OnExit(Game &game) {
 
 }
 
-void MenuState::AddOption(std::pair<std::string, AbstractState *> option) {
+void MenuState::AddOption(std::pair<std::wstring, AbstractState *> option) {
     this->options.emplace_back(option);
     this->labelSize = std::max(this->labelSize, option.first.size());
 }
 
 bool MenuState::initPredefinedMenus() {
-    MAIN_MENU->AddOption({"New game", GAME_MODE_MENU});
-    MAIN_MENU->AddOption({"Board creator", GAME_MODE_MENU});
-    MAIN_MENU->AddOption({"Exit", nullptr});
+    MAIN_MENU->AddOption({L"New game", GAME_MODE_MENU});
+    MAIN_MENU->AddOption({L"Board creator", GAME_MODE_MENU});
+    MAIN_MENU->AddOption({L"Exit", nullptr});
 
-    GAME_MODE_MENU->AddOption({"Standard", new PlayState(Board::STANDARD_SIZE)});
-    GAME_MODE_MENU->AddOption({"Hexadoku", new PlayState(Board::HEXADOKU_SIZE)});
-    GAME_MODE_MENU->AddOption({"Load your own scheme", nullptr});
-    GAME_MODE_MENU->AddOption({"Back", MAIN_MENU});
+    GAME_MODE_MENU->AddOption({L"Standard", new PlayState(Board::STANDARD_SIZE)});
+    GAME_MODE_MENU->AddOption({L"Hexadoku", new PlayState(Board::HEXADOKU_SIZE)});
+    GAME_MODE_MENU->AddOption({L"Load your own scheme", nullptr});
+    GAME_MODE_MENU->AddOption({L"Back", MAIN_MENU});
 
     return true;
 }

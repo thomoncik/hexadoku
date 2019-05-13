@@ -1,41 +1,40 @@
-#include "../include/GfxStream.hpp"
-
 #include <iostream>
 
+#include "../include/GfxStream.hpp"
 #include "../include/Color.hpp"
 #include "../include/Position.hpp"
 
-const unsigned GfxStream::SCREEN_WIDTH = 24;
-const unsigned GfxStream::SCREEN_HEIGHT = 80;
-
 namespace gfx {
-    GfxStream out(std::cout);
+    const unsigned SCREEN_WIDTH = 80;
+    const unsigned SCREEN_HEIGHT = 24;
+
+    GfxStream out(std::wcout);
 }
 
 GfxStream::~GfxStream() {
-    #ifndef TESTING
+#ifndef TESTING
     sourceStream.rdbuf(sourceBuffer);
     endwin();
-    #endif
+#endif
 }
 
-GfxStream::GfxStream(std::ostream &stream) : sourceStream(stream), sourceBuffer(stream.rdbuf()), std::ostream(&gfxBuffer) {
-    #ifndef TESTING
+GfxStream::GfxStream(std::wostream &stream) : sourceStream(stream), sourceBuffer(stream.rdbuf()), std::wostream(&gfxBuffer) {
+#ifndef TESTING
     stream.rdbuf(rdbuf());
     curs_set(0);
     nodelay(stdscr, TRUE);
     this->HideInput();
-    #endif
+#endif
 }
 
 void GfxStream::ShowInput() {
-    #ifndef TESTING
+#ifndef TESTING
     echo();
-    #endif
+#endif
 }
 
 void GfxStream::HideInput() {
-    #ifndef TESTING
+#ifndef TESTING
     noecho();
-    #endif
+#endif
 }

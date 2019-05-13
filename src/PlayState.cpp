@@ -5,11 +5,11 @@
 #include <memory>
 
 PlayState::PlayState(int boardSize) : board(Board(boardSize)) {
-    gfx::out << gfx::clear;
+
 }
 
 void PlayState::OnEntry(Game &game) {
-
+    gfx::out << gfx::clear;
 }
 
 void PlayState::Update(Game &game) {
