@@ -8,9 +8,11 @@
 
 struct ColorStarter {
     ColorStarter() {
+#ifndef TESTING
         setlocale(LC_ALL, "");
         initscr();
         start_color();
+#endif
     }
 };
 

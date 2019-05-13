@@ -13,6 +13,10 @@ const std::map<MainMenuState::Option, std::wstring> MainMenuState::MENU_OPTIONS 
 };
 
 MainMenuState::MainMenuState() : selectedOption(0) {
+
+}
+
+void MainMenuState::OnEntry(Game &game) {
     gfx::out << gfx::clear;
 
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
@@ -54,4 +58,8 @@ void MainMenuState::Draw(Game &game) {
         gfx::out << Position(30, 13 + i) << std::setw(14);
         gfx::out << optionIterator->second << gfx::nodecor;
     }
+}
+
+void MainMenuState::OnExit(Game &game) {
+
 }

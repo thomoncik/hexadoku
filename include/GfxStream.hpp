@@ -101,7 +101,11 @@ namespace gfx {
 class GfxStreamBuffer : public std::wstreambuf {
 public:
     unsigned overflow(unsigned character) override {
+#ifndef TESTING
         return addch(character);
+#else
+        return character;
+#endif
     }
 };
 

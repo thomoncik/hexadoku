@@ -1,10 +1,12 @@
 #include <utility>
-
+#include <chrono>
+#include <thread>
 #include <ncurses.h>
+
 #include "../include/Game.hpp"
 #include "../include/MainMenuState.hpp"
 
-Game::Game() {
+Game::Game() : state(nullptr) {
     this->SetState(new MainMenuState());
 }
 
@@ -19,9 +21,22 @@ void Game::Run() {
         if (this->state != nullptr) {
             this->state->Update(*this);
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(5));
     }
 }
 
 void Game::SetState(AbstractState *newState) {
+    if (this->state != nullptr) {
+        this->state->OnExit(*this);
+    }
+
     this->state = newState;
+
+    if (this->state != nullptr) {
+        this->state->OnEntry(*this);
+    }
+}
+
+AbstractState *Game::GetState() const {
+    return this->state;
 }

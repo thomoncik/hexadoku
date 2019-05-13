@@ -17,6 +17,10 @@ const std::map<GameModeMenuState::Option, std::wstring> GameModeMenuState::GAMEM
 };
 
 GameModeMenuState::GameModeMenuState() : selectedOption(0) {
+
+}
+
+void GameModeMenuState::OnEntry(Game &game) {
     gfx::out << gfx::clear;
 
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
@@ -36,13 +40,13 @@ void GameModeMenuState::HandleInput(Game &game, char input) {
         AbstractState *newState = nullptr;
         switch (static_cast<GameModeMenuState::Option>(this->selectedOption)) {
             case Option::STANDARD:
-                newState = new PlayState();
+                newState = new PlayState(Board::STANDARD_SIZE);
                 break;
             case Option::HEXADOKU:
-                newState = new PlayState();
+                newState = new PlayState(Board::HEXADOKU_SIZE);
                 break;
             case Option::LOAD_YOUR_OWN:
-                newState = new PlayState();
+                newState = new PlayState(Board::STANDARD_SIZE);
                 break;
             case Option::BACK:
                 newState = new MainMenuState();
@@ -61,4 +65,8 @@ void GameModeMenuState::Draw(Game &game) {
         gfx::out << Position(30, 13 + i) << std::setw(20);
         gfx::out << optionIterator->second << gfx::nodecor;
     }
+}
+
+void GameModeMenuState::OnExit(Game &game) {
+
 }
