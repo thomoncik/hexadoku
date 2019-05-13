@@ -4,10 +4,10 @@
 #include <ncurses.h>
 
 #include "../include/Game.hpp"
-#include "../include/MainMenuState.hpp"
+#include "../include/MenuState.hpp"
 
 Game::Game() : state(nullptr) {
-    this->SetState(new MainMenuState());
+    this->SetState(MenuState::MAIN_MENU);
 }
 
 void Game::Run() {

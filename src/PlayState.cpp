@@ -1,15 +1,15 @@
 #include "../include/PlayState.hpp"
-#include "../include/MainMenuState.hpp"
 #include "../include/GfxStream.hpp"
+#include "../include/MenuState.hpp"
 
 #include <memory>
 
 PlayState::PlayState(int boardSize) : board(Board(boardSize)) {
-    gfx::out << gfx::clear;
+
 }
 
 void PlayState::OnEntry(Game &game) {
-
+    gfx::out << gfx::clear;
 }
 
 void PlayState::Update(Game &game) {
@@ -18,7 +18,7 @@ void PlayState::Update(Game &game) {
 
 void PlayState::HandleInput(Game &game, char input) {
     if (input == 'q') {
-        game.SetState(new MainMenuState());
+        game.SetState(MenuState::MAIN_MENU);
     }
 }
 
