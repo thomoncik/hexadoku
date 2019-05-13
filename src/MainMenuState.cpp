@@ -17,7 +17,6 @@ MainMenuState::MainMenuState() : selectedOption(0) {
 
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
     gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
-
 }
 
 void MainMenuState::Update(Game &game) {

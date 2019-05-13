@@ -96,7 +96,6 @@ namespace gfx {
             return stream;
         }
     }
-
 }
 
 class GfxStreamBuffer : public std::wstreambuf {
