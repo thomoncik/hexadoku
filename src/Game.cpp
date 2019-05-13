@@ -2,11 +2,12 @@
 #include <chrono>
 #include <thread>
 #include <ncurses.h>
+
 #include "../include/Game.hpp"
 #include "../include/MainMenuState.hpp"
 
-Game::Game() {
-    this->state = new MainMenuState();
+Game::Game() : state(nullptr) {
+    this->SetState(new MainMenuState());
 }
 
 void Game::Run() {
@@ -36,6 +37,6 @@ void Game::SetState(AbstractState *newState) {
     }
 }
 
-AbstractState *Game::GetState() {
+AbstractState *Game::GetState() const {
     return this->state;
 }

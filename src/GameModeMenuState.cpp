@@ -5,40 +5,40 @@
 #include "../include/GfxStream.hpp"
 #include "../include/Attributes.hpp"
 #include "../include/PlayState.hpp"
-#include "../include/GamemodeMenuState.hpp"
+#include "../include/GameModeMenuState.hpp"
 #include "../include/MainMenuState.hpp"
 #include "../include/Assets.hpp"
 
-const std::map<GamemodeMenuState::Option, std::string> GamemodeMenuState::GAMEMODE_OPTIONS = {
-        {GamemodeMenuState::Option::STANDARD, "Standard mode"},
-        {GamemodeMenuState::Option::HEXADOKU, "Hexadoku mode"},
-        {GamemodeMenuState::Option::LOAD_YOUR_OWN, "Load your own scheme"},
-        {GamemodeMenuState::Option::BACK, "Back"},
+const std::map<GameModeMenuState::Option, std::wstring> GameModeMenuState::GAMEMODE_OPTIONS = {
+        {GameModeMenuState::Option::STANDARD, L"Standard mode"},
+        {GameModeMenuState::Option::HEXADOKU, L"Hexadoku mode"},
+        {GameModeMenuState::Option::LOAD_YOUR_OWN, L"Load your own scheme"},
+        {GameModeMenuState::Option::BACK, L"Back"},
 };
 
-GamemodeMenuState::GamemodeMenuState() : selectedOption(0) {
+GameModeMenuState::GameModeMenuState() : selectedOption(0) {
 
 }
 
-void GamemodeMenuState::OnEntry(Game &game) {
+void GameModeMenuState::OnEntry(Game &game) {
     gfx::out << gfx::clear;
 
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
     gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
 }
 
-void GamemodeMenuState::Update(Game &game) {
+void GameModeMenuState::Update(Game &game) {
 
 }
 
-void GamemodeMenuState::HandleInput(Game &game, char input) {
+void GameModeMenuState::HandleInput(Game &game, char input) {
     if (input == 'j') {
         this->selectedOption = (this->selectedOption + 1) % GAMEMODE_OPTIONS.size();
     } else if (input == 'k') {
         this->selectedOption == 0 ? (this->selectedOption = GAMEMODE_OPTIONS.size() - 1) : (this->selectedOption--);
     } else if (input == ' ') {
-        AbstractState* newState;
-        switch (static_cast<GamemodeMenuState::Option>(this->selectedOption)) {
+        AbstractState *newState = nullptr;
+        switch (static_cast<GameModeMenuState::Option>(this->selectedOption)) {
             case Option::STANDARD:
                 newState = new PlayState(Board::STANDARD_SIZE);
                 break;
@@ -56,9 +56,9 @@ void GamemodeMenuState::HandleInput(Game &game, char input) {
     }
 }
 
-void GamemodeMenuState::Draw(Game &game) {
-    auto optionIterator = GamemodeMenuState::GAMEMODE_OPTIONS.begin();
-    for (unsigned i = 0; i < GamemodeMenuState::GAMEMODE_OPTIONS.size(); ++i, ++optionIterator) {
+void GameModeMenuState::Draw(Game &game) {
+    auto optionIterator = GameModeMenuState::GAMEMODE_OPTIONS.begin();
+    for (unsigned i = 0; i < GameModeMenuState::GAMEMODE_OPTIONS.size(); ++i, ++optionIterator) {
         if (this->selectedOption == i) {
             gfx::out << Attribute::STANDOUT;
         }
@@ -67,6 +67,6 @@ void GamemodeMenuState::Draw(Game &game) {
     }
 }
 
-void GamemodeMenuState::OnExit(Game &game) {
+void GameModeMenuState::OnExit(Game &game) {
 
 }

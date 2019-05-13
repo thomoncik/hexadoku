@@ -2,18 +2,18 @@
 #include "../include/MainMenuState.hpp"
 #include "../include/GfxStream.hpp"
 #include "../include/Attributes.hpp"
-#include "../include/GamemodeMenuState.hpp"
+#include "../include/GameModeMenuState.hpp"
 
 
 
-const std::map<MainMenuState::Option, std::string> MainMenuState::MENU_OPTIONS = {
-        {MainMenuState::Option::NEW_GAME,      "New game"},
-        {MainMenuState::Option::BOARD_CREATOR, "Board creator"},
-        {MainMenuState::Option::EXIT,          "Exit"},
+const std::map<MainMenuState::Option, std::wstring> MainMenuState::MENU_OPTIONS = {
+        {MainMenuState::Option::NEW_GAME,      L"New game"},
+        {MainMenuState::Option::BOARD_CREATOR, L"Board creator"},
+        {MainMenuState::Option::EXIT,          L"Exit"},
 };
 
 MainMenuState::MainMenuState() : selectedOption(0) {
-    
+
 }
 
 void MainMenuState::OnEntry(Game &game) {
@@ -33,13 +33,13 @@ void MainMenuState::HandleInput(Game &game, char input) {
     } else if (input == 'k') {
         this->selectedOption == 0 ? (this->selectedOption = MENU_OPTIONS.size() - 1) : (this->selectedOption--);
     } else if (input == ' ') {
-        AbstractState *newState;
+        AbstractState *newState = nullptr;
         switch (static_cast<MainMenuState::Option>(this->selectedOption)) {
             case Option::NEW_GAME:
-                newState = new GamemodeMenuState();
+                newState = new GameModeMenuState();
                 break;
             case Option::BOARD_CREATOR:
-                newState = new GamemodeMenuState();
+                newState = new GameModeMenuState();
                 break;
             case Option::EXIT:
                 newState = nullptr;

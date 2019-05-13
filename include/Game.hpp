@@ -13,7 +13,7 @@ public:
 
     void SetState(AbstractState *newState);
 
-    AbstractState *GetState();
+    AbstractState *GetState() const;
 
 private:
     AbstractState *state;

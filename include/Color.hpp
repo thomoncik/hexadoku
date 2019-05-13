@@ -8,10 +8,11 @@
 
 struct ColorStarter {
     ColorStarter() {
-        #ifndef TESTING
+#ifndef TESTING
+        setlocale(LC_ALL, "");
         initscr();
         start_color();
-        #endif
+#endif
     }
 };
 
@@ -19,7 +20,12 @@ class Color {
 public:
     explicit Color(NCURSES_COLOR_T foreground = COLOR_WHITE, NCURSES_COLOR_T background = COLOR_BLACK);
 
-    friend std::ostream &operator<<(std::ostream &stream, const Color &color);
+    template<typename _CharT, typename _Traits>
+    friend std::basic_ostream<_CharT, _Traits> &operator<<(std::basic_ostream<_CharT, _Traits> &stream, const Color &color) {
+        attron(COLOR_PAIR(color.colorPair));
+        return stream;
+    }
+
 
     static const Color Black;
     static const Color White;

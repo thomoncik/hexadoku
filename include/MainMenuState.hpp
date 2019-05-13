@@ -15,7 +15,7 @@ public:
         EXIT,
     };
 
-    static const std::map<MainMenuState::Option, std::string> MENU_OPTIONS;
+    static const std::map<MainMenuState::Option, std::wstring> MENU_OPTIONS;
 
     MainMenuState();
 
