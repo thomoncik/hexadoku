@@ -1,11 +1,11 @@
 #include <iomanip>
 #include <string>
 
-#include "../include/MenuState.hpp"
-#include "../include/GfxStream.hpp"
-#include "../include/Attributes.hpp"
-#include "../include/Assets.hpp"
-#include "../include/PlayState.hpp"
+#include "MenuState.hpp"
+#include "GfxStream.hpp"
+#include "Attributes.hpp"
+#include "Assets.hpp"
+#include "PlayState.hpp"
 
 MenuState *const MenuState::MAIN_MENU = new MenuState();
 MenuState *const MenuState::GAME_MODE_MENU = new MenuState();

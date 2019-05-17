@@ -1,4 +1,4 @@
-#include "../include/Color.hpp"
+#include "Color.hpp"
 
 ColorStarter colorStarter;
 

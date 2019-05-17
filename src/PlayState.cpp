@@ -1,6 +1,6 @@
-#include "../include/PlayState.hpp"
-#include "../include/GfxStream.hpp"
-#include "../include/MenuState.hpp"
+#include "PlayState.hpp"
+#include "GfxStream.hpp"
+#include "MenuState.hpp"
 
 #include <memory>
 

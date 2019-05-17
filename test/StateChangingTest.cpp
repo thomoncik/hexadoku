@@ -1,8 +1,8 @@
-#include "../vendor/include/catch2/catch.hpp"
-#include "../vendor/include/fakeit/fakeit.hpp"
+#include "catch2/catch.hpp"
+#include "fakeit/fakeit.hpp"
 
-#include "../include/Game.hpp"
-#include "../include/AbstractState.hpp"
+#include "Game.hpp"
+#include "AbstractState.hpp"
 
 using namespace fakeit;
 

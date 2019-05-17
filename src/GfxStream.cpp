@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "../include/GfxStream.hpp"
-#include "../include/Color.hpp"
-#include "../include/Position.hpp"
+#include "GfxStream.hpp"
+#include "Color.hpp"
+#include "Position.hpp"
 
 namespace gfx {
     const unsigned SCREEN_WIDTH = 80;

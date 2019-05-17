@@ -3,8 +3,8 @@
 #include <thread>
 #include <ncurses.h>
 
-#include "../include/Game.hpp"
-#include "../include/MenuState.hpp"
+#include "Game.hpp"
+#include "MenuState.hpp"
 
 Game::Game() : state(nullptr) {
     this->SetState(MenuState::MAIN_MENU);

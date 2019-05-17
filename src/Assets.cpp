@@ -2,7 +2,7 @@
 // Created by Jakub Kiermasz on 2019-05-11.
 //
 
-#include "../include/Assets.hpp"
+#include "Assets.hpp"
 
 const std::wstring Assets::HEXADOKU_LOGO
         = L"   888    888                                 888          888               \n"
