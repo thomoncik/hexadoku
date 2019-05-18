@@ -3,9 +3,11 @@
 #include "../include/MenuState.hpp"
 
 #include <memory>
+#include <chrono>
 
-PlayState::PlayState(int boardSize) : board(Board(boardSize)) {
-
+PlayState::PlayState(int boardSize) : board(Board(boardSize)), stringConverter(StringConverter()) {
+    creationTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    gameTime = creationTime;
 }
 
 void PlayState::OnEntry(Game &game) {
@@ -13,7 +15,7 @@ void PlayState::OnEntry(Game &game) {
 }
 
 void PlayState::Update(Game &game) {
-
+    gameTime = creationTime - std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 }
 
 void PlayState::HandleInput(Game &game, char input) {
@@ -24,6 +26,7 @@ void PlayState::HandleInput(Game &game, char input) {
 
 void PlayState::Draw(Game &game) {
     gfx::out << Color::Red;
+    gfx::out << Position(70, 1) << GetGameTimeString();
     DisplayBoard(2, 2);
     gfx::out << gfx::nodecor;
 }
@@ -73,4 +76,11 @@ void PlayState::DisplaySection(const BoardSection &bs, int posX, int posY, bool 
             gfx::out << "+";
         }
     }
+}
+
+std::wstring PlayState::GetGameTimeString() const {
+    char buf[50];
+    std::strftime(buf, sizeof(buf), "%M:%S", localtime(&gameTime));
+    std::string str(buf);
+    return stringConverter.StringToWstring(str);
 }

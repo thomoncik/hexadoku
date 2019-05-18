@@ -1,7 +1,6 @@
 #ifndef HEXADOKU_GFXSTREAM_HPP
 #define HEXADOKU_GFXSTREAM_HPP
 
-#include <ostream>
 #include <ncurses.h>
 #include <iostream>
 
