@@ -1,10 +1,13 @@
 
+#include <GfxStream.hpp>
 #include "View/CellView.hpp"
 
-CellView::CellView(int value) : value(value) {
+CellView::CellView(char value, int x, int y) : value(value), x(x), y(y) {
 
 }
 
-void CellView::Draw(int x, int y) {
 
+void CellView::Draw() {
+    gfx::out << Color::White;
+    gfx::out << Position(this->x, this->y) << this->value;
 }

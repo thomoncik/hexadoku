@@ -5,7 +5,14 @@
 
 class SectionView : public AbstractView {
 public:
-    void Draw(int x, int y) override;
+    SectionView(int size, int x, int y);
+
+    void Draw() override;
+
+private:
+    int size;
+    int x;
+    int y;
 };
 
 #endif //HEXADOKU_SECTIONVIEW_HPP

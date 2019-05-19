@@ -3,7 +3,7 @@
 
 class AbstractView {
 public:
-    virtual void Draw(int x, int y) = 0;
+    virtual void Draw() = 0;
 };
 
 #endif //HEXADOKU_ABSTRACTVIEW_HPP

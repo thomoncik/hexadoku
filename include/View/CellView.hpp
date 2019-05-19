@@ -5,12 +5,14 @@
 
 class CellView : public AbstractView {
 public:
-    explicit CellView(int value);
+    explicit CellView(char value, int x, int y);
 
-    void Draw(int x, int y);
+    void Draw() override;
 
 private:
-    int value;
+    int x;
+    int y;
+    char value;
 };
 
 #endif //HEXADOKU_CELLVIEW_HPP

@@ -2,7 +2,8 @@ set(TEST_SOURCES main.cpp StateChangingTest.cpp)
 
 set(SOURCE_FILES ../src/Model/Board.cpp ../src/Model/BoardCell.cpp ../src/Model/BoardSection.cpp
         ../src/AbstractState.cpp ../src/Assets.cpp ../src/Attributes.cpp ../src/Color.cpp ../src/Game.cpp
-        ../src/GfxStream.cpp ../src/PlayState.cpp ../src/Position.cpp ../src/MenuState.cpp)
+        ../src/GfxStream.cpp ../src/PlayState.cpp ../src/Position.cpp ../src/MenuState.cpp
+        ../src/View/AbstractView.cpp ../src/View/CellView.cpp ../src/View/BoardView.cpp ../src/View/SectionView.cpp)
 
 add_definitions(-DTESTING)
 
