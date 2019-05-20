@@ -10,13 +10,14 @@
 
 class BoardSection {
 public:
-    BoardSection(int size);
+    explicit BoardSection(int size);
     int GetSize() const ;
-    void SetSelected(bool isSelected, int row, int column);
-    void SetValue(int value, int row, int column);
-    void SetIsCorrect(bool isCorrect, int row, int column);
+    void SetSelected(bool isSelected, int column, int row);
+    void SetValue(int value, int column, int row);
+    void SetIsCorrect(bool isCorrect, int column, int row);
     std::vector<int> ValuesInRow(int row);
     std::vector<int> ValuesInColumn(int column);
+    std::vector<int> GetValues() const;
 private:
     std::vector<BoardCell> cells;
     int size;

@@ -1,9 +1,15 @@
+#include <utility>
+
+#include <utility>
+
 #include <GfxStream.hpp>
 #include <View/SectionView.hpp>
 #include <Attributes.hpp>
 #include "View/BoardView.hpp"
 
-BoardView::BoardView(int size, int x, int y) : size(size), x(x), y(y) {
+BoardView::BoardView(int size, std::vector<std::vector<int>> values, int x, int y) : size(size),
+                                                                                     values(std::move(values)), x(x),
+                                                                                     y(y) {
 
 }
 
@@ -13,7 +19,10 @@ void BoardView::Draw() {
 
     for (int j = 0; j < this->size; ++j) {
         for (int i = 0; i < this->size; ++i) {
-            SectionView(this->size, 1 + this->x + 2 * this->size * i, 1 + this->y + 2 * this->size * j).Draw();
+            int sectionX = this->x + 2 * this->size * i + 1;
+            int sectionY = this->y + 2 * this->size * j + 1;
+            std::vector<int> sectionValues = this->values[i + this->size * j];
+            SectionView(this->size, sectionValues, sectionX, sectionY).Draw();
         }
     }
 }

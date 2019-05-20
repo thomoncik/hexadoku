@@ -2,7 +2,8 @@
 #include <View/SectionView.hpp>
 #include <View/CellView.hpp>
 
-SectionView::SectionView(int size, int x, int y) : size(size), x(x), y(y) {
+SectionView::SectionView(int size, std::vector<int> values, int x, int y) : size(size), values(std::move(values)), x(x),
+                                                                            y(y) {
 
 }
 
@@ -21,7 +22,11 @@ void SectionView::Draw() {
 
     for (int j = 0; j < this->size; ++j) {
         for (int i = 0; i < this->size; ++i) {
-            CellView(' ', this->x + 2 * i, this->y + 2 * j).Draw();
+            int cellValue = this->values.at(i + j * this->size);
+            int cellX = this->x + 2 * i;
+            int cellY = this->y + 2 * j;
+
+            CellView(cellValue, cellX, cellY).Draw();
         }
     }
 }

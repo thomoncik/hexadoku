@@ -3,6 +3,7 @@
 //
 
 #include "../../include/Model/Board.hpp"
+
 const int Board::STANDARD_SIZE = 9;
 const int Board::HEXADOKU_SIZE = 16;
 
@@ -12,25 +13,28 @@ Board::Board(int size) : size(size), sectionSize((size == STANDARD_SIZE) ? 3 : 4
 int Board::GetSize() const {
     return size;
 }
+
 int Board::GetSectionSize() const {
     return sectionSize;
 }
-const BoardSection& Board::GetSection(int index) const {
+
+const BoardSection &Board::GetSection(int index) const {
     return sections[index];
 }
-void Board::SetSelected(bool isSelected, int row, int column) {
+
+void Board::SetSelected(bool isSelected, int column, int row) {
     const int sectionId = row / sectionSize * sectionSize + column / sectionSize;
-    sections[sectionId].SetSelected(isSelected, row % sectionSize, column % sectionSize);
+    sections[sectionId].SetSelected(isSelected, column % sectionSize, row % sectionSize);
 }
 
-void Board::SetIsCorrect(bool isCorrect, int row, int column) {
+void Board::SetIsCorrect(bool isCorrect, int column, int row) {
     const int sectionId = row / sectionSize * sectionSize + column / sectionSize;
-    sections[sectionId].SetIsCorrect(isCorrect, row % sectionSize, column % sectionSize);
+    sections[sectionId].SetIsCorrect(isCorrect, column % sectionSize, row % sectionSize);
 }
 
-void Board::SetValue(int value, int row, int column) {
+void Board::SetValue(int value, int column, int row) {
     const int sectionId = row / sectionSize * sectionSize + column / sectionSize;
-    sections[sectionId].SetValue(value, row % sectionSize, column % sectionSize);
+    sections[sectionId].SetValue(value, column % sectionSize, row % sectionSize);
 }
 
 std::vector<int> Board::ValuesInRow(int row) {
@@ -56,5 +60,16 @@ std::vector<int> Board::ValuesInColumn(int column) {
     values.insert(std::end(values), std::begin(firstSectionValues), std::end(firstSectionValues));
     values.insert(std::end(values), std::begin(secondSectionValues), std::end(secondSectionValues));
     values.insert(std::end(values), std::begin(thirdSectionValues), std::end(thirdSectionValues));
+    return values;
+}
+
+std::vector<std::vector<int>> Board::GetValues() const {
+    std::vector<std::vector<int>> values;
+    values.reserve(this->sections.size());
+
+    for (const auto &section : this->sections) {
+        values.push_back(section.GetValues());
+    }
+
     return values;
 }
