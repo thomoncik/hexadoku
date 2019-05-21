@@ -6,27 +6,30 @@
 
 class BoardView : public AbstractView {
 public:
-    explicit BoardView(int size, std::vector<std::vector<int>> values, int x = 0, int y = 0);
+    explicit BoardView(int size, std::vector<std::vector<int>> values, int xSelected, int ySelected, int x = 0,
+                       int y = 0);
 
-    void Draw() override;
+    void Draw() const override;
 
 private:
     std::vector<std::vector<int>> values;
+    int xSelected;
+    int ySelected;
     int size;
     int x;
     int y;
 
-    void DrawBorder();
+    void DrawBorder() const;
 
-    void DrawVerticalLinesBorder();
+    void DrawVerticalLinesBorder() const;
 
-    void DrawHorizontalLinesBorder();
+    void DrawHorizontalLinesBorder() const;
 
-    void DrawTopHorizontalLineBorder();
+    void DrawTopHorizontalLineBorder() const;
 
-    void DrawMiddleHorizontalLineBorder();
+    void DrawMiddleHorizontalLineBorder() const;
 
-    void DrawBottomHorizontalLineBorder();
+    void DrawBottomHorizontalLineBorder() const;
 };
 
 #endif //HEXADOKU_BOARDVIEW_HPP

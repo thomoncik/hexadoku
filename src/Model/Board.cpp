@@ -23,18 +23,21 @@ const BoardSection &Board::GetSection(int index) const {
 }
 
 void Board::SetSelected(bool isSelected, int column, int row) {
-    const int sectionId = row / sectionSize * sectionSize + column / sectionSize;
-    sections[sectionId].SetSelected(isSelected, column % sectionSize, row % sectionSize);
+    sections[this->GetSectionId(column, row)].SetSelected(isSelected, column % sectionSize, row % sectionSize);
 }
 
 void Board::SetIsCorrect(bool isCorrect, int column, int row) {
     const int sectionId = row / sectionSize * sectionSize + column / sectionSize;
-    sections[sectionId].SetIsCorrect(isCorrect, column % sectionSize, row % sectionSize);
+    sections[this->GetSectionId(column, row)].SetIsCorrect(isCorrect, column % sectionSize, row % sectionSize);
 }
 
 void Board::SetValue(int value, int column, int row) {
     const int sectionId = row / sectionSize * sectionSize + column / sectionSize;
-    sections[sectionId].SetValue(value, column % sectionSize, row % sectionSize);
+    sections[this->GetSectionId(column, row)].SetValue(value, column % sectionSize, row % sectionSize);
+}
+
+int Board::GetSectionId(int column, int row) const {
+    return row / this->sectionSize * this->sectionSize + column / this->sectionSize;
 }
 
 std::vector<int> Board::ValuesInRow(int row) {

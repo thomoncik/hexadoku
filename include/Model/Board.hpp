@@ -34,6 +34,8 @@ public:
 
     std::vector<std::vector<int>> GetValues() const;
 
+    int GetSectionId(int column, int row) const;
+
 private:
     std::vector<BoardSection> sections;
     int size;

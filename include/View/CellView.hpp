@@ -9,12 +9,15 @@ public:
 
     explicit CellView(int value, int x, int y);
 
-    void Draw() override;
+    void Draw() const override;
+
+    void SetSelected();
 
 private:
     int x;
     int y;
     int value;
+    bool selected;
 };
 
 #endif //HEXADOKU_CELLVIEW_HPP

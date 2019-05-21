@@ -7,7 +7,7 @@ SectionView::SectionView(int size, std::vector<int> values, int x, int y) : size
 
 }
 
-void SectionView::Draw() {
+void SectionView::Draw() const {
     gfx::out << gfx::nodecor;
     gfx::out << Color::Blue;
     for (int i = 0; i < this->size - 1; ++i) {
@@ -26,7 +26,18 @@ void SectionView::Draw() {
             int cellX = this->x + 2 * i;
             int cellY = this->y + 2 * j;
 
-            CellView(cellValue, cellX, cellY).Draw();
+            CellView cellView(cellValue, cellX, cellY);
+            if (this->selectedX == i && this->selectedY == j) {
+                cellView.SetSelected();
+            }
+            cellView.Draw();
         }
     }
+
+    gfx::out << gfx::nodecor;
+}
+
+void SectionView::SetSelected(int x, int y) {
+    this->selectedX = x;
+    this->selectedY = y;
 }

@@ -12,7 +12,6 @@ PlayState::PlayState(int boardSize) : board(Board(boardSize)), x(0), y(0) {
 
 void PlayState::OnEntry(Game &game) {
     gfx::out << gfx::clear;
-    this->board.SetValue(5, x, y);
 }
 
 void PlayState::Update(Game &game) {
@@ -20,38 +19,28 @@ void PlayState::Update(Game &game) {
 }
 
 void PlayState::HandleInput(Game &game, char input) {
+    this->board.SetSelected(false, x, y);
+
     if (input == 'q') {
         game.SetState(MenuState::MAIN_MENU);
     } else if (input == 'l') {
-        this->board.SetValue(0, x, y);
-        x = (x + 1) % this->board.GetSize();
-        this->board.SetValue(5, x, y);
+        this->x = (this->x + 1) % this->board.GetSize();
     } else if (input == 'h') {
-        this->board.SetValue(0, x, y);
-        x--;
-        if (x < 0) {
-            x = this->board.GetSize() - 1;
-        }
-        this->board.SetValue(5, x, y);
+        this->x = (this->x == 0) ? this->board.GetSize() - 1 : this->x - 1;
     } else if (input == 'j') {
-        this->board.SetValue(0, x, y);
-        y = (y + 1) % this->board.GetSize();
-        this->board.SetValue(5, x, y);
+        this->y = (this->y + 1) % this->board.GetSize();
     } else if (input == 'k') {
-        this->board.SetValue(0, x, y);
-        y--;
-        if (y < 0) {
-            y = this->board.GetSize() - 1;
-        }
-        this->board.SetValue(5, x, y);
+        this->y = (this->y == 0) ? this->board.GetSize() - 1 : this->y - 1;
     }
+
+    this->board.SetSelected(true, x, y);
 }
 
 void PlayState::Draw(Game &game) {
     const int BOARD_X = 2;
     const int BOARD_Y = 2;
 
-    BoardView((int) sqrt(this->board.GetSize()), this->board.GetValues(), BOARD_X, BOARD_Y).Draw();
+    BoardView((int) sqrt(this->board.GetSize()), this->board.GetValues(), this->x, this->y, BOARD_X, BOARD_Y).Draw();
 }
 
 void PlayState::OnExit(Game &game) {
