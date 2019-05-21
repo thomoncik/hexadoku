@@ -14,7 +14,7 @@ void BoardView::Draw() const {
 
     for (int j = 0; j < this->size; ++j) {
         for (int i = 0; i < this->size; ++i) {
-            int sectionX = this->x + 2 * this->size * i + 1;
+            int sectionX = this->x + 4 * this->size * i + 1;
             int sectionY = this->y + 2 * this->size * j + 1;
 
             SectionView sectionView(this->board.GetSection(i + this->size * j));
@@ -40,7 +40,7 @@ void BoardView::DrawHorizontalLinesBorder() const {
 void BoardView::DrawVerticalLinesBorder() const {
     for (int i = 0; i <= this->size; ++i) {
         for (int j = 0; j <= 2 * this->size * this->size; ++j) {
-            gfx::out << Position(this->x + 2 * this->size * i, this->y + j) << gfx::box::vln;
+            gfx::out << Position(this->x + 4 * this->size * i, this->y + j) << gfx::box::vln;
         }
     }
 }
@@ -48,13 +48,13 @@ void BoardView::DrawVerticalLinesBorder() const {
 void BoardView::DrawTopHorizontalLineBorder() const {
     gfx::out << Attribute::BOLD << Color::Blue << Position(x, y);
     gfx::out << gfx::box::ulcorner;
-    for (int i = 1; i < 2 * this->size * this->size; ++i) {
+    for (int i = 1; i < 4 * this->size * this->size; ++i) {
         gfx::out << gfx::box::hln;
     }
     gfx::out << gfx::box::urcorner;
 
     for (int i = 1; i < this->size; ++i) {
-        gfx::out << Position(x + 2 * this->size * i, y) << gfx::box::ttee;
+        gfx::out << Position(x + 4 * this->size * i, y) << gfx::box::ttee;
     }
 }
 
@@ -62,12 +62,12 @@ void BoardView::DrawMiddleHorizontalLineBorder() const {
     for (int j = 1; j < this->size; ++j) {
         gfx::out << Position(x, y + 2 * this->size * j);
         gfx::out << gfx::box::ltee;
-        for (int i = 1; i < 2 * this->size * this->size; ++i) {
+        for (int i = 1; i < 4 * this->size * this->size; ++i) {
             gfx::out << gfx::box::hln;
         }
         gfx::out << gfx::box::rtee;
         for (int i = 1; i < this->size; ++i) {
-            gfx::out << Position(x + 2 * this->size * i, y + 2 * this->size * j) << gfx::box::plus;
+            gfx::out << Position(x + 4 * this->size * i, y + 2 * this->size * j) << gfx::box::plus;
         }
     }
 }
@@ -75,12 +75,12 @@ void BoardView::DrawMiddleHorizontalLineBorder() const {
 void BoardView::DrawBottomHorizontalLineBorder() const {
     gfx::out << Position(x, y + 2 * this->size * this->size);
     gfx::out << gfx::box::llcorner;
-    for (int i = 1; i < 2 * this->size * this->size; ++i) {
+    for (int i = 1; i < 4 * this->size * this->size; ++i) {
         gfx::out << gfx::box::hln;
     }
     gfx::out << gfx::box::lrcorner;
 
     for (int i = 1; i < this->size; ++i) {
-        gfx::out << Position(x + 2 * this->size * i, y + 2 * this->size * this->size) << gfx::box::btee;
+        gfx::out << Position(x + 4 * this->size * i, y + 2 * this->size * this->size) << gfx::box::btee;
     }
 }

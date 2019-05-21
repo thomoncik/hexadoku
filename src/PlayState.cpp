@@ -3,8 +3,7 @@
 #include <PlayState.hpp>
 #include <GfxStream.hpp>
 #include <MenuState.hpp>
-#include <View/BoardView.hpp>
-#include "View/SectionView.hpp"
+#include <View/GameView.hpp>
 
 PlayState::PlayState(int boardSize) : board(Board(boardSize)), x(0), y(0) {
 
@@ -37,14 +36,8 @@ void PlayState::HandleInput(Game &game, char input) {
 }
 
 void PlayState::Draw(Game &game) {
-    const int BOARD_X = 2;
-    const int BOARD_Y = 2;
-
-    BoardView boardView(this->board);
-    boardView.SetPosition(2, 2);
-    boardView.Draw();
-
-//    BoardView((int) sqrt(this->board.GetSize()), this->board.GetValues(), this->x, this->y, BOARD_X, BOARD_Y).Draw();
+    GameView gameView(this->board);
+    gameView.Draw();
 }
 
 void PlayState::OnExit(Game &game) {

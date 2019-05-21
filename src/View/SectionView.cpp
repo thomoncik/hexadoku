@@ -14,7 +14,7 @@ void SectionView::Draw() const {
 
     for (int j = 0; j < this->size; ++j) {
         for (int i = 0; i < this->size; ++i) {
-            int cellX = this->x + 2 * i;
+            int cellX = this->x + 4 * i + 1;
             int cellY = this->y + 2 * j;
 
             CellView cellView(this->section.GetCell(i, j));
@@ -27,12 +27,12 @@ void SectionView::Draw() const {
 void SectionView::DrawGrid() const {
     gfx::out << gfx::nodecor << Color::Blue;
     for (int i = 0; i < this->size - 1; ++i) {
-        gfx::out << Position(this->x, this->y + 1 + 2 * i) << std::wstring(this->size * 2 - 1, '-');
+        gfx::out << Position(this->x, this->y + 1 + 2 * i) << std::wstring(this->size * 4 - 1, '-');
     }
 
     for (int i = 0; i < this->size - 1; ++i) {
         for (int j = 0; j < 2 * this->size - 1; ++j) {
-            gfx::out << Position(this->x + 1 + 2 * i, this->y + j) << "|";
+            gfx::out << Position(this->x + 3 + 4 * i, this->y + j) << "|";
         }
     }
     gfx::out << gfx::nodecor;
