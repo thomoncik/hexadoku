@@ -9,7 +9,7 @@
 
 class Assets {
 public:
-    static const std::wstring HEXADOKU_LOGO;
+    static const std::string HEXADOKU_LOGO;
 };
 
 

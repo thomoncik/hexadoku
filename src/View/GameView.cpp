@@ -1,11 +1,13 @@
 #include <utility>
+
+#include <utility>
 #include <View/GameView.hpp>
 #include <View/BoardView.hpp>
 #include <Color.hpp>
 #include <GfxStream.hpp>
 #include <Attributes.hpp>
 
-GameView::GameView(Board board) : board(std::move(board)) {
+GameView::GameView(Board board, std::string gameTime) : board(std::move(board)), gameTime(std::move(gameTime)) {
 
 }
 
@@ -15,6 +17,7 @@ void GameView::Draw() const {
     boardView.Draw();
 
     this->DrawInfo();
+    this->DrawGameTime(70, 1);
 }
 
 void GameView::DrawInfo() const {
@@ -39,5 +42,11 @@ void GameView::DrawActionsInfo(int x, int y) const {
     gfx::out << gfx::nodecor << Color::Magenta << Position(x, y + 1);
     gfx::out << " q - Quit to main menu" << Position(x, y + 2);
     gfx::out << " m - Enter value" << Position(x, y + 3);
+    gfx::out << gfx::nodecor;
+}
+
+void GameView::DrawGameTime(int x, int y) const {
+    gfx::out << gfx::nodecor << Color::Magenta << Position(x, y);
+    gfx::out << Attribute::BOLD << gameTime;
     gfx::out << gfx::nodecor;
 }

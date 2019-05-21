@@ -1,7 +1,6 @@
 #ifndef HEXADOKU_GFXSTREAM_HPP
 #define HEXADOKU_GFXSTREAM_HPP
 
-#include <ostream>
 #include <ncurses.h>
 #include <iostream>
 
@@ -98,9 +97,9 @@ namespace gfx {
     }
 }
 
-class GfxStreamBuffer : public std::wstreambuf {
+class GfxStreamBuffer : public std::streambuf {
 public:
-    unsigned overflow(unsigned character) override {
+    int_type overflow(int_type character) override {
 #ifndef TESTING
         return addch(character);
 #else
@@ -109,12 +108,12 @@ public:
     }
 };
 
-class GfxStream : public std::wostream {
+class GfxStream : public std::ostream {
 public:
     static const unsigned SCREEN_WIDTH;
     static const unsigned SCREEN_HEIGHT;
 
-    explicit GfxStream(std::wostream &stream);
+    explicit GfxStream(std::ostream &stream);
 
     ~GfxStream() override;
 
@@ -124,8 +123,8 @@ public:
 
 private:
     GfxStreamBuffer gfxBuffer;
-    std::wostream &sourceStream;
-    std::wstreambuf *const sourceBuffer;
+    std::ostream &sourceStream;
+    std::streambuf *const sourceBuffer;
 };
 
 #endif //HEXADOKU_GFXSTREAM_HPP

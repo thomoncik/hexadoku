@@ -27,7 +27,7 @@ void SectionView::Draw() const {
 void SectionView::DrawGrid() const {
     gfx::out << gfx::nodecor << Color::Blue;
     for (int i = 0; i < this->size - 1; ++i) {
-        gfx::out << Position(this->x, this->y + 1 + 2 * i) << std::wstring(this->size * 4 - 1, '-');
+        gfx::out << Position(this->x, this->y + 1 + 2 * i) << std::string(this->size * 4 - 1, '-');
     }
 
     for (int i = 0; i < this->size - 1; ++i) {

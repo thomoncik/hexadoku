@@ -1,12 +1,14 @@
+#include <memory>
+#include <chrono>
 #include <cmath>
-
 #include <PlayState.hpp>
 #include <GfxStream.hpp>
 #include <MenuState.hpp>
 #include <View/GameView.hpp>
 
 PlayState::PlayState(int boardSize) : board(Board(boardSize)), x(0), y(0) {
-
+    creationTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    gameTime = creationTime;
 }
 
 void PlayState::OnEntry(Game &game) {
@@ -14,7 +16,7 @@ void PlayState::OnEntry(Game &game) {
 }
 
 void PlayState::Update(Game &game) {
-
+    gameTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) - creationTime;
 }
 
 void PlayState::HandleInput(Game &game, char input) {
@@ -36,10 +38,16 @@ void PlayState::HandleInput(Game &game, char input) {
 }
 
 void PlayState::Draw(Game &game) {
-    GameView gameView(this->board);
+    GameView gameView(this->board, GetGameTimeString());
     gameView.Draw();
 }
 
 void PlayState::OnExit(Game &game) {
 
+}
+
+std::string PlayState::GetGameTimeString() const {
+    char buf[50];
+    std::strftime(buf, sizeof(buf), "%M:%S", localtime(&gameTime));
+    return std::string(buf);
 }

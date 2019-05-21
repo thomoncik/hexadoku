@@ -24,9 +24,13 @@ public:
     void OnExit(Game &game) override;
 
 private:
+    std::time_t creationTime;
+    std::time_t gameTime;
     Board board;
     int x;
     int y;
+
+    std::string GetGameTimeString() const;
 };
 
 
