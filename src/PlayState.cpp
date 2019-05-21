@@ -6,12 +6,11 @@
 #include <MenuState.hpp>
 #include <View/GameView.hpp>
 
-PlayState::PlayState(int boardSize) : board(Board(boardSize)), x(0), y(0) {
-    creationTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    gameTime = creationTime;
-}
+PlayState::PlayState(int boardSize) : board(Board(boardSize)), x(0), y(0) {}
 
 void PlayState::OnEntry(Game &game) {
+    creationTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    gameTime = creationTime;
     gfx::out << gfx::clear;
 }
 
