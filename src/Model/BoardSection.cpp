@@ -2,8 +2,8 @@
 // Created by Jakub Kiermasz on 2019-05-11.
 //
 
-#include "../../include/Model/BoardSection.hpp"
-//BoardSection::BoardSection(int size) : size(size), cells(std::vector<BoardCell>(size)) {}
+#include <Model/BoardSection.hpp>
+#include <cmath>
 
 BoardSection::BoardSection(int size) : size(size), cells(std::vector<BoardCell>(size)) {}
 
@@ -11,16 +11,19 @@ int BoardSection::GetSize() const {
     return size;
 }
 
-void BoardSection::SetSelected(bool isSelectd, int row, int column) {
-    cells[row * size + column].SetSelected(isSelectd);
+void BoardSection::SetSelected(bool isSelectd, int column, int row) {
+    int rowSize = (int) sqrt(size);
+    cells[row * rowSize + column].SetSelected(isSelectd);
 }
 
-void BoardSection::SetIsCorrect(bool isCorrect, int row, int column) {
-    cells[row * size + column].SetIsCorrect(isCorrect);
+void BoardSection::SetIsCorrect(bool isCorrect, int column, int row) {
+    int rowSize = (int) sqrt(size);
+    cells[row * rowSize + column].SetIsCorrect(isCorrect);
 }
 
-void BoardSection::SetValue(int value, int row, int column) {
-    cells[row * size + column].SetValue(value);
+void BoardSection::SetValue(int value, int column, int row) {
+    int rowSize = (int) sqrt(size);
+    cells[row * rowSize + column].SetValue(value);
 }
 
 std::vector<int> BoardSection::ValuesInColumn(int column) {
@@ -37,4 +40,20 @@ std::vector<int> BoardSection::ValuesInRow(int row) {
         values.push_back(cells[i].GetValue());
     }
     return values;
+}
+
+std::vector<int> BoardSection::GetValues() const {
+    std::vector<int> values;
+    values.reserve(this->cells.size());
+
+    for (const auto &cell : this->cells) {
+        values.push_back(cell.GetValue());
+    }
+
+    return values;
+}
+
+BoardCell BoardSection::GetCell(int column, int row) const {
+    int rowSize = (int) sqrt(size);
+    return this->cells[row * rowSize + column];
 }

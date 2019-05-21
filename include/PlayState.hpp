@@ -7,12 +7,11 @@
 
 #include "AbstractState.hpp"
 #include "Model/Board.hpp"
-#include "Tools/StringConverter.hpp"
 
 
 class PlayState : public AbstractState {
 public:
-    PlayState(int boardSize);
+    explicit PlayState(int boardSize);
 
     void OnEntry(Game &game) override;
 
@@ -23,14 +22,15 @@ public:
     void Draw(Game &game) override;
 
     void OnExit(Game &game) override;
+
 private:
+    std::time_t creationTime;
+    std::time_t gameTime;
     Board board;
-    time_t creationTime;
-    time_t gameTime;
-    StringConverter stringConverter;
-    void DisplayBoard(int posX, int posY);
-    void DisplaySection(const BoardSection & bs, int posX, int posY, bool shouldPrintRightEdge, bool shouldPrintBottomEdge);
-    std::wstring GetGameTimeString() const;
+    int x;
+    int y;
+
+    std::string GetGameTimeString() const;
 };
 
 

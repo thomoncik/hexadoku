@@ -1,11 +1,12 @@
-#include "../include/PlayState.hpp"
-#include "../include/GfxStream.hpp"
-#include "../include/MenuState.hpp"
-
 #include <memory>
 #include <chrono>
+#include <cmath>
+#include <PlayState.hpp>
+#include <GfxStream.hpp>
+#include <MenuState.hpp>
+#include <View/GameView.hpp>
 
-PlayState::PlayState(int boardSize) : board(Board(boardSize)), stringConverter(StringConverter()) {
+PlayState::PlayState(int boardSize) : board(Board(boardSize)), x(0), y(0) {
     creationTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     gameTime = creationTime;
 }
@@ -15,72 +16,38 @@ void PlayState::OnEntry(Game &game) {
 }
 
 void PlayState::Update(Game &game) {
-    gameTime = creationTime - std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    gameTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) - creationTime;
 }
 
 void PlayState::HandleInput(Game &game, char input) {
+    this->board.SetSelected(false, x, y);
+
     if (input == 'q') {
         game.SetState(MenuState::MAIN_MENU);
+    } else if (input == 'l') {
+        this->x = (this->x + 1) % this->board.GetSize();
+    } else if (input == 'h') {
+        this->x = (this->x == 0) ? this->board.GetSize() - 1 : this->x - 1;
+    } else if (input == 'j') {
+        this->y = (this->y + 1) % this->board.GetSize();
+    } else if (input == 'k') {
+        this->y = (this->y == 0) ? this->board.GetSize() - 1 : this->y - 1;
     }
+
+    this->board.SetSelected(true, x, y);
 }
 
 void PlayState::Draw(Game &game) {
-    gfx::out << Color::Red;
-    gfx::out << Position(70, 1) << GetGameTimeString();
-    DisplayBoard(2, 2);
-    gfx::out << gfx::nodecor;
+    GameView gameView(this->board, GetGameTimeString());
+    gameView.Draw();
 }
 
 void PlayState::OnExit(Game &game) {
 
 }
 
-void PlayState::DisplayBoard(int posX, int posY) {
-    int sectionViewWidth = (board.GetSize() == Board::STANDARD_SIZE) ? 12 : 777;
-    int sectionViewHeight = (board.GetSize() == Board::STANDARD_SIZE) ? 6 : 777;
-    int numberOfSectionsPerDimension = board.GetSectionSize();
-    int sectionIndex = 0;
-    for (int i = 0; i < numberOfSectionsPerDimension; ++i) {
-        for (int j = 0; j < numberOfSectionsPerDimension; ++j) {
-            DisplaySection(board.GetSection(sectionIndex), posX + j * sectionViewWidth, posY + i * sectionViewHeight, j == (numberOfSectionsPerDimension - 1), i == (numberOfSectionsPerDimension - 1));
-            sectionIndex++;
-        }
-    }
-}
-
-void PlayState::DisplaySection(const BoardSection &bs, int posX, int posY, bool shouldPrintRightEdge, bool shouldPrintBottomEdge) {
-    gfx::out << Position(posX, posY);
-    gfx::out << "+";
-    int y = posY;
-    for (int i = 0; i < board.GetSectionSize(); ++i) {
-        gfx::out << Position(((i == 0) ? posX + 1 : posX), y);
-        for (int j = 0; j < board.GetSectionSize(); ++j) {
-            gfx::out << ((i == 0 && j == 0) ? "===" : "====");
-        }
-        gfx::out << "=";
-        y++;
-        gfx::out << Position(posX, y);
-        gfx::out << "|";
-        for (int j = 0; j < board.GetSectionSize(); ++j) {
-            gfx::out << ((j == board.GetSectionSize() - 1 && !shouldPrintRightEdge) ? "   " : "   |");
-        }
-        y++;
-    }
-    if (shouldPrintBottomEdge) {
-        gfx::out << Position(posX, y) << "+";
-        gfx::out << Position(posX + 1, y);
-        for (int j = 0; j < board.GetSectionSize(); ++j) {
-            gfx::out << (( j == 0) ? "===" : "====");
-        }
-        if (shouldPrintRightEdge) {
-            gfx::out << "+";
-        }
-    }
-}
-
-std::wstring PlayState::GetGameTimeString() const {
+std::string PlayState::GetGameTimeString() const {
     char buf[50];
     std::strftime(buf, sizeof(buf), "%M:%S", localtime(&gameTime));
-    std::string str(buf);
-    return stringConverter.StringToWstring(str);
+    return std::string(buf);
 }

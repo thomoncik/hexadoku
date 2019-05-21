@@ -23,13 +23,13 @@ public:
 
     void OnExit(Game &game) override;
 
-    void AddOption(std::pair<std::wstring, AbstractState *> option);
+    void AddOption(std::pair<std::string, AbstractState *> option);
 
 private:
     static bool initPredefinedMenus();
     static bool arePredefinedMenusInitialized;
 
-    std::vector<std::pair<std::wstring, AbstractState *>> options;
+    std::vector<std::pair<std::string, AbstractState *>> options;
     unsigned long selectedOption;
     unsigned long labelSize;
 };
