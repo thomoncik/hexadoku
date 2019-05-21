@@ -3,22 +3,19 @@
 
 #include "AbstractView.hpp"
 #include <vector>
+#include <Model/BoardSection.hpp>
 
 class SectionView : public AbstractView {
 public:
-    SectionView(int size, std::vector<int> values, int x, int y);
+    explicit SectionView(BoardSection boardSection);
 
     void Draw() const override;
 
-    void SetSelected(int x, int y);
-
 private:
-    std::vector<int> values;
-    int selectedX{-1};
-    int selectedY{-1};
+    BoardSection section;
     int size;
-    int x;
-    int y;
+
+    void DrawGrid() const;
 };
 
 #endif //HEXADOKU_SECTIONVIEW_HPP

@@ -3,21 +3,17 @@
 
 #include "AbstractView.hpp"
 #include <vector>
+#include <Model/Board.hpp>
 
 class BoardView : public AbstractView {
 public:
-    explicit BoardView(int size, std::vector<std::vector<int>> values, int xSelected, int ySelected, int x = 0,
-                       int y = 0);
+    explicit BoardView(Board board);
 
     void Draw() const override;
 
 private:
-    std::vector<std::vector<int>> values;
-    int xSelected;
-    int ySelected;
+    Board board;
     int size;
-    int x;
-    int y;
 
     void DrawBorder() const;
 

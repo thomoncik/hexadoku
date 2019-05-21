@@ -40,7 +40,11 @@ void PlayState::Draw(Game &game) {
     const int BOARD_X = 2;
     const int BOARD_Y = 2;
 
-    BoardView((int) sqrt(this->board.GetSize()), this->board.GetValues(), this->x, this->y, BOARD_X, BOARD_Y).Draw();
+    BoardView boardView(this->board);
+    boardView.SetPosition(2, 2);
+    boardView.Draw();
+
+//    BoardView((int) sqrt(this->board.GetSize()), this->board.GetValues(), this->x, this->y, BOARD_X, BOARD_Y).Draw();
 }
 
 void PlayState::OnExit(Game &game) {

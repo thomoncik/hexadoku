@@ -52,3 +52,8 @@ std::vector<int> BoardSection::GetValues() const {
 
     return values;
 }
+
+BoardCell BoardSection::GetCell(int column, int row) const {
+    int rowSize = (int) sqrt(size);
+    return this->cells[row * rowSize + column];
+}

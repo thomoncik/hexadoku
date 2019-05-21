@@ -1,15 +1,11 @@
-#include <utility>
-
-#include <utility>
-
-#include <GfxStream.hpp>
 #include <View/SectionView.hpp>
+#include <View/BoardView.hpp>
 #include <Attributes.hpp>
-#include "View/BoardView.hpp"
+#include <GfxStream.hpp>
+#include <cmath>
 
-BoardView::BoardView(int size, std::vector<std::vector<int>> values, int xSelected, int ySelected, int x, int y)
-        : size(size), values(std::move(values)), xSelected(xSelected), ySelected(ySelected), x(x), y(y) {
-
+BoardView::BoardView(Board board) : board(std::move(board)) {
+    this->size = (int) sqrt(this->board.GetSize());
 }
 
 void BoardView::Draw() const {
@@ -20,14 +16,9 @@ void BoardView::Draw() const {
         for (int i = 0; i < this->size; ++i) {
             int sectionX = this->x + 2 * this->size * i + 1;
             int sectionY = this->y + 2 * this->size * j + 1;
-            std::vector<int> sectionValues = this->values[i + this->size * j];
 
-            SectionView sectionView(this->size, sectionValues, sectionX, sectionY);
-            if (this->ySelected / this->size * this->size + this->xSelected / this->size == i + this->size * j) {
-                int selectedXInSection = this->xSelected % this->size;
-                int selectedYInSection = this->ySelected % this->size;
-                sectionView.SetSelected(selectedXInSection, selectedYInSection);
-            }
+            SectionView sectionView(this->board.GetSection(i + this->size * j));
+            sectionView.SetPosition(sectionX, sectionY);
             sectionView.Draw();
         }
     }
@@ -35,7 +26,7 @@ void BoardView::Draw() const {
     gfx::out << gfx::nodecor;
 }
 
-void BoardView::DrawBorder() const{
+void BoardView::DrawBorder() const {
     this->DrawVerticalLinesBorder();
     this->DrawHorizontalLinesBorder();
 }

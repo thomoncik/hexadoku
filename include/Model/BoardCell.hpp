@@ -9,11 +9,19 @@
 class BoardCell {
 public:
     static const int EMPTY_VALUE;
+
     BoardCell();
+
     void SetValue(int value);
+
     int GetValue() const;
+
     void SetSelected(bool isSelected);
+
     void SetIsCorrect(bool isCorrect);
+
+    bool IsSelected() const;
+
 private:
     int value;
     bool isSelected;

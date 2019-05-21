@@ -76,3 +76,7 @@ std::vector<std::vector<int>> Board::GetValues() const {
 
     return values;
 }
+
+std::vector<int> Board::GetValues(int index) const {
+    return this->sections.at(index).GetValues();
+}

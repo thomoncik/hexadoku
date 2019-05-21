@@ -22,7 +22,11 @@ void BoardCell::SetIsCorrect(bool isCorrect) {
     this->isCorrect = isCorrect;
 }
 
-void BoardCell::SetSelected(bool isSelected) {
+void BoardCell::SetSelected(bool isSelected = true) {
     this->isSelected = isSelected;
+}
+
+bool BoardCell::IsSelected() const {
+    return this->isSelected;
 }
 

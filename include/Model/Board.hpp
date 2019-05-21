@@ -34,6 +34,8 @@ public:
 
     std::vector<std::vector<int>> GetValues() const;
 
+    std::vector<int> GetValues(int index) const;
+
     int GetSectionId(int column, int row) const;
 
 private:
