@@ -148,6 +148,34 @@ int Board::Solve() {
 }
 
 bool Board::IsVioletingRules() const {
+    for (int row = 0; row < this->size; ++row) {
+        std::vector<bool> exists(this->size + 1, false);
+        for (auto value : this->GetValuesInRow(row)) {
+            if (value != BoardCell::EMPTY_VALUE && exists[value]) {
+                return true;
+            }
+
+            exists[value] = true;
+        }
+    }
+
+    for (int column = 0; column < this->size; ++column) {
+        std::vector<bool> exists(this->size + 1, false);
+        for (auto value : this->GetValuesInColumn(column)) {
+            if (value != BoardCell::EMPTY_VALUE && exists[value]) {
+                return true;
+            }
+
+            exists[value] = true;
+        }
+    }
+
+    for (const auto &section : this->sections) {
+        if (section.IsVioletingRules()) {
+            return true;
+        }
+    }
+
     return false;
 }
 

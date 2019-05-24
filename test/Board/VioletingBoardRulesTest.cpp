@@ -64,3 +64,31 @@ SCENARIO("Duplicates in column are reported") {
         }
     }
 }
+
+SCENARIO("Duplicates in section are reported") {
+    GIVEN("Board with duplicate in section") {
+        Board board(Board::STANDARD_SIZE);
+        board.SetValue(3, 0, 0);
+        board.SetValue(3, 0, 1);
+
+        WHEN("Duplicates are checked") {
+            bool duplicates = board.IsVioletingRules();
+
+            THEN("Duplicates are found") {
+                REQUIRE(duplicates);
+            }
+        }
+    }
+}
+
+SCENARIO("Looking for duplicates in empty board") {
+    GIVEN("Empty board") {
+        Board board(Board::STANDARD_SIZE);
+        WHEN("Duplicates are checked") {
+            bool duplicates = board.IsVioletingRules();
+            THEN("No duplicates are found") {
+                REQUIRE(!duplicates);
+            }
+        }
+    }
+}
