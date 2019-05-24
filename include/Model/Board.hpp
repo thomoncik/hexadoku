@@ -50,6 +50,20 @@ public:
 
     void SaveToFile(const std::string& filename) const;
 
+    /**
+     * Solve board if possible, returing number of solutions.
+     *
+     * @return Number of soluions
+     */
+    int Solve();
+
+    /**
+     * Checks if each column, each row, and each section contains no duplicates.
+     *
+     * @return true if duplicate exists in row/column/section
+     */
+    bool IsVioletingRules() const;
+
 private:
     std::vector<BoardSection> sections;
     int size;

@@ -5,7 +5,7 @@
 #include <cmath>
 #include <iostream>
 #include <fstream>
-#include "../../include/Model/Board.hpp"
+#include "Model/Board.hpp"
 
 const int Board::STANDARD_SIZE = 9;
 const int Board::HEXADOKU_SIZE = 16;
@@ -141,5 +141,13 @@ void Board::SaveToFile(const std::string& filename) const {
     }
     this->SaveToStream(fileStream);
     fileStream.close();
+}
+
+int Board::Solve() {
+    return 0;
+}
+
+bool Board::IsVioletingRules() const {
+    return false;
 }
 

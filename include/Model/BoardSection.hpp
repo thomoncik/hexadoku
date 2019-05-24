@@ -32,6 +32,13 @@ public:
 
     BoardCell GetCell(int column, int row) const;
 
+    /**
+     * Checks if each cell in section is unique
+     *
+     * @return true if duplicate exists false otherwise
+     */
+    bool IsVioletingRules() const;
+
 private:
     std::vector<BoardCell> cells;
     int size;
