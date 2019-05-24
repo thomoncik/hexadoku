@@ -9,6 +9,8 @@
 class BoardCell {
 public:
     static const int EMPTY_VALUE;
+    static const int MAX_HEXADOKU_VALUE;
+    static const int MAX_STANDARD_VALUE;
 
     BoardCell();
 

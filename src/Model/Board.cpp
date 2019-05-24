@@ -13,6 +13,30 @@ const int Board::HEXADOKU_SIZE = 16;
 const std::string Board::SAVED_STANDARD_BOARD_PATH = std::string(std::getenv("HOME")) + "/.hexadoku/board/standard/";
 const std::string Board::SAVED_HEXADOKU_BOARD_PATH = std::string(std::getenv("HOME")) + "/.hexadoku/board/hexadoku/";
 
+Board Board::FromGrid(const std::vector<std::vector<int>> &&grid) {
+    Board board(grid.size());
+
+    for (int row = 0; row < grid.size(); ++row) {
+        for (int column = 0; column < grid[row].size(); ++column) {
+            board.SetValue(grid[row][column], column, row);
+        }
+    }
+
+    return board;
+}
+
+Board Board::FromGrid(const std::vector<std::vector<int>> &grid) {
+    Board board(grid.size());
+
+    for (int row = 0; row < grid.size(); ++row) {
+        for (int column = 0; column < grid[row].size(); ++column) {
+            board.SetValue(grid[row][column], column, row);
+        }
+    }
+
+    return board;
+}
+
 Board::Board(int size) : size(size),
                          sections(std::vector<BoardSection>(size, BoardSection(size))) {}
 
@@ -121,7 +145,7 @@ int Board::GetValue(int column, int row) const {
     return sections[sectionId].GetValue(sectionColumn, sectionRow);
 }
 
-void Board::LoadFromFile(const std::string& filename) {
+void Board::LoadFromFile(const std::string &filename) {
     std::ifstream fileStream;
     if (this->size == Board::STANDARD_SIZE) {
         fileStream.open(Board::SAVED_STANDARD_BOARD_PATH + filename);
@@ -132,7 +156,7 @@ void Board::LoadFromFile(const std::string& filename) {
     fileStream.close();
 }
 
-void Board::SaveToFile(const std::string& filename) const {
+void Board::SaveToFile(const std::string &filename) const {
     std::ofstream fileStream;
     if (this->size == Board::STANDARD_SIZE) {
         fileStream.open(Board::SAVED_STANDARD_BOARD_PATH + filename);
@@ -143,8 +167,64 @@ void Board::SaveToFile(const std::string& filename) const {
     fileStream.close();
 }
 
-int Board::Solve() {
-    return 0;
+int Board::GetNumberOfSolutions(std::vector<std::vector<int>> &grid) {
+    return GetNumberOfSolutions(std::move(grid));
+}
+
+int Board::GetNumberOfSolutions(std::vector<std::vector<int>> &&grid) {
+    Board board = Board::FromGrid(grid);
+    if (board.IsVioletingRules()) {
+        return 0;
+    } else if (board.IsFilled()) {
+        return 1;
+    }
+
+    int maxValue = (board.size == STANDARD_SIZE) ? BoardCell::MAX_STANDARD_VALUE : BoardCell::MAX_HEXADOKU_VALUE;
+    int solutions = 0;
+
+    for (int y = 0; y < board.size; ++y) {
+        for (int x = 0; x < board.size; ++x) {
+            if (board.GetValue(x, y) == BoardCell::EMPTY_VALUE) {
+                for (int value = 1; value <= maxValue; ++value) {
+                    grid[y][x] = value;
+                    solutions += Board::GetNumberOfSolutions(grid);
+                    grid[y][x] = BoardCell::EMPTY_VALUE;
+                }
+                return solutions;
+            }
+
+        }
+    }
+
+    return solutions;
+}
+
+bool Board::Solve() {
+    int maxValue = (this->size == STANDARD_SIZE) ? BoardCell::MAX_STANDARD_VALUE : BoardCell::MAX_HEXADOKU_VALUE;
+
+    if (this->IsVioletingRules()) {
+        return false;
+    } else if (this->IsFilled()) {
+        return true;
+    }
+
+    for (int y = 0; y < this->size; ++y) {
+        for (int x = 0; x < this->size; ++x) {
+            if (this->GetValue(x, y) == BoardCell::EMPTY_VALUE) {
+                for (int value = 1; value <= maxValue; ++value) {
+                    this->SetValue(value, x, y);
+                    if (this->Solve()) {
+                        return true;
+                    }
+                    this->SetValue(BoardCell::EMPTY_VALUE, x, y);
+                }
+                return false;
+            }
+
+        }
+    }
+
+    return false;
 }
 
 bool Board::IsVioletingRules() const {
@@ -178,4 +258,21 @@ bool Board::IsVioletingRules() const {
 
     return false;
 }
+
+bool Board::IsFilled() const {
+    for (const auto &row : this->GetValuesAsGrid()) {
+        for (auto value : row) {
+            if (value == BoardCell::EMPTY_VALUE) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+int Board::GetNumberOfSolutions() const {
+    return Board::GetNumberOfSolutions(this->GetValuesAsGrid());
+}
+
 

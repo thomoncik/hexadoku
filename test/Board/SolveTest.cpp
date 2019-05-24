@@ -7,7 +7,6 @@ using namespace fakeit;
 
 SCENARIO("Board can be solved by solver") {
     GIVEN("Standard sized board with values leading to unique solutions") {
-        Board board(Board::STANDARD_SIZE);
         std::vector<std::vector<int>> values{
                 {0, 0, 5, 0, 0, 0, 3, 0, 0},
                 {0, 0, 0, 0, 7, 0, 0, 8, 6},
@@ -19,17 +18,15 @@ SCENARIO("Board can be solved by solver") {
                 {8, 0, 3, 0, 0, 0, 0, 7, 0},
                 {0, 4, 0, 8, 0, 0, 0, 0, 5},
         };
-        for (int i = 0; i < Board::STANDARD_SIZE; ++i) {
-            for (int j = 0; j < Board::STANDARD_SIZE; ++j) {
-                board.SetValue(values[i][j], j, i);
-            }
-        }
+        Board board = Board::FromGrid(values);
 
         WHEN("Solver is called") {
-            int solutions = board.Solve();
+            int solutions = board.GetNumberOfSolutions();
+            bool isSolved = board.Solve();
 
             THEN("Only one solution exists") {
                 REQUIRE(solutions == 1);
+                REQUIRE(isSolved);
             }
 
             AND_THEN("Solution is solved correctly") {
