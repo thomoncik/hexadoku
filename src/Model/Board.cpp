@@ -101,6 +101,14 @@ void Board::LoadFromStream(std::istream &stream) {
     }
 }
 
+void Board::SaveToStream(std::ostream &stream) const {
+    for (int y = 0; y < this->size; ++y) {
+        for (int x = 0; x < this->size; ++x) {
+            stream << this->GetValue(x, y) << " ";
+        }
+    }
+}
+
 int Board::GetValue(int column, int row) const {
     const int sectionId = this->GetSectionId(column, row);
     const int sectionColumn = column % this->GetSectionRowSize();

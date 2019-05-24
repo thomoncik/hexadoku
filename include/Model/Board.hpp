@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <istream>
+#include <ostream>
 #include "BoardSection.hpp"
 
 class Board {
@@ -39,6 +40,8 @@ public:
     int GetSectionId(int column, int row) const;
 
     void LoadFromStream(std::istream &stream);
+
+    void SaveToStream(std::ostream &stream) const;
 
 private:
     std::vector<BoardSection> sections;
