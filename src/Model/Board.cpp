@@ -4,10 +4,14 @@
 
 #include <cmath>
 #include <iostream>
+#include <fstream>
 #include "../../include/Model/Board.hpp"
 
 const int Board::STANDARD_SIZE = 9;
 const int Board::HEXADOKU_SIZE = 16;
+
+const std::string Board::SAVED_STANDARD_BOARD_PATH = std::string(std::getenv("HOME")) + "/.hexadoku/board/standard/";
+const std::string Board::SAVED_HEXADOKU_BOARD_PATH = std::string(std::getenv("HOME")) + "/.hexadoku/board/hexadoku/";
 
 Board::Board(int size) : size(size),
                          sections(std::vector<BoardSection>(size, BoardSection(size))) {}
@@ -116,3 +120,15 @@ int Board::GetValue(int column, int row) const {
 
     return sections[sectionId].GetValue(sectionColumn, sectionRow);
 }
+
+void Board::LoadFromFile(const std::string& filename) {
+    std::ifstream fileStream;
+    if (this->size == Board::STANDARD_SIZE) {
+        fileStream.open(Board::SAVED_STANDARD_BOARD_PATH + filename);
+    } else if (this->size == Board::HEXADOKU_SIZE) {
+        fileStream.open(Board::SAVED_HEXADOKU_BOARD_PATH + filename);
+    }
+    this->LoadFromStream(fileStream);
+    fileStream.close();
+}
+

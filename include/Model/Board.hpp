@@ -15,6 +15,9 @@ public:
     static const int STANDARD_SIZE;
     static const int HEXADOKU_SIZE;
 
+    static const std::string SAVED_STANDARD_BOARD_PATH;
+    static const std::string SAVED_HEXADOKU_BOARD_PATH;
+
     explicit Board(int size);
 
     int GetSize() const;
@@ -42,6 +45,8 @@ public:
     void LoadFromStream(std::istream &stream);
 
     void SaveToStream(std::ostream &stream) const;
+
+    void LoadFromFile(const std::string& filename);
 
 private:
     std::vector<BoardSection> sections;
