@@ -6,7 +6,7 @@
 #define HEXADOKU_BOARD_HPP
 
 #include <vector>
-
+#include <istream>
 #include "BoardSection.hpp"
 
 class Board {
@@ -18,7 +18,7 @@ public:
 
     int GetSize() const;
 
-    int GetSectionSize() const;
+    int GetSectionRowSize() const;
 
     const BoardSection &GetSection(int index) const;
 
@@ -28,20 +28,23 @@ public:
 
     void SetIsCorrect(bool isCorrect, int column, int row);
 
-    std::vector<int> ValuesInRow(int row);
+    std::vector<int> GetValuesInRow(int row) const;
 
-    std::vector<int> ValuesInColumn(int column);
+    std::vector<int> GetValuesInColumn(int column) const;
 
-    std::vector<std::vector<int>> GetValues() const;
+    std::vector<std::vector<int>> GetValuesPerSection() const;
 
-    std::vector<int> GetValues(int index) const;
+    std::vector<std::vector<int>> GetValuesAsGrid() const;
 
     int GetSectionId(int column, int row) const;
+
+    void LoadFromStream(std::istream &stream);
 
 private:
     std::vector<BoardSection> sections;
     int size;
-    int sectionSize;
+
+    int GetValue(int column, int row) const;
 };
 
 

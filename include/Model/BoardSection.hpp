@@ -14,17 +14,21 @@ public:
 
     int GetSize() const;
 
+    int GetRowSize() const;
+
     void SetSelected(bool isSelected, int column, int row);
 
     void SetValue(int value, int column, int row);
 
     void SetIsCorrect(bool isCorrect, int column, int row);
 
-    std::vector<int> ValuesInRow(int row);
+    std::vector<int> GetValuesInRow(int row) const;
 
-    std::vector<int> ValuesInColumn(int column);
+    std::vector<int> GetValuesInColumn(int column) const;
 
     std::vector<int> GetValues() const;
+
+    int GetValue(int column, int row) const;
 
     BoardCell GetCell(int column, int row) const;
 
