@@ -48,6 +48,8 @@ public:
 
     void LoadFromFile(const std::string& filename);
 
+    void SaveToFile(const std::string& filename) const;
+
 private:
     std::vector<BoardSection> sections;
     int size;

@@ -132,3 +132,14 @@ void Board::LoadFromFile(const std::string& filename) {
     fileStream.close();
 }
 
+void Board::SaveToFile(const std::string& filename) const {
+    std::ofstream fileStream;
+    if (this->size == Board::STANDARD_SIZE) {
+        fileStream.open(Board::SAVED_STANDARD_BOARD_PATH + filename);
+    } else if (this->size == Board::HEXADOKU_SIZE) {
+        fileStream.open(Board::SAVED_HEXADOKU_BOARD_PATH + filename);
+    }
+    this->SaveToStream(fileStream);
+    fileStream.close();
+}
+
