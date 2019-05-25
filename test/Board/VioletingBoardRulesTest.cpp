@@ -12,7 +12,7 @@ SCENARIO("Duplicates in row are reported") {
         board.SetValue(3, 4, 0);
 
         WHEN("Duplicates are checked") {
-            bool duplicates = board.IsVioletingRules();
+            bool duplicates = board.IsViolatingRules();
 
             THEN("Duplicates are found") {
                 REQUIRE(duplicates);
@@ -26,7 +26,7 @@ SCENARIO("Duplicates in row are reported") {
         board.SetValue(3, 4, 0);
 
         WHEN("Duplicates are checked") {
-            bool duplicates = board.IsVioletingRules();
+            bool duplicates = board.IsViolatingRules();
 
             THEN("Duplicates are found") {
                 REQUIRE(duplicates);
@@ -42,7 +42,7 @@ SCENARIO("Duplicates in column are reported") {
         board.SetValue(3, 0, 4);
 
         WHEN("Duplicates are checked") {
-            bool duplicates = board.IsVioletingRules();
+            bool duplicates = board.IsViolatingRules();
 
             THEN("Duplicates are found") {
                 REQUIRE(duplicates);
@@ -56,7 +56,7 @@ SCENARIO("Duplicates in column are reported") {
         board.SetValue(3, 0, 4);
 
         WHEN("Duplicates are checked") {
-            bool duplicates = board.IsVioletingRules();
+            bool duplicates = board.IsViolatingRules();
 
             THEN("Duplicates are found") {
                 REQUIRE(duplicates);
@@ -72,7 +72,7 @@ SCENARIO("Duplicates in section are reported") {
         board.SetValue(3, 0, 1);
 
         WHEN("Duplicates are checked") {
-            bool duplicates = board.IsVioletingRules();
+            bool duplicates = board.IsViolatingRules();
 
             THEN("Duplicates are found") {
                 REQUIRE(duplicates);
@@ -85,7 +85,7 @@ SCENARIO("Looking for duplicates in empty board") {
     GIVEN("Empty board") {
         Board board(Board::STANDARD_SIZE);
         WHEN("Duplicates are checked") {
-            bool duplicates = board.IsVioletingRules();
+            bool duplicates = board.IsViolatingRules();
             THEN("No duplicates are found") {
                 REQUIRE(!duplicates);
             }

@@ -67,7 +67,7 @@ int BoardSection::GetValue(int column, int row) const {
     return cells[cellId].GetValue();
 }
 
-bool BoardSection::IsVioletingRules() const {
+bool BoardSection::IsViolatingRules() const {
     std::vector<bool> ifExists(this->size + 1, false);
     for (const auto &cell : this->cells) {
         if (cell.GetValue() != BoardCell::EMPTY_VALUE && ifExists.at(cell.GetValue())) {

@@ -173,7 +173,7 @@ int Board::GetNumberOfSolutions(std::vector<std::vector<int>> &grid) {
 
 int Board::GetNumberOfSolutions(std::vector<std::vector<int>> &&grid) {
     Board board = Board::FromGrid(grid);
-    if (board.IsVioletingRules()) {
+    if (board.IsViolatingRules()) {
         return 0;
     } else if (board.IsFilled()) {
         return 1;
@@ -202,7 +202,7 @@ int Board::GetNumberOfSolutions(std::vector<std::vector<int>> &&grid) {
 bool Board::Solve() {
     int maxValue = (this->size == STANDARD_SIZE) ? BoardCell::MAX_STANDARD_VALUE : BoardCell::MAX_HEXADOKU_VALUE;
 
-    if (this->IsVioletingRules()) {
+    if (this->IsViolatingRules()) {
         return false;
     } else if (this->IsFilled()) {
         return true;
@@ -227,7 +227,7 @@ bool Board::Solve() {
     return false;
 }
 
-bool Board::IsVioletingRules() const {
+bool Board::IsViolatingRules() const {
     for (int row = 0; row < this->size; ++row) {
         std::vector<bool> exists(this->size + 1, false);
         for (auto value : this->GetValuesInRow(row)) {
@@ -251,7 +251,7 @@ bool Board::IsVioletingRules() const {
     }
 
     for (const auto &section : this->sections) {
-        if (section.IsVioletingRules()) {
+        if (section.IsViolatingRules()) {
             return true;
         }
     }

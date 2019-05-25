@@ -13,7 +13,7 @@ SCENARIO("Duplicates in sections are reported") {
         section.SetValue(3, 1, 0);
 
         WHEN("Duplicates are checked") {
-            bool duplicates = section.IsVioletingRules();
+            bool duplicates = section.IsViolatingRules();
 
             THEN("Duplicates are found") {
                 REQUIRE(duplicates);
@@ -27,7 +27,7 @@ SCENARIO("Duplicates in sections are reported") {
         section.SetValue(3, 4, 0);
 
         WHEN("Duplicates are checked") {
-            bool duplicates = section.IsVioletingRules();
+            bool duplicates = section.IsViolatingRules();
 
             THEN("Duplicates are found") {
                 REQUIRE(duplicates);
@@ -49,7 +49,7 @@ SCENARIO("Duplicates in sections are reported") {
         }
 
         WHEN("Duplicates are checked") {
-            bool duplicates = section.IsVioletingRules();
+            bool duplicates = section.IsViolatingRules();
 
             THEN("No duplicates are found") {
                 REQUIRE(!duplicates);
@@ -72,7 +72,7 @@ SCENARIO("Duplicates in sections are reported") {
         }
 
         WHEN("Duplicates are checked") {
-            bool duplicates = section.IsVioletingRules();
+            bool duplicates = section.IsViolatingRules();
 
             THEN("No duplicates are found") {
                 REQUIRE(!duplicates);
@@ -85,8 +85,8 @@ SCENARIO("Duplicates in sections are reported") {
         BoardSection hexSection(Board::HEXADOKU_SIZE);
 
         WHEN("Duplicates are checked") {
-            bool duplicates = section.IsVioletingRules();
-            bool hexDuplicates = hexSection.IsVioletingRules();
+            bool duplicates = section.IsViolatingRules();
+            bool hexDuplicates = hexSection.IsViolatingRules();
 
             THEN("No duplicates are found") {
                 REQUIRE(!duplicates);

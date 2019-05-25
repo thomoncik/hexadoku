@@ -97,7 +97,7 @@ public:
      *
      * @return true if duplicate exists in row/column/section
      */
-    bool IsVioletingRules() const;
+    bool IsViolatingRules() const;
 
     /**
      * Checks if board is completely filled.

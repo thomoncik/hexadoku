@@ -37,7 +37,7 @@ public:
      *
      * @return true if duplicate exists false otherwise
      */
-    bool IsVioletingRules() const;
+    bool IsViolatingRules() const;
 
 private:
     std::vector<BoardCell> cells;
