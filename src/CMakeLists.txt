@@ -2,8 +2,8 @@ set(TARGET_NAME hexadoku)
 
 set(SOURCE_FILES main.cpp Model/Board.cpp Model/BoardCell.cpp Model/BoardSection.cpp
         AbstractState.cpp Assets.cpp Attributes.cpp Color.cpp Game.cpp
-        GfxStream.cpp PlayState.cpp Position.cpp MenuState.cpp View/AbstractView.cpp View/CellView.cpp
-        View/BoardView.cpp View/SectionView.cpp View/GameView.cpp)
+        GfxStream.cpp MovePlayState.cpp Position.cpp MenuState.cpp View/AbstractView.cpp View/CellView.cpp
+        View/BoardView.cpp View/SectionView.cpp View/GameView.cpp PlayStateAbstract.cpp InsertionPlayState.cpp)
 
 
 add_executable(hexadoku ${SOURCE_FILES})

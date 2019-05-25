@@ -5,7 +5,7 @@
 #include "GfxStream.hpp"
 #include "Attributes.hpp"
 #include "Assets.hpp"
-#include "PlayState.hpp"
+#include "MovePlayState.hpp"
 
 MenuState *const MenuState::MAIN_MENU = new MenuState();
 MenuState *const MenuState::GAME_MODE_MENU = new MenuState();
@@ -62,8 +62,8 @@ bool MenuState::initPredefinedMenus() {
     MAIN_MENU->AddOption({"Board creator", GAME_MODE_MENU});
     MAIN_MENU->AddOption({"Exit", nullptr});
 
-    GAME_MODE_MENU->AddOption({"Standard", new PlayState(Board::STANDARD_SIZE)});
-    GAME_MODE_MENU->AddOption({"Hexadoku", new PlayState(Board::HEXADOKU_SIZE)});
+    GAME_MODE_MENU->AddOption({"Standard", new MovePlayState(Board::STANDARD_SIZE)});
+    GAME_MODE_MENU->AddOption({"Hexadoku", new MovePlayState(Board::HEXADOKU_SIZE)});
     GAME_MODE_MENU->AddOption({"Load your own scheme", nullptr});
     GAME_MODE_MENU->AddOption({"Back", MAIN_MENU});
 
