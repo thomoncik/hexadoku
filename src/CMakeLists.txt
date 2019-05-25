@@ -9,4 +9,5 @@ set(SOURCE_FILES main.cpp Model/Board.cpp Model/BoardCell.cpp Model/BoardSection
 add_executable(hexadoku ${SOURCE_FILES})
 target_link_libraries(hexadoku curses)
 
-install(TARGETS ${TARGET_NAME} DESTINATION ${PROJECT_SOURCE_DIR}/bin)
+install(TARGETS ${TARGET_NAME} DESTINATION $ENV{HOME}/.local/bin)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/data/ DESTINATION $ENV{HOME}/.hexadoku/)

@@ -11,22 +11,26 @@ int BoardSection::GetSize() const {
     return size;
 }
 
+int BoardSection::GetRowSize() const {
+    return (int) sqrt(this->size);
+}
+
 void BoardSection::SetSelected(bool isSelectd, int column, int row) {
-    int rowSize = (int) sqrt(size);
-    cells[row * rowSize + column].SetSelected(isSelectd);
+    const int cellId = this->GetRowSize() * row + column;
+    cells[cellId].SetSelected(isSelectd);
 }
 
 void BoardSection::SetIsCorrect(bool isCorrect, int column, int row) {
-    int rowSize = (int) sqrt(size);
-    cells[row * rowSize + column].SetIsCorrect(isCorrect);
+    const int cellId = this->GetRowSize() * row + column;
+    cells[cellId].SetIsCorrect(isCorrect);
 }
 
 void BoardSection::SetValue(int value, int column, int row) {
-    int rowSize = (int) sqrt(size);
-    cells[row * rowSize + column].SetValue(value);
+    const int cellId = this->GetRowSize() * row + column;
+    cells[cellId].SetValue(value);
 }
 
-std::vector<int> BoardSection::ValuesInColumn(int column) {
+std::vector<int> BoardSection::GetValuesInColumn(int column) const {
     std::vector<int> values(size);
     for (int i = 0 + column; i < size; i += size) {
         values.push_back(cells[i].GetValue());
@@ -34,7 +38,7 @@ std::vector<int> BoardSection::ValuesInColumn(int column) {
     return values;
 }
 
-std::vector<int> BoardSection::ValuesInRow(int row) {
+std::vector<int> BoardSection::GetValuesInRow(int row) const {
     std::vector<int> values(size);
     for (int i = 0 + row * size; i < size; i += size) {
         values.push_back(cells[i].GetValue());
@@ -54,6 +58,11 @@ std::vector<int> BoardSection::GetValues() const {
 }
 
 BoardCell BoardSection::GetCell(int column, int row) const {
-    int rowSize = (int) sqrt(size);
-    return this->cells[row * rowSize + column];
+    const int cellId = this->GetRowSize() * row + column;
+    return this->cells[cellId];
+}
+
+int BoardSection::GetValue(int column, int row) const {
+    const int cellId = this->GetRowSize() * row + column;
+    return cells[cellId].GetValue();
 }
