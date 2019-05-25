@@ -18,6 +18,34 @@ public:
     static const std::string SAVED_STANDARD_BOARD_PATH;
     static const std::string SAVED_HEXADOKU_BOARD_PATH;
 
+    /**
+     * Creates Board object from grid of given values
+     *
+     * @return created Board object
+     */
+    static Board FromGrid(const std::vector<std::vector<int>> &grid);
+
+    /**
+     * Creates Board object from grid of given values
+     *
+     * @return created Board object
+     */
+    static Board FromGrid(const std::vector<std::vector<int>> &&grid);
+
+    /**
+     * Checks how many solutions are possible for given grid
+     *
+     * @return number of solutions
+     */
+    static int GetNumberOfSolutions(std::vector<std::vector<int>> &grid);
+
+    /**
+     * Checks how many solutions are possible for given grid
+     *
+     * @return number of solutions
+     */
+    static int GetNumberOfSolutions(std::vector<std::vector<int>> &&grid);
+
     explicit Board(int size);
 
     int GetSize() const;
@@ -46,12 +74,42 @@ public:
 
     void SaveToStream(std::ostream &stream) const;
 
-    void LoadFromFile(const std::string& filename);
+    void LoadFromFile(const std::string &filename);
 
-    void SaveToFile(const std::string& filename) const;
+    void SaveToFile(const std::string &filename) const;
+
+    /**
+     * Checks how many solutions are possible
+     *
+     * @return number of solutions
+     */
+    int GetNumberOfSolutions() const;
+
+    /**
+     * Solve board if possible
+     *
+     * @return True if solution is good
+     */
+    bool Solve();
+
+    /**
+     * Checks if each column, each row, and each section contains no duplicates.
+     *
+     * @return true if duplicate exists in row/column/section
+     */
+    bool IsViolatingRules() const;
+
+    /**
+     * Checks if board is completely filled.
+     *
+     * @return true if no empty cell is present in board
+     */
+    bool IsFilled() const;
 
 private:
+
     std::vector<BoardSection> sections;
+
     int size;
 
     int GetValue(int column, int row) const;

@@ -5,6 +5,8 @@
 #include <Model/BoardCell.hpp>
 
 const int BoardCell::EMPTY_VALUE = 0;
+const int BoardCell::MAX_HEXADOKU_VALUE = 16;
+const int BoardCell::MAX_STANDARD_VALUE = 9;
 
 BoardCell::BoardCell() : isSelected(false), isCorrect(true), value(EMPTY_VALUE) {
 

@@ -1,10 +1,10 @@
-set(TEST_SOURCES main.cpp StateChangingTest.cpp)
+set(TEST_SOURCES main.cpp Game/StateChangingTest.cpp)
 
 set(SOURCE_FILES ../src/Model/Board.cpp ../src/Model/BoardCell.cpp ../src/Model/BoardSection.cpp
         ../src/AbstractState.cpp ../src/Assets.cpp ../src/Attributes.cpp ../src/Color.cpp ../src/Game.cpp
         ../src/GfxStream.cpp ../src/PlayState.cpp ../src/Position.cpp ../src/MenuState.cpp
         ../src/View/AbstractView.cpp ../src/View/CellView.cpp ../src/View/BoardView.cpp ../src/View/SectionView.cpp
-        ../src/View/GameView.cpp BoardLoadingTest.cpp BoardSaveTest.cpp)
+        ../src/View/GameView.cpp Board/BoardLoadingTest.cpp Board/BoardSaveTest.cpp Board/SolveTest.cpp Board/VioletingBoardRulesTest.cpp Section/VioletingSectionRulesTest.cpp)
 
 add_definitions(-DTESTING)
 

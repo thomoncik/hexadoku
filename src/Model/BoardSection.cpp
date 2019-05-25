@@ -66,3 +66,16 @@ int BoardSection::GetValue(int column, int row) const {
     const int cellId = this->GetRowSize() * row + column;
     return cells[cellId].GetValue();
 }
+
+bool BoardSection::IsViolatingRules() const {
+    std::vector<bool> ifExists(this->size + 1, false);
+    for (const auto &cell : this->cells) {
+        if (cell.GetValue() != BoardCell::EMPTY_VALUE && ifExists.at(cell.GetValue())) {
+            return true;
+        }
+
+        ifExists.at(cell.GetValue()) = true;
+    }
+
+    return false;
+}
