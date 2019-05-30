@@ -12,6 +12,12 @@
 
 class Board {
 public:
+    enum class Difficulty {
+        EASY,
+        NORMAL,
+        HARD,
+    };
+
     static const int STANDARD_SIZE;
     static const int HEXADOKU_SIZE;
 
@@ -32,19 +38,7 @@ public:
      */
     static Board FromGrid(const std::vector<std::vector<int>> &&grid);
 
-    /**
-     * Checks how many solutions are possible for given grid
-     *
-     * @return number of solutions
-     */
-    static int GetNumberOfSolutions(std::vector<std::vector<int>> &grid);
-
-    /**
-     * Checks how many solutions are possible for given grid
-     *
-     * @return number of solutions
-     */
-    static int GetNumberOfSolutions(std::vector<std::vector<int>> &&grid);
+    static bool HasUniqueSolution(std::vector<std::vector<int>> &grid);
 
     explicit Board(int size);
 
@@ -53,6 +47,13 @@ public:
     int GetSectionRowSize() const;
 
     const BoardSection &GetSection(int index) const;
+
+    /**
+     * Get section based on x and y coordinates of cell
+     *
+     * @return BoardSection with (x,y) cell
+     */
+    const BoardSection &GetSection(int column, int row) const;
 
     void SetSelected(bool isSelectd, int column, int row);
 
@@ -93,6 +94,12 @@ public:
     bool Solve();
 
     /**
+     * Generate new board with desired difficulty.
+     * The harder the puzzle the less clues are given.
+     */
+    void Generate(Board::Difficulty difficulty);
+
+    /**
      * Checks if each column, each row, and each section contains no duplicates.
      *
      * @return true if duplicate exists in row/column/section
@@ -106,13 +113,28 @@ public:
      */
     bool IsFilled() const;
 
+    /**
+     * Fills board with EMPTY_VALUE.
+     */
+    void Reset();
+
 private:
-
     std::vector<BoardSection> sections;
-
     int size;
 
+    /**
+     * Checks how many solutions are possible for given grid
+     * @param filledCells filled cells count
+     *
+     * @return 1 if has unique solution
+     */
+    int HasUniqueSolution(int filledCells);
+
+    bool Solve(int filledCells);
+
     int GetValue(int column, int row) const;
+
+    std::vector<int> GetAvailableValues(int column, int row) const;
 };
 
 

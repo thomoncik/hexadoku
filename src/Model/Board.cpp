@@ -1,3 +1,5 @@
+#include <random>
+
 //
 // Created by Jakub Kiermasz on 2019-05-11.
 //
@@ -5,6 +7,10 @@
 #include <cmath>
 #include <iostream>
 #include <fstream>
+#include <random>
+#include <algorithm>
+#include <chrono>
+#include <functional>
 #include "Model/Board.hpp"
 
 const int Board::STANDARD_SIZE = 9;
@@ -37,8 +43,9 @@ Board Board::FromGrid(const std::vector<std::vector<int>> &grid) {
     return board;
 }
 
-Board::Board(int size) : size(size),
-                         sections(std::vector<BoardSection>(size, BoardSection(size))) {}
+Board::Board(int size) : size(size), sections(std::vector<BoardSection>(size, BoardSection(size))) {
+
+}
 
 int Board::GetSize() const {
     return size;
@@ -79,6 +86,10 @@ void Board::SetValue(int value, int column, int row) {
 int Board::GetSectionId(int column, int row) const {
     const int sectionSize = (int) sqrt(size);
     return row / sectionSize * sectionSize + column / sectionSize;
+}
+
+const BoardSection &Board::GetSection(int column, int row) const {
+    return GetSection(GetSectionId(column, row));
 }
 
 std::vector<int> Board::GetValuesInRow(int row) const {
@@ -167,28 +178,37 @@ void Board::SaveToFile(const std::string &filename) const {
     fileStream.close();
 }
 
-int Board::GetNumberOfSolutions(std::vector<std::vector<int>> &grid) {
-    return GetNumberOfSolutions(std::move(grid));
+bool Board::HasUniqueSolution(std::vector<std::vector<int>> &grid) {
+    int filledCells = 0;
+    for (const auto &row : grid) {
+        for (auto cellValue : row) {
+            if (cellValue != BoardCell::EMPTY_VALUE) {
+                filledCells++;
+            }
+        }
+    }
+
+    Board board = Board::FromGrid(grid);
+    return board.HasUniqueSolution(filledCells) == 1;
 }
 
-int Board::GetNumberOfSolutions(std::vector<std::vector<int>> &&grid) {
-    Board board = Board::FromGrid(grid);
-    if (board.IsViolatingRules()) {
-        return 0;
-    } else if (board.IsFilled()) {
+int Board::HasUniqueSolution(int filledCells) {
+    if (filledCells == (GetSize() * GetSize())) {
         return 1;
     }
 
-    int maxValue = (board.size == STANDARD_SIZE) ? BoardCell::MAX_STANDARD_VALUE : BoardCell::MAX_HEXADOKU_VALUE;
     int solutions = 0;
-
-    for (int y = 0; y < board.size; ++y) {
-        for (int x = 0; x < board.size; ++x) {
-            if (board.GetValue(x, y) == BoardCell::EMPTY_VALUE) {
-                for (int value = 1; value <= maxValue; ++value) {
-                    grid[y][x] = value;
-                    solutions += Board::GetNumberOfSolutions(grid);
-                    grid[y][x] = BoardCell::EMPTY_VALUE;
+    for (int y = 0; y < size; ++y) {
+        for (int x = 0; x < size; ++x) {
+            auto values = GetAvailableValues(x, y);
+            if (GetValue(x, y) == BoardCell::EMPTY_VALUE) {
+                for (auto value : values) {
+                    SetValue(value, x, y);
+                    solutions += HasUniqueSolution(filledCells + 1);
+                    if (solutions > 1) {
+                        return solutions;
+                    }
+                    SetValue(BoardCell::EMPTY_VALUE, x, y);
                 }
                 return solutions;
             }
@@ -200,20 +220,32 @@ int Board::GetNumberOfSolutions(std::vector<std::vector<int>> &&grid) {
 }
 
 bool Board::Solve() {
-    int maxValue = (this->size == STANDARD_SIZE) ? BoardCell::MAX_STANDARD_VALUE : BoardCell::MAX_HEXADOKU_VALUE;
+    int filledCells = 0;
+    for (int i = 0; i < GetSize(); ++i) {
+        for (int j = 0; j < GetSize(); ++j) {
+            if (GetValue(j, i) != BoardCell::EMPTY_VALUE) {
+                filledCells++;
+            }
+        }
+    }
 
-    if (this->IsViolatingRules()) {
-        return false;
-    } else if (this->IsFilled()) {
+    return Solve(filledCells);
+}
+
+bool Board::Solve(int filledCells) {
+    if (filledCells == (GetSize() * GetSize())) {
         return true;
     }
 
     for (int y = 0; y < this->size; ++y) {
         for (int x = 0; x < this->size; ++x) {
             if (this->GetValue(x, y) == BoardCell::EMPTY_VALUE) {
-                for (int value = 1; value <= maxValue; ++value) {
+                auto values = this->GetAvailableValues(x, y);
+                std::shuffle(values.begin(), values.end(), std::mt19937(std::random_device()()));
+
+                for (auto value : values) {
                     this->SetValue(value, x, y);
-                    if (this->Solve()) {
+                    if (this->Solve(filledCells + 1)) {
                         return true;
                     }
                     this->SetValue(BoardCell::EMPTY_VALUE, x, y);
@@ -272,7 +304,71 @@ bool Board::IsFilled() const {
 }
 
 int Board::GetNumberOfSolutions() const {
-    return Board::GetNumberOfSolutions(this->GetValuesAsGrid());
+    std::vector<std::vector<int>> grid = this->GetValuesAsGrid();
+    return Board::HasUniqueSolution(grid);
 }
 
+void Board::Generate(Board::Difficulty difficulty) {
+    Reset();
+    Solve();
+
+    std::random_device randomDevice;
+    std::mt19937 generator(randomDevice());
+    std::uniform_int_distribution<std::mt19937::result_type> distribution(0, this->GetSize() - 1);
+    auto randomCoordinate = std::bind(distribution, generator);
+
+    int cluesToRemove;
+    switch (difficulty) {
+        case Difficulty::EASY:
+            cluesToRemove = 20;
+            break;
+        case Difficulty::NORMAL:
+            cluesToRemove = 40;
+            break;
+        case Difficulty::HARD:
+            cluesToRemove = 60;
+            break;
+    }
+
+    while (cluesToRemove--) {
+        int x = randomCoordinate();
+        int y = randomCoordinate();
+
+        int oldValue = GetValue(x, y);
+        SetValue(BoardCell::EMPTY_VALUE, x, y);
+        if (GetNumberOfSolutions() != 1) {
+            SetValue(oldValue, x, y);
+        }
+    }
+}
+
+std::vector<int> Board::GetAvailableValues(int column, int row) const {
+    std::vector<bool> isAvailable(GetSize() + 1, true);
+
+    for (auto value : GetSection(column, row).GetValues()) {
+        isAvailable[value] = false;
+    }
+    for (auto value : GetValuesInRow(row)) {
+        isAvailable[value] = false;
+    }
+    for (auto value : GetValuesInColumn(column)) {
+        isAvailable[value] = false;
+    }
+
+    std::vector<int> result;
+    for (int i = 1; i <= GetSize(); ++i) {
+        if (isAvailable[i]) {
+            result.push_back(i);
+        }
+    }
+    return result;
+}
+
+void Board::Reset() {
+    for (int y = 0; y < this->GetSize(); ++y) {
+        for (int x = 0; x < this->GetSize(); ++x) {
+            this->SetValue(BoardCell::EMPTY_VALUE, x, y);
+        }
+    }
+}
 
