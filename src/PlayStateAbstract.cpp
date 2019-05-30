@@ -1,5 +1,3 @@
-#include <memory>
-
 //
 // Created by Jakub Kiermasz on 2019-05-25.
 //
