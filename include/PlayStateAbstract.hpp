@@ -23,8 +23,8 @@ public:
 
     void OnExit(Game &game) override;
 protected:
-    std::time_t creationTime;
-    std::time_t gameTime;
+    std::time_t creationTime{};
+    std::time_t gameTime{};
     std::shared_ptr<Board> board;
     int x;
     int y;

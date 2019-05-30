@@ -1,3 +1,5 @@
+#include <memory>
+
 //
 // Created by Jakub Kiermasz on 2019-05-25.
 //
@@ -12,7 +14,7 @@
 #include <View/GameView.hpp>
 
 PlayStateAbstract::PlayStateAbstract(int boardSize, std::shared_ptr<Board>board, int x, int y) : x(x), y(y) {
-    this->board = (board == nullptr) ? std::shared_ptr<Board>(new Board(boardSize)) : std::move(board);
+    this->board = (board == nullptr) ? std::make_shared<Board>(boardSize) : std::move(board);
 }
 
 void PlayStateAbstract::OnEntry(Game &game) {

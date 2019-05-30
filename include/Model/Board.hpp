@@ -12,6 +12,12 @@
 
 class Board {
 public:
+    enum class Difficulty {
+        EASY,
+        NORMAL,
+        HARD,
+    };
+
     static const int STANDARD_SIZE;
     static const int HEXADOKU_SIZE;
 
@@ -93,6 +99,12 @@ public:
     bool Solve();
 
     /**
+     * Generate new board with desired difficulty.
+     * The harder the puzzle the less clues are given.
+     */
+    void Generate(Board::Difficulty difficulty);
+
+    /**
      * Checks if each column, each row, and each section contains no duplicates.
      *
      * @return true if duplicate exists in row/column/section
@@ -106,6 +118,11 @@ public:
      */
     bool IsFilled() const;
 
+    /**
+     * Fills board with EMPTY_VALUE.
+     */
+    void Reset();
+
 private:
 
     std::vector<BoardSection> sections;
@@ -113,6 +130,13 @@ private:
     int size;
 
     int GetValue(int column, int row) const;
+
+    /**
+     * Tries to generete board using backtracking algorithm to fill grid
+     *
+     * @return true if board is filled while keeping rules
+     */
+    bool GenerateRecursively();
 };
 
 

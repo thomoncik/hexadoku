@@ -1,3 +1,5 @@
+#include <random>
+
 //
 // Created by Jakub Kiermasz on 2019-05-11.
 //
@@ -5,6 +7,10 @@
 #include <cmath>
 #include <iostream>
 #include <fstream>
+#include <random>
+#include <algorithm>
+#include <chrono>
+#include <functional>
 #include "Model/Board.hpp"
 
 const int Board::STANDARD_SIZE = 9;
@@ -275,4 +281,76 @@ int Board::GetNumberOfSolutions() const {
     return Board::GetNumberOfSolutions(this->GetValuesAsGrid());
 }
 
+void Board::Generate(Board::Difficulty difficulty) {
+    this->GenerateRecursively();
+
+    std::random_device randomDevice;
+    std::mt19937 generator(randomDevice());
+    std::uniform_int_distribution<std::mt19937::result_type> distribution(0, this->GetSize() - 1);
+    auto randomCoordinate = std::bind(distribution, generator);
+
+    int cluesToRemove;
+    switch (difficulty) {
+        case Difficulty::EASY:
+            cluesToRemove = 20;
+            break;
+        case Difficulty::NORMAL:
+            cluesToRemove = 40;
+            break;
+        case Difficulty::HARD:
+            cluesToRemove = 60;
+            break;
+    }
+    while (cluesToRemove--) {
+        int x = randomCoordinate();
+        int y = randomCoordinate();
+
+        int oldValue = this->GetValue(x, y);
+        this->SetValue(BoardCell::EMPTY_VALUE, x, y);
+        if (this->GetNumberOfSolutions() != 1) {
+            this->SetValue(oldValue, x, y);
+        }
+    }
+}
+
+bool Board::GenerateRecursively() {
+    int maxValue = (this->size == STANDARD_SIZE) ? BoardCell::MAX_STANDARD_VALUE : BoardCell::MAX_HEXADOKU_VALUE;
+    std::vector<int> values(maxValue);
+    for (int i = 0; i < maxValue; ++i) {
+        values[i] = i + 1;
+    }
+    std::shuffle(values.begin(), values.end(), std::mt19937(std::random_device()()));
+
+    if (this->IsViolatingRules()) {
+        return false;
+    } else if (this->IsFilled()) {
+        return true;
+    }
+
+    for (int y = 0; y < this->size; ++y) {
+        for (int x = 0; x < this->size; ++x) {
+            if (this->GetValue(x, y) == BoardCell::EMPTY_VALUE) {
+                for (int value : values) {
+                    this->SetValue(value, x, y);
+                    if (this->GenerateRecursively()) {
+                        return true;
+                    }
+                    this->SetValue(BoardCell::EMPTY_VALUE, x, y);
+                }
+                return false;
+            }
+
+        }
+    }
+
+    return false;
+}
+
+void Board::Reset() {
+    for (int y = 0; y < this->GetSize(); ++y) {
+        for (int x = 0; x < this->GetSize(); ++x) {
+            this->SetValue(BoardCell::EMPTY_VALUE, x, y);
+        }
+    }
+}
 
