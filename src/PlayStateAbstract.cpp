@@ -1,7 +1,6 @@
 //
 // Created by Jakub Kiermasz on 2019-05-25.
 //
-
 #include <memory>
 #include <chrono>
 #include <cmath>
@@ -11,27 +10,24 @@
 #include <MenuState.hpp>
 #include <View/GameViewAbstract.hpp>
 
-PlayStateAbstract::PlayStateAbstract(int boardSize, std::shared_ptr<Board>board, int x, int y) : x(x), y(y) {
-    this->board = (board == nullptr) ? std::make_shared<Board>(boardSize) : std::move(board);
+PlayStateAbstract::PlayStateAbstract(int boardSize) {
+   this->model = std::make_shared<PlayStateModel>(boardSize);
+}
+
+PlayStateAbstract::PlayStateAbstract(std::shared_ptr<PlayStateModel> model) {
+    this->model = std::move(model);
 }
 
 void PlayStateAbstract::OnEntry(Game &game) {
-    creationTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    gameTime = creationTime;
+    this->model->StartTimer();
     gfx::out << gfx::clear;
 }
 
 void PlayStateAbstract::Update(Game &game) {
-    gameTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) - creationTime;
+    this->model->UpdateTime();
 }
 
 void PlayStateAbstract::OnExit(Game &game) {
 
-}
-
-std::string PlayStateAbstract::GetGameTimeString() const {
-    char buf[50];
-    std::strftime(buf, sizeof(buf), "%M:%S", localtime(&gameTime));
-    return std::string(buf);
 }
 
