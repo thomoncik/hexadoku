@@ -4,7 +4,7 @@ set(SOURCE_FILES ../src/Model/Board.cpp ../src/Model/BoardCell.cpp ../src/Model/
         ../src/AbstractState.cpp ../src/Assets.cpp ../src/Attributes.cpp ../src/Color.cpp ../src/Game.cpp
         ../src/GfxStream.cpp ../src/MovePlayState.cpp ../src/Position.cpp ../src/MenuState.cpp
         ../src/View/AbstractView.cpp ../src/View/CellView.cpp ../src/View/BoardView.cpp ../src/View/SectionView.cpp
-        ../src/View/GameView.cpp Board/BoardLoadingTest.cpp Board/BoardSaveTest.cpp Board/SolveTest.cpp Board/VioletingBoardRulesTest.cpp Section/VioletingSectionRulesTest.cpp ../src/PlayStateAbstract.cpp ../src/InsertionPlayState.cpp)
+        ../src/View/GameView.cpp Board/BoardLoadingTest.cpp Board/BoardSaveTest.cpp Board/SolveTest.cpp Board/VioletingBoardRulesTest.cpp Section/VioletingSectionRulesTest.cpp ../src/PlayStateAbstract.cpp ../src/InsertionPlayState.cpp ../src/Model/Hint.cpp)
 
 add_definitions(-DTESTING)
 
