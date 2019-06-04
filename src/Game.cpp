@@ -7,7 +7,7 @@
 #include "Game.hpp"
 
 Game::Game() : state(nullptr) {
-    this->SetState(new MainMenuState());
+    this->SetState(std::make_shared<MainMenuState>());
 }
 
 void Game::Run() {
@@ -25,7 +25,7 @@ void Game::Run() {
     }
 }
 
-void Game::SetState(AbstractState *newState) {
+void Game::SetState(const std::shared_ptr<AbstractState> &newState) {
     if (this->state != nullptr) {
         this->state->OnExit(*this);
     }
@@ -38,5 +38,5 @@ void Game::SetState(AbstractState *newState) {
 }
 
 AbstractState *Game::GetState() const {
-    return this->state;
+    return this->state.get();
 }

@@ -16,10 +16,10 @@ NewGameMenuState::NewGameMenuState() {
 
 void NewGameMenuState::UseOption(Game &game, const std::string &option) {
     if (option == STANDARD_SIZE_OPTION) {
-        game.SetState(new MovePlayState(Board::STANDARD_SIZE));
+        game.SetState(std::make_shared<MovePlayState>(Board::STANDARD_SIZE));
     } else if (option == HEXADOKU_OPTION) {
-        game.SetState(new MovePlayState(Board::HEXADOKU_SIZE));
+        game.SetState(std::make_shared<MovePlayState>(Board::HEXADOKU_SIZE));
     } else if (option == BACK_OPTION) {
-        game.SetState(new MainMenuState());
+        game.SetState(std::make_shared<MainMenuState>());
     }
 }

@@ -20,6 +20,6 @@ void BoardCreatorMenu::UseOption(Game &game, const std::string &option) {
     } else if (option == HEXADOKU_OPTION) {
         game.SetState(nullptr);
     } else if (option == BACK_OPTION) {
-        game.SetState(new MainMenuState());
+        game.SetState(std::make_shared<MainMenuState>());
     }
 }

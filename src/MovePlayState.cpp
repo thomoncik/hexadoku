@@ -8,17 +8,17 @@ void MovePlayState::HandleInput(Game &game, char input) {
     board->SetSelected(false, x, y);
 
     if (input == 'q') {
-        game.SetState(new MainMenuState());
+        game.SetState(std::make_shared<MainMenuState>());
     } else if (input == 'l') {
-        this->x = (this->x + 1) % this->board->GetSize();
+        x = (x + 1) % board->GetSize();
     } else if (input == 'h') {
-        this->x = (this->x == 0) ? this->board->GetSize() - 1 : this->x - 1;
+        x = (x == 0) ? board->GetSize() - 1 : x - 1;
     } else if (input == 'j') {
-        this->y = (this->y + 1) % this->board->GetSize();
+        y = (y + 1) % board->GetSize();
     } else if (input == 'k') {
-        this->y = (this->y == 0) ? this->board->GetSize() - 1 : this->y - 1;
+        y = (y == 0) ? board->GetSize() - 1 : y - 1;
     } else if (input == 'm') {
-        game.SetState(new InsertionPlayState(this->board->GetSize(), this->board, this->x, this->y));
+        game.SetState(std::make_shared<InsertionPlayState>(board->GetSize(), board, x, y));
     }
-    this->board->SetSelected(true, x, y);
+    board->SetSelected(true, x, y);
 }

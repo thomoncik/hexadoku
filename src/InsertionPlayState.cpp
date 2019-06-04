@@ -16,9 +16,9 @@ void InsertionPlayState::HandleInput(Game &game, char input) {
     board->SetSelected(false, x, y);
 
     if (input == 'q') {
-        game.SetState(new MainMenuState());
+        game.SetState(std::make_shared<MainMenuState>());
     } else if (input == 'm') {
-        game.SetState(new MovePlayState(this->board->GetSize(), this->board, this->x, this->y));
+        game.SetState(std::make_shared<MovePlayState>(this->board->GetSize(), this->board, this->x, this->y));
     } else if (std::find(boardCharacters.begin(), boardCharacters.end(), input) != boardCharacters.end()) {
         ptrdiff_t value = distance(boardCharacters.begin(), find(boardCharacters.begin(), boardCharacters.end(), input));
         this->board->SetValue(value, x, y);

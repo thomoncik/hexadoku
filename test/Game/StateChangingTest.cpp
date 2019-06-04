@@ -14,10 +14,8 @@ SCENARIO("States can be changed", "[Game]") {
         Fake(Method(stateMock, OnEntry));
         Fake(Method(stateMock, OnExit));
 
-        AbstractState *state = &stateMock.get();
-
         WHEN("game state is changed to new one") {
-            game.SetState(state);
+            game.SetState(std::shared_ptr<AbstractState>(&stateMock.get()));
 
             THEN("OnEntry is called from new state") {
                 Verify(Method(stateMock, OnEntry)).Once();

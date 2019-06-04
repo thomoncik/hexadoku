@@ -16,9 +16,9 @@ MainMenuState::MainMenuState() {
 
 void MainMenuState::UseOption(Game &game, const std::string &option) {
     if (option == NEW_GAME_OPTION) {
-        game.SetState(new NewGameMenuState());
+        game.SetState(std::make_shared<NewGameMenuState>());
     } else if (option == BOARD_CREATOR_OPTION) {
-        game.SetState(new BoardCreatorMenu());
+        game.SetState(std::make_shared<BoardCreatorMenu>());
     } else if (option == EXIT_OPTION) {
         game.SetState(nullptr);
     }
