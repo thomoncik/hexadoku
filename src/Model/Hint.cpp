@@ -1,9 +1,10 @@
 #include <Model/Hint.hpp>
 
+Hint::Hint() = default;
+
 Hint::Hint(int column, int row, int value) : column(column), row(row), value(value) {
 
 }
-
 
 void Hint::SetColumn(int column) {
     this->column = column;

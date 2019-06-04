@@ -399,6 +399,6 @@ Hint Board::GetHint() const {
         }
     }
     
-    return {};
+    return Hint{};
 }
 

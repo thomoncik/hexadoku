@@ -5,6 +5,8 @@
 
 class Hint {
 public:
+    Hint();
+
     Hint(int column, int row, int value);
 
     void SetColumn(int column);
