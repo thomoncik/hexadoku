@@ -1,6 +1,6 @@
 #include <utility>
 
-#include <GfxStream.hpp>
+#include <Graphics/GfxStream.hpp>
 #include <View/SectionView.hpp>
 #include <View/CellView.hpp>
 #include <cmath>

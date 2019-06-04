@@ -1,5 +1,5 @@
-#include <NewGameMenuState.hpp>
-#include <MainMenuState.hpp>
+#include <Menu/NewGameMenuState.hpp>
+#include <Menu/MainMenuState.hpp>
 #include <MovePlayState.hpp>
 
 const std::string NewGameMenuState::STANDARD_SIZE_OPTION{"Standard"};

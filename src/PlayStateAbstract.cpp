@@ -7,8 +7,7 @@
 #include <cmath>
 #include <algorithm>
 #include <PlayStateAbstract.hpp>
-#include <GfxStream.hpp>
-#include <MenuState.hpp>
+#include <Graphics/GfxStream.hpp>
 #include <View/GameView.hpp>
 
 PlayStateAbstract::PlayStateAbstract(int boardSize, std::shared_ptr<Board>board, int x, int y) : x(x), y(y) {

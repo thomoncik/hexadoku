@@ -3,9 +3,9 @@
 #include <utility>
 #include <View/GameView.hpp>
 #include <View/BoardView.hpp>
-#include <Color.hpp>
-#include <GfxStream.hpp>
-#include <Attributes.hpp>
+#include <Graphics/Color.hpp>
+#include <Graphics/GfxStream.hpp>
+#include <Graphics/Attributes.hpp>
 
 GameView::GameView(Board board, std::string gameTime) : board(std::move(board)), gameTime(std::move(gameTime)) {
 
