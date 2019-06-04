@@ -1,10 +1,4 @@
-
 #include <Model/Hint.hpp>
-#include <Model/BoardCell.hpp>
-
-Hint::Hint() : column(0), row(0), value(BoardCell::EMPTY_VALUE) {
-
-}
 
 Hint::Hint(int column, int row, int value) : column(column), row(row), value(value) {
 
