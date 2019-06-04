@@ -1,5 +1,6 @@
 #include <MovePlayState.hpp>
 #include <MenuState.hpp>
+#include <MainMenuState.hpp>
 #include "InsertionPlayState.hpp"
 
 MovePlayState::MovePlayState(int boardSize, std::shared_ptr<Board> board, int x, int y) : PlayStateAbstract(boardSize, board, x, y) {}
@@ -8,7 +9,7 @@ void MovePlayState::HandleInput(Game &game, char input) {
     board->SetSelected(false, x, y);
 
     if (input == 'q') {
-        game.SetState(MenuState::MAIN_MENU);
+        game.SetState(new MainMenuState());
     } else if (input == 'l') {
         this->x = (this->x + 1) % this->board->GetSize();
     } else if (input == 'h') {

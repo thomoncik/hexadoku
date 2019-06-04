@@ -2,12 +2,12 @@
 #include <chrono>
 #include <thread>
 #include <ncurses.h>
+#include <MainMenuState.hpp>
 
 #include "Game.hpp"
-#include "MenuState.hpp"
 
 Game::Game() : state(nullptr) {
-    this->SetState(MenuState::MAIN_MENU);
+    this->SetState(new MainMenuState());
 }
 
 void Game::Run() {
