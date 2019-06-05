@@ -7,6 +7,7 @@
 #include "MovePlayState.hpp"
 #include <algorithm>
 #include <cstddef>
+#include "View/InsertionGameView.hpp"
 
 InsertionPlayState::InsertionPlayState(int boardSize, std::shared_ptr<Board> board, int x, int y) : PlayStateAbstract(boardSize, board, x, y), boardCharacters(boardSize == Board::STANDARD_SIZE ?
                             std::vector<char>{' ', '1', '2', '3', '4', '5', '6', '7', '8', '9'} :
@@ -24,4 +25,9 @@ void InsertionPlayState::HandleInput(Game &game, char input) {
         this->board->SetValue(value, x, y);
     }
     this->board->SetSelected(true, x, y);
+}
+
+void InsertionPlayState::Draw(Game &game) {
+    InsertionGameView gameView(*this->board, GetGameTimeString());
+    gameView.Draw();
 }

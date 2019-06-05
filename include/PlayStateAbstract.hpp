@@ -19,9 +19,8 @@ public:
 
     void Update(Game &game) override;
 
-    void Draw(Game &game) override;
-
     void OnExit(Game &game) override;
+
 protected:
     std::time_t creationTime{};
     std::time_t gameTime{};

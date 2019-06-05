@@ -9,7 +9,7 @@
 #include <PlayStateAbstract.hpp>
 #include <GfxStream.hpp>
 #include <MenuState.hpp>
-#include <View/GameView.hpp>
+#include <View/GameViewAbstract.hpp>
 
 PlayStateAbstract::PlayStateAbstract(int boardSize, std::shared_ptr<Board>board, int x, int y) : x(x), y(y) {
     this->board = (board == nullptr) ? std::make_shared<Board>(boardSize) : std::move(board);
@@ -23,11 +23,6 @@ void PlayStateAbstract::OnEntry(Game &game) {
 
 void PlayStateAbstract::Update(Game &game) {
     gameTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) - creationTime;
-}
-
-void PlayStateAbstract::Draw(Game &game) {
-    GameView gameView(*this->board, GetGameTimeString());
-    gameView.Draw();
 }
 
 void PlayStateAbstract::OnExit(Game &game) {
