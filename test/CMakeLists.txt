@@ -31,7 +31,7 @@ set(SOURCE_FILES
         ../src/Menu/NewGameMenuState.cpp
         ../src/Menu/BoardCreatorMenu.cpp
         ../src/Menu/LoadGameMenu.cpp
-        ../src/Menu/LoadStandardGameMenu.cpp ../src/Menu/AbstractLoadingMenu.cpp)
+        ../src/Menu/LoadGameSizeMenu.cpp)
 
 add_definitions(-DTESTING)
 

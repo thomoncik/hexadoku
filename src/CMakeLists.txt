@@ -25,7 +25,7 @@ set(SOURCE_FILES
         Menu/NewGameMenuState.cpp
         Menu/BoardCreatorMenu.cpp
         Menu/LoadGameMenu.cpp
-        Menu/LoadStandardGameMenu.cpp Menu/AbstractLoadingMenu.cpp)
+        Menu/LoadGameSizeMenu.cpp Menu/LoadGameMenu.cpp)
 
 add_executable(hexadoku ${SOURCE_FILES})
 target_link_libraries(hexadoku curses)
