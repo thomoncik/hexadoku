@@ -40,4 +40,4 @@ target_link_libraries(tests Catch)
 target_link_libraries(tests curses)
 target_link_libraries(tests ${Boost_LIBRARIES})
 
-add_test(NAME tests COMMAND tests -d yes --order lex)
+add_test(NAME tests COMMAND tests -s -d yes --use-colour yes)
