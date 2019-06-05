@@ -19,7 +19,7 @@ LoadGameMenu::LoadGameMenu(int size) : size(size) {
 
 void LoadGameMenu::OnEntry(Game &game) {
     filePathToName.clear();
-    for (const auto & entry : boost::filesystem::directory_iterator(loadingPath)) {
+    for (const auto &entry : boost::filesystem::directory_iterator(loadingPath)) {
         filePathToName[entry.path().filename().string()] = entry.path().stem().string();
     }
     option = filePathToName.begin();
