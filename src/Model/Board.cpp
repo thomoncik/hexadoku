@@ -1,10 +1,9 @@
-#include <random>
-
 //
 // Created by Jakub Kiermasz on 2019-05-11.
 //
 
 #include <cmath>
+#include <random>
 #include <iostream>
 #include <fstream>
 #include <random>

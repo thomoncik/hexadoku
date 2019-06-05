@@ -23,10 +23,13 @@ set(SOURCE_FILES
         Menu/AbstractMenuState.cpp
         Menu/MainMenuState.cpp
         Menu/NewGameMenuState.cpp
-        Menu/BoardCreatorMenu.cpp)
+        Menu/BoardCreatorMenu.cpp
+        Menu/LoadGameMenu.cpp
+        Menu/LoadStandardGameMenu.cpp Menu/AbstractLoadingMenu.cpp)
 
 add_executable(hexadoku ${SOURCE_FILES})
 target_link_libraries(hexadoku curses)
+target_link_libraries(hexadoku ${Boost_LIBRARIES})
 
 install(TARGETS ${TARGET_NAME} DESTINATION $ENV{HOME}/.local/bin)
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/data/ DESTINATION $ENV{HOME}/.hexadoku/)

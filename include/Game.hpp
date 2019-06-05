@@ -12,7 +12,7 @@ public:
 
     void Run();
 
-    void SetState(const std::shared_ptr<AbstractState> &newState);
+    void SetState(std::shared_ptr<AbstractState> newState);
 
     AbstractState *GetState() const;
 

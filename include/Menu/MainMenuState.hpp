@@ -7,6 +7,7 @@
 class MainMenuState : public AbstractMenuState {
 public:
     static const std::string NEW_GAME_OPTION;
+    static const std::string LOAD_GAME_OPTION;
     static const std::string BOARD_CREATOR_OPTION;
     static const std::string EXIT_OPTION;
 

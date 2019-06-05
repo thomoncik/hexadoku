@@ -29,12 +29,15 @@ set(SOURCE_FILES
         ../src/Menu/AbstractMenuState.cpp
         ../src/Menu/MainMenuState.cpp
         ../src/Menu/NewGameMenuState.cpp
-        ../src/Menu/BoardCreatorMenu.cpp)
+        ../src/Menu/BoardCreatorMenu.cpp
+        ../src/Menu/LoadGameMenu.cpp
+        ../src/Menu/LoadStandardGameMenu.cpp ../src/Menu/AbstractLoadingMenu.cpp)
 
 add_definitions(-DTESTING)
 
 add_executable(tests ${SOURCE_FILES} ${TEST_SOURCES})
 target_link_libraries(tests Catch)
 target_link_libraries(tests curses)
+target_link_libraries(tests ${Boost_LIBRARIES})
 
 add_test(NAME tests COMMAND tests -d yes --order lex)
