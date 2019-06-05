@@ -23,9 +23,7 @@ void PlayStateAbstract::OnEntry(Game &game) {
     gfx::out << gfx::clear;
 }
 
-void PlayStateAbstract::Update(Game &game) {
-    this->model->UpdateTime();
-}
+void PlayStateAbstract::Update(Game &game) {}
 
 void PlayStateAbstract::OnExit(Game &game) {
 

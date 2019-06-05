@@ -28,7 +28,7 @@ void InsertionPlayState::HandleInput(Game &game, char input) {
         ptrdiff_t value = distance(boardCharacters.begin(), find(boardCharacters.begin(), boardCharacters.end(), input));
         this->model->SetValue(value, model->GetX(), model->GetY());
     }
-    this->board->SetSelected(true, model->GetX(), model->GetY());
+    this->model->SetSelected(true, model->GetX(), model->GetY());
 }
 
 void InsertionPlayState::Draw(Game &game) {

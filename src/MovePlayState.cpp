@@ -22,7 +22,7 @@ void MovePlayState::HandleInput(Game &game, char input) {
     } else if (input == 'm') {
         game.SetState(new InsertionPlayState(this->model));
     }
-    this->board->SetSelected(true, model->GetX(), model->GetY());
+    this->model->SetSelected(true, model->GetX(), model->GetY());
 }
 
 void MovePlayState::Draw(Game &game) {
