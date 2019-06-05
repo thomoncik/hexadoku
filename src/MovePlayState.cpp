@@ -1,6 +1,7 @@
 #include <MovePlayState.hpp>
 #include <MenuState.hpp>
 #include "InsertionPlayState.hpp"
+#include "View/MoveGameView.hpp"
 
 MovePlayState::MovePlayState(int boardSize, std::shared_ptr<Board> board, int x, int y) : PlayStateAbstract(boardSize, board, x, y) {}
 
@@ -21,4 +22,9 @@ void MovePlayState::HandleInput(Game &game, char input) {
         game.SetState(new InsertionPlayState(this->board->GetSize(), this->board, this->x, this->y));
     }
     this->board->SetSelected(true, x, y);
+}
+
+void MovePlayState::Draw(Game &game) {
+    MoveGameView gameView(*this->board, GetGameTimeString());
+    gameView.Draw();
 }
