@@ -1,5 +1,5 @@
 #include <Graphics/GfxStream.hpp>
-#include <Assets.hpp>
+#include <Graphics/Assets.hpp>
 #include <Graphics/Attributes.hpp>
 #include <Menu/AbstractMenuState.hpp>
 #include <iomanip>

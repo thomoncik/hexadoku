@@ -2,7 +2,7 @@
 #include "fakeit/fakeit.hpp"
 
 #include "Game.hpp"
-#include "AbstractState.hpp"
+#include "State/AbstractState.hpp"
 
 using namespace fakeit;
 

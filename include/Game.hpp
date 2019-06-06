@@ -1,7 +1,7 @@
 #ifndef HEXADOKU_GAME_HPP
 #define HEXADOKU_GAME_HPP
 
-#include "AbstractState.hpp"
+#include "State/AbstractState.hpp"
 #include <memory>
 
 class AbstractState;

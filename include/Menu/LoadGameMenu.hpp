@@ -1,7 +1,7 @@
 #ifndef HEXADOKU_LOADGAMEMENU_HPP
 #define HEXADOKU_LOADGAMEMENU_HPP
 
-#include <AbstractState.hpp>
+#include <State/AbstractState.hpp>
 #include <string>
 #include <map>
 

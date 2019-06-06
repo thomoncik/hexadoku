@@ -1,6 +1,6 @@
 #include <Menu/BoardCreatorMenu.hpp>
 #include <Menu/MainMenuState.hpp>
-#include <MovePlayState.hpp>
+#include <State/MovePlayState.hpp>
 
 const std::string BoardCreatorMenu::STANDARD_SIZE_OPTION{"Standard"};
 const std::string BoardCreatorMenu::HEXADOKU_OPTION{"Hexadoku"};

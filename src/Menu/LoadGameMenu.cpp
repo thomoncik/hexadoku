@@ -6,8 +6,8 @@
 #include <iomanip>
 #include <Graphics/Attributes.hpp>
 #include <Model/Board.hpp>
-#include <MovePlayState.hpp>
-#include <Assets.hpp>
+#include <State/MovePlayState.hpp>
+#include <Graphics/Assets.hpp>
 
 LoadGameMenu::LoadGameMenu(int size) : size(size) {
     if (size == Board::STANDARD_SIZE) {

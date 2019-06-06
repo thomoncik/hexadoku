@@ -11,21 +11,21 @@ set(SOURCE_FILES
         ../src/Model/Board.cpp
         ../src/Model/BoardCell.cpp
         ../src/Model/BoardSection.cpp
-        ../src/AbstractState.cpp
-        ../src/Assets.cpp
+        ../src/State/AbstractState.cpp
+        ../src/Graphics/Assets.cpp
         ../src/Graphics/Attributes.cpp
         ../src/Graphics/Color.cpp
         ../src/Game.cpp
         ../src/Graphics/GfxStream.cpp
-        ../src/MovePlayState.cpp
+        ../src/State/MovePlayState.cpp
         ../src/Graphics/Position.cpp
         ../src/View/AbstractView.cpp
         ../src/View/CellView.cpp
         ../src/View/BoardView.cpp
         ../src/View/SectionView.cpp
         ../src/View/GameView.cpp
-        ../src/PlayStateAbstract.cpp
-        ../src/InsertionPlayState.cpp
+        ../src/State/PlayStateAbstract.cpp
+        ../src/State/InsertionPlayState.cpp
         ../src/Menu/AbstractMenuState.cpp
         ../src/Menu/MainMenuState.cpp
         ../src/Menu/NewGameMenuState.cpp

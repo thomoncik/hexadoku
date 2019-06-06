@@ -5,7 +5,7 @@
 #ifndef HEXADOKU_PLAYSTATEABSTRACT_HPP
 #define HEXADOKU_PLAYSTATEABSTRACT_HPP
 
-#include "AbstractState.hpp"
+#include "State/AbstractState.hpp"
 #include "Model/Board.hpp"
 #include <ctime>
 #include <memory>

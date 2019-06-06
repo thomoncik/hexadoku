@@ -3,8 +3,8 @@
 //
 
 #include <utility>
-#include "InsertionPlayState.hpp"
-#include "MovePlayState.hpp"
+#include "State/InsertionPlayState.hpp"
+#include "State/MovePlayState.hpp"
 #include <algorithm>
 #include <cstddef>
 #include <Menu/MainMenuState.hpp>

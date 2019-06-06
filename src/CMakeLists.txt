@@ -5,21 +5,21 @@ set(SOURCE_FILES
         Model/Board.cpp
         Model/BoardCell.cpp
         Model/BoardSection.cpp
-        AbstractState.cpp
-        Assets.cpp
+        State/AbstractState.cpp
+        Graphics/Assets.cpp
         Graphics/Attributes.cpp
         Graphics/Color.cpp
         Game.cpp
         Graphics/GfxStream.cpp
-        MovePlayState.cpp
+        State/MovePlayState.cpp
         Graphics/Position.cpp
         View/AbstractView.cpp
         View/CellView.cpp
         View/BoardView.cpp
         View/SectionView.cpp
         View/GameView.cpp
-        PlayStateAbstract.cpp
-        InsertionPlayState.cpp
+        State/PlayStateAbstract.cpp
+        State/InsertionPlayState.cpp
         Menu/AbstractMenuState.cpp
         Menu/MainMenuState.cpp
         Menu/NewGameMenuState.cpp
