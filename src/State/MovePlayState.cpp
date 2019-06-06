@@ -1,7 +1,7 @@
 #include <utility>
 
 #include <State/MovePlayState.hpp>
-#include <Menu/MainMenuState.hpp>
+#include <State/Menu/MainMenuState.hpp>
 #include "State/InsertionPlayState.hpp"
 
 MovePlayState::MovePlayState(int boardSize, std::shared_ptr<Board> board, int x, int y) : PlayStateAbstract(boardSize, std::move(board), x, y) {}

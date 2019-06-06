@@ -1,6 +1,6 @@
 #include <utility>
 
-#include <Menu/LoadGameMenu.hpp>
+#include <State/Menu/LoadGameMenu.hpp>
 #include <boost/filesystem.hpp>
 #include <Graphics/GfxStream.hpp>
 #include <iomanip>

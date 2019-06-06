@@ -2,7 +2,7 @@
 #include <chrono>
 #include <thread>
 #include <ncurses.h>
-#include <Menu/MainMenuState.hpp>
+#include <State/Menu/MainMenuState.hpp>
 
 #include "Game.hpp"
 

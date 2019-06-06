@@ -20,12 +20,14 @@ set(SOURCE_FILES
         View/GameView.cpp
         State/PlayStateAbstract.cpp
         State/InsertionPlayState.cpp
-        Menu/AbstractMenuState.cpp
-        Menu/MainMenuState.cpp
-        Menu/NewGameMenuState.cpp
-        Menu/BoardCreatorMenu.cpp
-        Menu/LoadGameMenu.cpp
-        Menu/LoadGameSizeMenu.cpp Menu/LoadGameMenu.cpp)
+        State/Menu/AbstractMenuState.cpp
+        State/Menu/MainMenuState.cpp
+        State/Menu/NewGameMenuState.cpp
+        State/Menu/BoardCreatorMenu.cpp
+        State/Menu/LoadGameMenu.cpp
+        State/Menu/LoadGameSizeMenu.cpp
+        State/Menu/LoadGameMenu.cpp
+        State/BoardCreatorState.cpp)
 
 add_executable(hexadoku ${SOURCE_FILES})
 target_link_libraries(hexadoku curses)

@@ -1,7 +1,7 @@
 #include <Graphics/GfxStream.hpp>
 #include <Graphics/Assets.hpp>
 #include <Graphics/Attributes.hpp>
-#include <Menu/AbstractMenuState.hpp>
+#include <State/Menu/AbstractMenuState.hpp>
 #include <iomanip>
 #include <algorithm>
 

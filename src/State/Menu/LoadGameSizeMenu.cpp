@@ -1,6 +1,6 @@
-#include <Menu/LoadGameSizeMenu.hpp>
-#include <Menu/LoadGameMenu.hpp>
-#include <Menu/MainMenuState.hpp>
+#include <State/Menu/LoadGameSizeMenu.hpp>
+#include <State/Menu/LoadGameMenu.hpp>
+#include <State/Menu/MainMenuState.hpp>
 #include <Model/Board.hpp>
 
 const std::string LoadGameSizeMenu::STANDARD_SIZE_OPTION{"Standard"};

@@ -7,7 +7,7 @@
 #include "State/MovePlayState.hpp"
 #include <algorithm>
 #include <cstddef>
-#include <Menu/MainMenuState.hpp>
+#include <State/Menu/MainMenuState.hpp>
 
 InsertionPlayState::InsertionPlayState(int boardSize, std::shared_ptr<Board> board, int x, int y) : PlayStateAbstract(boardSize, std::move(board), x, y), boardCharacters(boardSize == Board::STANDARD_SIZE ?
                             std::vector<char>{' ', '1', '2', '3', '4', '5', '6', '7', '8', '9'} :

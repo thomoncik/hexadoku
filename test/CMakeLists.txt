@@ -26,12 +26,13 @@ set(SOURCE_FILES
         ../src/View/GameView.cpp
         ../src/State/PlayStateAbstract.cpp
         ../src/State/InsertionPlayState.cpp
-        ../src/Menu/AbstractMenuState.cpp
-        ../src/Menu/MainMenuState.cpp
-        ../src/Menu/NewGameMenuState.cpp
-        ../src/Menu/BoardCreatorMenu.cpp
-        ../src/Menu/LoadGameMenu.cpp
-        ../src/Menu/LoadGameSizeMenu.cpp)
+        ../src/State/Menu/AbstractMenuState.cpp
+        ../src/State/Menu/MainMenuState.cpp
+        ../src/State/Menu/NewGameMenuState.cpp
+        ../src/State/Menu/BoardCreatorMenu.cpp
+        ../src/State/Menu/LoadGameMenu.cpp
+        ../src/State/Menu/LoadGameSizeMenu.cpp
+        ../src/State/BoardCreatorState.cpp)
 
 add_definitions(-DTESTING)
 

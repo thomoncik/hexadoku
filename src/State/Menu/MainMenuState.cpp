@@ -1,7 +1,7 @@
-#include <Menu/NewGameMenuState.hpp>
-#include <Menu/BoardCreatorMenu.hpp>
-#include <Menu/LoadGameSizeMenu.hpp>
-#include "Menu/MainMenuState.hpp"
+#include <State/Menu/NewGameMenuState.hpp>
+#include <State/Menu/BoardCreatorMenu.hpp>
+#include <State/Menu/LoadGameSizeMenu.hpp>
+#include "State/Menu/MainMenuState.hpp"
 
 const std::string MainMenuState::NEW_GAME_OPTION{"New game"};
 const std::string MainMenuState::LOAD_GAME_OPTION{"Load game"};
