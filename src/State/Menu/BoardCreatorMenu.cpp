@@ -1,6 +1,6 @@
 #include <State/Menu/BoardCreatorMenu.hpp>
 #include <State/Menu/MainMenuState.hpp>
-#include <State/Game/MovePlayState.hpp>
+#include <State/Menu/LoadBoardSizeMenuState.hpp>
 #include <State/BoardCreator/MoveBoardCreatorState.hpp>
 
 const std::string BoardCreatorMenu::STANDARD_SIZE_OPTION{"Standard"};
@@ -23,7 +23,7 @@ void BoardCreatorMenu::UseOption(Game &game, const std::string &option) {
     } else if (option == HEXADOKU_OPTION) {
         game.SetState(std::make_shared<MoveBoardCreatorState>(Board::HEXADOKU_SIZE));
     } else if (option == FROM_FILE_OPTION) {
-        game.SetState(nullptr);
+        game.SetState(std::make_shared<LoadBoardSizeMenuState>());
     } else if (option == BACK_OPTION) {
         game.SetState(std::make_shared<MainMenuState>());
     }

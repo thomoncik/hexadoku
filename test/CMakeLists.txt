@@ -42,7 +42,9 @@ set(SOURCE_FILES
         ../src/Model/BoardCreator.cpp
         ../src/View/BoardCreator/BoardCreatorViewAbstract.cpp
         ../src/View/BoardCreator/MoveBoardCreatorView.cpp
-        ../src/View/BoardCreator/InsertionBoardCreatorView.cpp)
+        ../src/View/BoardCreator/InsertionBoardCreatorView.cpp
+        ../src/State/Menu/LoadBoardSizeMenuState.cpp
+        ../src/State/Menu/LoadBoardMenuState.cpp)
 
 add_definitions(-DTESTING)
 
