@@ -17,7 +17,6 @@ set(SOURCE_FILES
         View/CellView.cpp
         View/BoardView.cpp
         View/SectionView.cpp
-        View/GameView.cpp
         State/PlayStateAbstract.cpp
         State/InsertionPlayState.cpp
         State/Menu/AbstractMenuState.cpp
@@ -26,8 +25,12 @@ set(SOURCE_FILES
         State/Menu/BoardCreatorMenu.cpp
         State/Menu/LoadGameMenu.cpp
         State/Menu/LoadGameSizeMenu.cpp
-        State/Menu/LoadGameMenu.cpp
-        State/BoardCreatorState.cpp)
+        State/BoardCreatorState.cpp
+        View/MoveGameView.cpp
+        View/InsertionGameView.cpp
+        Model/PlayStateModel.cpp
+        View/GameViewAbstract.cpp
+        Model/Hint.cpp)
 
 add_executable(hexadoku ${SOURCE_FILES})
 target_link_libraries(hexadoku curses)

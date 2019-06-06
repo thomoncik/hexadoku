@@ -5,14 +5,20 @@
 #ifndef HEXADOKU_INSERTIONPLAYSTATE_HPP
 #define HEXADOKU_INSERTIONPLAYSTATE_HPP
 
-#include "Model/Board.hpp"
-#include "PlayStateAbstract.hpp"
+#include <Model/Board.hpp>
+#include <State/PlayStateAbstract.hpp>
+#include <Model/PlayStateModel.hpp>
 
 class InsertionPlayState : public PlayStateAbstract {
 public:
-    explicit InsertionPlayState(int boardSize, std::shared_ptr<Board> board = nullptr, int x = 0, int y = 0);
+    explicit InsertionPlayState(int boardSize);
+
+    explicit InsertionPlayState(std::shared_ptr<PlayStateModel> model);
 
     void HandleInput(Game &game, char input) override;
+    
+    void Draw(Game &game) override;
+
 private:
     std::vector<char> boardCharacters;
 };

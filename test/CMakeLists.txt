@@ -23,7 +23,6 @@ set(SOURCE_FILES
         ../src/View/CellView.cpp
         ../src/View/BoardView.cpp
         ../src/View/SectionView.cpp
-        ../src/View/GameView.cpp
         ../src/State/PlayStateAbstract.cpp
         ../src/State/InsertionPlayState.cpp
         ../src/State/Menu/AbstractMenuState.cpp
@@ -32,7 +31,12 @@ set(SOURCE_FILES
         ../src/State/Menu/BoardCreatorMenu.cpp
         ../src/State/Menu/LoadGameMenu.cpp
         ../src/State/Menu/LoadGameSizeMenu.cpp
-        ../src/State/BoardCreatorState.cpp)
+        ../src/State/BoardCreatorState.cpp
+        ../src/View/MoveGameView.cpp
+        ../src/View/InsertionGameView.cpp
+        ../src/Model/PlayStateModel.cpp
+        ../src/View/GameViewAbstract.cpp
+        ../src/Model/Hint.cpp)
 
 add_definitions(-DTESTING)
 

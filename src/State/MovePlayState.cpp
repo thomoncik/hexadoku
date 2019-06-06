@@ -2,26 +2,40 @@
 
 #include <State/MovePlayState.hpp>
 #include <State/Menu/MainMenuState.hpp>
+#include <View/MoveGameView.hpp>
 #include "State/InsertionPlayState.hpp"
 
-MovePlayState::MovePlayState(int boardSize, std::shared_ptr<Board> board, int x, int y) : PlayStateAbstract(boardSize, std::move(board), x, y) {}
+MovePlayState::MovePlayState(int boardSize) : PlayStateAbstract(boardSize) {
+
+}
+
+MovePlayState::MovePlayState(std::shared_ptr<Board> board) : PlayStateAbstract(std::move(board)) {
+
+}
+
+MovePlayState::MovePlayState(std::shared_ptr<PlayStateModel> model) : PlayStateAbstract(std::move(model)) {}
 
 void MovePlayState::HandleInput(Game &game, char input) {
-    board->SetSelected(false, x, y);
+    model->SetSelected(false, model->GetX(), model->GetY());
     if (input == 'l') {
-        x = (x + 1) % board->GetSize();
+        model->SetX((model->GetX() + 1) % model->GetSize());
     } else if (input == 'h') {
-        x = (x == 0) ? board->GetSize() - 1 : x - 1;
+        model->SetX((model->GetX() == 0) ? model->GetSize() - 1 : model->GetX() - 1);
     } else if (input == 'j') {
-        y = (y + 1) % board->GetSize();
+        model->SetY((model->GetY() + 1) % model->GetSize());
     } else if (input == 'k') {
-        y = (y == 0) ? board->GetSize() - 1 : y - 1;
+        model->SetY((model->GetY() == 0) ? model->GetSize() - 1 : model->GetY() - 1);
     }
-    board->SetSelected(true, x, y);
+    model->SetSelected(true, model->GetX(), model->GetY());
 
     if (input == 'q') {
         game.SetState(std::make_shared<MainMenuState>());
     } else if (input == 'm') {
-        game.SetState(std::make_shared<InsertionPlayState>(board->GetSize(), std::move(board), x, y));
+        game.SetState(std::make_shared<InsertionPlayState>(std::move(model)));
     }
+}
+
+void MovePlayState::Draw(Game &game) {
+    MoveGameView gameView(model->GetBoard(), model->GetGameTimeString());
+    gameView.Draw();
 }

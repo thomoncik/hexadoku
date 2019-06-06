@@ -44,7 +44,7 @@ void LoadGameMenu::HandleInput(Game &game, char input) {
         auto board = std::make_shared<Board>(size);
         board->LoadFromFile(option->first);
 
-        game.SetState(std::make_shared<MovePlayState>(size, board));
+        game.SetState(std::make_shared<MovePlayState>(board));
     }
 }
 

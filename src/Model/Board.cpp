@@ -371,3 +371,35 @@ void Board::Reset() {
     }
 }
 
+Hint Board::GetHint() const {
+    Board boardCopy = *this;
+    boardCopy.Solve();
+    
+    std::vector<int> rowToCheck(GetSize());
+    for (int i = 0; i < rowToCheck.size(); ++i) {
+        rowToCheck[i] = i;
+    }
+    std::shuffle(rowToCheck.begin(), rowToCheck.end(), std::mt19937(std::random_device()()));
+    
+    std::vector<std::vector<int>> columnToCheck(GetSize(), std::vector<int>(GetSize()));
+    for (int i = 0; i < GetSize(); ++i) {
+        for (int j = 0; j < GetSize(); ++j) {
+            columnToCheck[i][j] = j;
+        }
+        std::shuffle(columnToCheck[i].begin(), columnToCheck[i].end(), std::mt19937(std::random_device()()));
+    }
+
+    for (int i = 0; i < rowToCheck.size(); ++i) {
+        for (int j = 0; j < columnToCheck[i].size(); ++j) {
+            const int column = columnToCheck[i][j];
+            const int row = rowToCheck[i];
+
+            if (GetValue(column, row) == BoardCell::EMPTY_VALUE) {
+                return {column, row, boardCopy.GetValue(column, row)};
+            }
+        }
+    }
+    
+    return Hint{};
+}
+
