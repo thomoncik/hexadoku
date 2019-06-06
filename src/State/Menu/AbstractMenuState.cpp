@@ -6,10 +6,6 @@
 #include <algorithm>
 
 void AbstractMenuState::OnEntry(Game &game) {
-    gfx::out << gfx::clear;
-    gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
-    gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
-
     selectedOption = 0;
 }
 
@@ -28,6 +24,10 @@ void AbstractMenuState::HandleInput(Game &game, char input) {
 }
 
 void AbstractMenuState::Draw(Game &game) {
+    gfx::out << gfx::clear;
+    gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
+    gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
+    
     for (unsigned i = 0; i < options.size(); ++i) {
         gfx::out << Position(30, 13 + i) << std::setw(labelSize);
         if (selectedOption == i) {
