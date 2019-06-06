@@ -6,7 +6,7 @@
 #define HEXADOKU_INSERTIONPLAYSTATE_HPP
 
 #include <Model/Board.hpp>
-#include <State/PlayStateAbstract.hpp>
+#include <State/Game/PlayStateAbstract.hpp>
 #include <Model/PlayStateModel.hpp>
 
 class InsertionPlayState : public PlayStateAbstract {

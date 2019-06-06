@@ -5,10 +5,10 @@
 #include <utility>
 #include <cstddef>
 #include <algorithm>
-#include <State/MovePlayState.hpp>
-#include <State/InsertionPlayState.hpp>
+#include <State/Game/MovePlayState.hpp>
+#include <State/Game/InsertionPlayState.hpp>
 #include <State/Menu/MainMenuState.hpp>
-#include <View/InsertionGameView.hpp>
+#include <View/Game/InsertionGameView.hpp>
 
 InsertionPlayState::InsertionPlayState(int boardSize) : PlayStateAbstract(boardSize) {
     boardCharacters = (boardSize == Board::STANDARD_SIZE) ?

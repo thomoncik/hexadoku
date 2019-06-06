@@ -6,7 +6,7 @@
 #include <iomanip>
 #include <Graphics/Attributes.hpp>
 #include <Model/Board.hpp>
-#include <State/MovePlayState.hpp>
+#include <State/Game/MovePlayState.hpp>
 #include <Graphics/Assets.hpp>
 
 LoadGameMenu::LoadGameMenu(int size) : size(size) {

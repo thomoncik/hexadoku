@@ -5,7 +5,7 @@
 
 using namespace fakeit;
 
-SCENARIO("Board can be solved by solver") {
+SCENARIO("BoardCreator can be solved by solver") {
     GIVEN("Standard sized board with values leading to unique solutions") {
         std::vector<std::vector<int>> values{
                 {0, 0, 5, 0, 0, 0, 3, 0, 0},

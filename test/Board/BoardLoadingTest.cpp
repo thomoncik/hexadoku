@@ -6,7 +6,7 @@
 
 using namespace fakeit;
 
-SCENARIO("Board can be loaded from file") {
+SCENARIO("BoardCreator can be loaded from file") {
 
     GIVEN("Loaded file & standard sized board") {
         std::stringstream fileMockStream;
@@ -32,7 +32,7 @@ SCENARIO("Board can be loaded from file") {
         WHEN("File is being parsed") {
             board.LoadFromStream(fileMockStream);
 
-            THEN("Board is loaded") {
+            THEN("BoardCreator is loaded") {
                 REQUIRE(board.GetValuesAsGrid() == values);
             }
         }
@@ -69,7 +69,7 @@ SCENARIO("Board can be loaded from file") {
         WHEN("File is being parsed") {
             board.LoadFromStream(fileMockStream);
 
-            THEN("Board is loaded") {
+            THEN("BoardCreator is loaded") {
                 REQUIRE(board.GetValuesAsGrid() == values);
             }
         }

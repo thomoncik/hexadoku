@@ -3,7 +3,7 @@
 
 #include <string>
 #include <Model/Board.hpp>
-#include "AbstractView.hpp"
+#include "View/AbstractView.hpp"
 #include <Graphics/Color.hpp>
 #include <Graphics/GfxStream.hpp>
 #include <Graphics/Attributes.hpp>
