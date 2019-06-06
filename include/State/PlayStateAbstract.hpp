@@ -5,14 +5,16 @@
 #ifndef HEXADOKU_PLAYSTATEABSTRACT_HPP
 #define HEXADOKU_PLAYSTATEABSTRACT_HPP
 
-#include "AbstractState.hpp"
-#include "Model/PlayStateModel.hpp"
+#include <State/AbstractState.hpp>
+#include <Model/PlayStateModel.hpp>
 #include <ctime>
 #include <memory>
 
 class PlayStateAbstract : public AbstractState {
 public:
     explicit PlayStateAbstract(int boardSize);
+
+    explicit PlayStateAbstract(std::shared_ptr<Board> board);
 
     explicit PlayStateAbstract(std::shared_ptr<PlayStateModel> model);
 

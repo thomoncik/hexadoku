@@ -1,7 +1,7 @@
 #include <View/SectionView.hpp>
 #include <View/BoardView.hpp>
-#include <Attributes.hpp>
-#include <GfxStream.hpp>
+#include <Graphics/Attributes.hpp>
+#include <Graphics/GfxStream.hpp>
 #include <cmath>
 
 BoardView::BoardView(Board board) : board(std::move(board)) {

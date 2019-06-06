@@ -1,3 +1,4 @@
+dist: xenial
 sudo: required
 language: cpp
 
@@ -9,13 +10,13 @@ before_install:
     - sudo apt-get update -qq
 
 install:
-    - sudo apt install -y libncurses5-dev libncursesw5-dev
+    - sudo apt install -y libncurses5-dev libncursesw5-dev libboost-all-dev
 
 script:
     - mkdir build && cd build
     - cmake ..
     - make
-    - make test
+    - ctest -V
     
     
 notifications:

@@ -5,12 +5,15 @@
 #ifndef HEXADOKU_MOVEPLAYSTATE_HPP
 #define HEXADOKU_MOVEPLAYSTATE_HPP
 
-#include "Model/Board.hpp"
-#include "PlayStateAbstract.hpp"
+#include <Model/Board.hpp>
+#include <Model/PlayStateModel.hpp>
+#include <State/PlayStateAbstract.hpp>
 
 class MovePlayState : public PlayStateAbstract {
 public:
     explicit MovePlayState(int boardSize);
+
+    explicit MovePlayState(std::shared_ptr<Board> board);
 
     explicit MovePlayState(std::shared_ptr<PlayStateModel> model);
 

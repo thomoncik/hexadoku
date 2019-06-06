@@ -4,9 +4,9 @@
 #include <string>
 #include <Model/Board.hpp>
 #include "AbstractView.hpp"
-#include <Color.hpp>
-#include <GfxStream.hpp>
-#include <Attributes.hpp>
+#include <Graphics/Color.hpp>
+#include <Graphics/GfxStream.hpp>
+#include <Graphics/Attributes.hpp>
 
 class GameViewAbstract : public AbstractView {
 public:

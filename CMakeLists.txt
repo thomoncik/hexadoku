@@ -12,6 +12,9 @@ set(CURSES_USE_NCURSES TRUE)
 find_package(Curses REQUIRED)
 include_directories(${CURSES_INCLUDE_DIR})
 
+find_package(Boost REQUIRED COMPONENTS filesystem)
+include_directories(${Boost_INCLUDE_DIRS})
+
 set(CATCH_INCLUDE_DIR vendor/include/catch2)
 add_library(Catch INTERFACE)
 target_include_directories(Catch INTERFACE include/catch2)

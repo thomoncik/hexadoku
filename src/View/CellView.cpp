@@ -1,6 +1,6 @@
 
-#include <GfxStream.hpp>
-#include <Attributes.hpp>
+#include <Graphics/GfxStream.hpp>
+#include <Graphics/Attributes.hpp>
 #include "View/CellView.hpp"
 
 const char CellView::SYMBOLS[] = {' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', '0'};

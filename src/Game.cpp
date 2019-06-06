@@ -2,41 +2,41 @@
 #include <chrono>
 #include <thread>
 #include <ncurses.h>
+#include <State/Menu/MainMenuState.hpp>
 
 #include "Game.hpp"
-#include "MenuState.hpp"
 
 Game::Game() : state(nullptr) {
-    this->SetState(MenuState::MAIN_MENU);
+    SetState(std::make_shared<MainMenuState>());
 }
 
 void Game::Run() {
-    while (this->state != nullptr) {
-        if (this->state != nullptr) {
-            this->state->Draw(*this);
+    while (state != nullptr) {
+        if (state != nullptr) {
+            state->Draw(*this);
         }
-        if (this->state != nullptr) {
-            this->state->HandleInput(*this, getch());
+        if (state != nullptr) {
+            state->HandleInput(*this, getch());
         }
-        if (this->state != nullptr) {
-            this->state->Update(*this);
+        if (state != nullptr) {
+            state->Update(*this);
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(5));
     }
 }
 
-void Game::SetState(AbstractState *newState) {
-    if (this->state != nullptr) {
-        this->state->OnExit(*this);
+void Game::SetState(std::shared_ptr<AbstractState> newState) {
+    if (state != nullptr) {
+        state->OnExit(*this);
     }
 
-    this->state = newState;
+    state = std::move(newState);
 
-    if (this->state != nullptr) {
-        this->state->OnEntry(*this);
+    if (state != nullptr) {
+        state->OnEntry(*this);
     }
 }
 
 AbstractState *Game::GetState() const {
-    return this->state;
+    return state.get();
 }

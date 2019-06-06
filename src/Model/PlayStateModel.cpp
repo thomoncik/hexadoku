@@ -5,12 +5,16 @@
 #include "Model/PlayStateModel.hpp"
 #include <chrono>
 
-PlayStateModel::PlayStateModel(int boardSize) {
-    this->board = std::make_shared<Board>(boardSize);
+PlayStateModel::PlayStateModel(int boardSize) : board(std::make_shared<Board>(boardSize)) {
+
+}
+
+PlayStateModel::PlayStateModel(std::shared_ptr<Board> board) : board(std::move(board)) {
+
 }
 
 void PlayStateModel::StartTimer() {
-    if (!creationTime) {
+    if (creationTime == nullptr) {
         creationTime = std::make_shared<std::time_t>(std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()));
         gameTime = *creationTime;
     }
