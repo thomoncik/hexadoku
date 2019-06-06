@@ -2,6 +2,7 @@
 #include <State/Menu/MainMenuState.hpp>
 #include <State/BoardCreator/InsertionBoardCreatorState.hpp>
 #include <View/BoardCreator/MoveBoardCreatorView.hpp>
+#include <State/BoardCreator/SaveBoardCreatorState.hpp>
 
 MoveBoardCreatorState::MoveBoardCreatorState(int size) : AbstractBoardCreatorState(size) {
 
@@ -52,6 +53,8 @@ void MoveBoardCreatorState::HandleInput(Game &game, char input) {
         game.SetState(std::make_shared<MainMenuState>());
     } else if (input == 'm') {
         game.SetState(std::make_shared<InsertionBoardCreatorState>(std::move(boardCreator)));
+    } else if (input == 's') {
+        game.SetState(std::make_shared<SaveBoardCreatorState>(std::move(boardCreator)));
     }
 }
 

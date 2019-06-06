@@ -38,7 +38,8 @@ set(SOURCE_FILES
         View/BoardCreator/MoveBoardCreatorView.cpp
         View/BoardCreator/InsertionBoardCreatorView.cpp
         State/Menu/LoadBoardSizeMenuState.cpp
-        State/Menu/LoadBoardMenuState.cpp)
+        State/Menu/LoadBoardMenuState.cpp
+        State/BoardCreator/SaveBoardCreatorState.cpp)
 
 add_executable(hexadoku ${SOURCE_FILES})
 target_link_libraries(hexadoku curses)

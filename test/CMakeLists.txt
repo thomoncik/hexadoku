@@ -44,7 +44,8 @@ set(SOURCE_FILES
         ../src/View/BoardCreator/MoveBoardCreatorView.cpp
         ../src/View/BoardCreator/InsertionBoardCreatorView.cpp
         ../src/State/Menu/LoadBoardSizeMenuState.cpp
-        ../src/State/Menu/LoadBoardMenuState.cpp)
+        ../src/State/Menu/LoadBoardMenuState.cpp
+        ../src/State/BoardCreator/SaveBoardCreatorState.cpp)
 
 add_definitions(-DTESTING)
 
