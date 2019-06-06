@@ -12,6 +12,7 @@
 class MovePlayState : public PlayStateAbstract {
 public:
     explicit MovePlayState(int boardSize, std::shared_ptr<Board> board = nullptr, int x = 0, int y = 0);
+
     void HandleInput(Game &game, char input) override;
 };
 

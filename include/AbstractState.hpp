@@ -6,6 +6,8 @@ class Game;
 
 class AbstractState {
 public:
+    virtual ~AbstractState() = 0;
+
     virtual void OnEntry(Game &game) = 0;
 
     virtual void Update(Game &game) = 0;

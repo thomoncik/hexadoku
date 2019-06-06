@@ -6,13 +6,14 @@
 
 using namespace fakeit;
 
-SCENARIO("States can be changed", "[Game]") {
+SCENARIO("States can be changed") {
 
     GIVEN("A game and state") {
-        Game game;
         Mock<AbstractState> stateMock;
-        Fake(Method(stateMock, OnEntry));
-        Fake(Method(stateMock, OnExit));
+        Fake(Dtor(stateMock));
+        Fake(Method(stateMock, OnEntry), Method(stateMock, OnExit));
+
+        Game game;
 
         WHEN("game state is changed to new one") {
             game.SetState(std::shared_ptr<AbstractState>(&stateMock.get()));

@@ -11,6 +11,7 @@
 class InsertionPlayState : public PlayStateAbstract {
 public:
     explicit InsertionPlayState(int boardSize, std::shared_ptr<Board> board = nullptr, int x = 0, int y = 0);
+
     void HandleInput(Game &game, char input) override;
 private:
     std::vector<char> boardCharacters;
