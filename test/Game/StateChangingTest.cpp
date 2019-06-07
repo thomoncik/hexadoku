@@ -10,17 +10,26 @@ SCENARIO("States can be changed", "[Game]") {
 
     GIVEN("A game and state") {
         Game game;
-        Mock<AbstractState> stateMock;
-        Fake(Method(stateMock, OnEntry));
-        Fake(Method(stateMock, OnExit));
+        Mock<AbstractState> oldStateMock, newStateMock;
+        Fake(Method(newStateMock, OnEntry));
+        Fake(Method(newStateMock, OnExit));
+        Fake(Method(oldStateMock, OnEntry));
+        Fake(Method(oldStateMock, OnExit));
 
-        AbstractState *state = &stateMock.get();
+        AbstractState *oldState = &oldStateMock.get();
+        AbstractState *newState = &newStateMock.get();
+        
+        game.SetState(oldState);
 
         WHEN("game state is changed to new one") {
-            game.SetState(state);
+            game.SetState(newState);
+
+            THEN("OnExit is called from old state") {
+                Verify(Method(oldStateMock, OnExit)).Once();
+            }
 
             THEN("OnEntry is called from new state") {
-                Verify(Method(stateMock, OnEntry)).Once();
+                Verify(Method(newStateMock, OnEntry)).Once();
             }
         }
     }
