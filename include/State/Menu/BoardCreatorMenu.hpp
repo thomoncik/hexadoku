@@ -12,7 +12,7 @@ public:
     BoardCreatorMenu();
 
 protected:
-    void UseOption(StateContext &game, const std::string &option) override;
+    void UseOption(StateContext &stateContext, const std::string &option) override;
 };
 
 #endif //HEXADOKU_BOARDCREATORMENU_HPP

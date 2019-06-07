@@ -15,11 +15,11 @@ public:
 
     explicit MoveGameState(std::shared_ptr<Board> board);
 
-    explicit MoveGameState(std::shared_ptr<Game> model);
+    explicit MoveGameState(std::shared_ptr<Game> game);
 
-    void HandleInput(StateContext &game, char input) override;
+    void HandleInput(StateContext &stateContext, char input) override;
 
-    void Draw(StateContext &game) override;
+    void Draw(StateContext &stateContext) override;
 
 };
 

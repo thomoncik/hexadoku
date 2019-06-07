@@ -15,9 +15,9 @@ public:
 
     explicit InsertionGameState(std::shared_ptr<Game> model);
 
-    void HandleInput(StateContext &game, char input) override;
+    void HandleInput(StateContext &stateContext, char input) override;
     
-    void Draw(StateContext &game) override;
+    void Draw(StateContext &stateContext) override;
 
 private:
     std::vector<char> boardCharacters;

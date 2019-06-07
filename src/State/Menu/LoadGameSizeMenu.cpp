@@ -15,12 +15,12 @@ LoadGameSizeMenu::LoadGameSizeMenu() {
     };
 }
 
-void LoadGameSizeMenu::UseOption(StateContext &game, const std::string &option) {
+void LoadGameSizeMenu::UseOption(StateContext &stateContext, const std::string &option) {
     if (option == STANDARD_SIZE_OPTION) {
-        game.SetState(std::make_shared<LoadGameMenu>(Board::STANDARD_SIZE));
+        stateContext.SetState(std::make_shared<LoadGameMenu>(Board::STANDARD_SIZE));
     } else if (option == HEXADOKU_OPTION) {
-        game.SetState(std::make_shared<LoadGameMenu>(Board::HEXADOKU_SIZE));
+        stateContext.SetState(std::make_shared<LoadGameMenu>(Board::HEXADOKU_SIZE));
     } else if (option == BACK_OPTION) {
-        game.SetState(std::make_shared<MainMenuState>());
+        stateContext.SetState(std::make_shared<MainMenuState>());
     }
 }

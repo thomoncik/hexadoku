@@ -6,6 +6,8 @@
 AbstractGameView::AbstractGameView(Board board, std::string gameTime) : board(std::move(board)), gameTime(std::move(gameTime)) {}
 
 void AbstractGameView::Draw() const {
+    gfx::out << gfx::clear;
+
     BoardView boardView(this->board);
     boardView.SetPosition(this->x + 4, this->y + 2);
     boardView.Draw();

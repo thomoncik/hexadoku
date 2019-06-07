@@ -17,14 +17,14 @@ BoardCreatorMenu::BoardCreatorMenu() {
     };
 }
 
-void BoardCreatorMenu::UseOption(StateContext &game, const std::string &option) {
+void BoardCreatorMenu::UseOption(StateContext &stateContext, const std::string &option) {
     if (option == STANDARD_SIZE_OPTION) {
-        game.SetState(std::make_shared<MoveBoardCreatorState>(Board::STANDARD_SIZE));
+        stateContext.SetState(std::make_shared<MoveBoardCreatorState>(Board::STANDARD_SIZE));
     } else if (option == HEXADOKU_OPTION) {
-        game.SetState(std::make_shared<MoveBoardCreatorState>(Board::HEXADOKU_SIZE));
+        stateContext.SetState(std::make_shared<MoveBoardCreatorState>(Board::HEXADOKU_SIZE));
     } else if (option == FROM_FILE_OPTION) {
-        game.SetState(std::make_shared<LoadBoardSizeMenuState>());
+        stateContext.SetState(std::make_shared<LoadBoardSizeMenuState>());
     } else if (option == BACK_OPTION) {
-        game.SetState(std::make_shared<MainMenuState>());
+        stateContext.SetState(std::make_shared<MainMenuState>());
     }
 }

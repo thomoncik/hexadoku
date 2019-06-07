@@ -16,14 +16,14 @@ NewGameMenuState::NewGameMenuState() {
     };
 }
 
-void NewGameMenuState::UseOption(StateContext &game, const std::string &option) {
+void NewGameMenuState::UseOption(StateContext &stateContext, const std::string &option) {
     if (option == STANDARD_SIZE_OPTION) {
-        game.SetState(std::make_shared<MoveGameState>(Board::STANDARD_SIZE));
+        stateContext.SetState(std::make_shared<MoveGameState>(Board::STANDARD_SIZE));
     } else if (option == HEXADOKU_OPTION) {
-        game.SetState(std::make_shared<MoveGameState>(Board::HEXADOKU_SIZE));
+        stateContext.SetState(std::make_shared<MoveGameState>(Board::HEXADOKU_SIZE));
     } else if (option == FROM_FILE_OPTION) {
-        game.SetState(nullptr);
+        stateContext.SetState(nullptr);
     } else if (option == BACK_OPTION) {
-        game.SetState(std::make_shared<MainMenuState>());
+        stateContext.SetState(std::make_shared<MainMenuState>());
     }
 }

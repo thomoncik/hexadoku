@@ -18,24 +18,24 @@ AbstractBoardCreatorState::AbstractBoardCreatorState(std::shared_ptr<BoardCreato
 
 }
 
-void AbstractBoardCreatorState::OnEntry(StateContext &game) {
+void AbstractBoardCreatorState::OnEntry(StateContext &stateContext) {
 
 }
 
-void AbstractBoardCreatorState::Update(StateContext &game) {
+void AbstractBoardCreatorState::Update(StateContext &stateContext) {
 
 }
 
-void AbstractBoardCreatorState::OnExit(StateContext &game) {
+void AbstractBoardCreatorState::OnExit(StateContext &stateContext) {
 
 }
 
-void AbstractBoardCreatorState::HandleInput(StateContext &game, char input) {
+void AbstractBoardCreatorState::HandleInput(StateContext &stateContext, char input) {
     if (input == 'q') {
-        game.SetState(std::make_shared<MainMenuState>());
+        stateContext.SetState(std::make_shared<MainMenuState>());
     }
 }
 
-void AbstractBoardCreatorState::Draw(StateContext &game) {
+void AbstractBoardCreatorState::Draw(StateContext &stateContext) {
 
 }

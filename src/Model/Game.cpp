@@ -24,8 +24,8 @@ void Game::StartTimer() {
     }
 }
 
-Board& Game::GetBoard() {
-    return *board.get();
+std::shared_ptr<Board> Game::GetBoard() const {
+    return board;
 }
 
 std::string Game::GetGameTimeString() {

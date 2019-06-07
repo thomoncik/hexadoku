@@ -22,7 +22,7 @@ public:
 
     explicit Game(std::shared_ptr<Board> board);
 
-    Board &GetBoard();
+    std::shared_ptr<Board> GetBoard() const;
 
     std::string GetGameTimeString();
 

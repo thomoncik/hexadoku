@@ -9,15 +9,15 @@ class LoadGameMenu : public AbstractState {
 public:
     explicit LoadGameMenu(int size);
 
-    void OnEntry(StateContext &game) override;
+    void OnEntry(StateContext &stateContext) override;
 
-    void Update(StateContext &game) override;
+    void Update(StateContext &stateContext) override;
 
-    void HandleInput(StateContext &game, char input) override;
+    void HandleInput(StateContext &stateContext, char input) override;
 
-    void Draw(StateContext &game) override;
+    void Draw(StateContext &stateContext) override;
 
-    void OnExit(StateContext &game) override;
+    void OnExit(StateContext &stateContext) override;
 
 protected:
     std::string loadingPath;

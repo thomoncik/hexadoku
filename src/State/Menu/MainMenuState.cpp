@@ -17,14 +17,14 @@ MainMenuState::MainMenuState() {
     };
 }
 
-void MainMenuState::UseOption(StateContext &game, const std::string &option) {
+void MainMenuState::UseOption(StateContext &stateContext, const std::string &option) {
     if (option == NEW_GAME_OPTION) {
-        game.SetState(std::make_shared<NewGameMenuState>());
+        stateContext.SetState(std::make_shared<NewGameMenuState>());
     } else if (option == LOAD_GAME_OPTION) {
-        game.SetState(std::make_shared<LoadGameSizeMenu>());
+        stateContext.SetState(std::make_shared<LoadGameSizeMenu>());
     } else if (option == BOARD_CREATOR_OPTION) {
-        game.SetState(std::make_shared<BoardCreatorMenu>());
+        stateContext.SetState(std::make_shared<BoardCreatorMenu>());
     } else if (option == EXIT_OPTION) {
-        game.SetState(nullptr);
+        stateContext.SetState(nullptr);
     }
 }

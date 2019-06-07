@@ -9,29 +9,27 @@
 #include <Graphics/GfxStream.hpp>
 
 
-AbstractGameState::AbstractGameState(int boardSize) : model(std::make_shared<Game>(boardSize)) {
+AbstractGameState::AbstractGameState(int boardSize) : game(std::make_shared<Game>(boardSize)) {
 
 }
 
-AbstractGameState::AbstractGameState(std::shared_ptr<Board> board)
-        : model(std::make_shared<Game>(std::move(board))) {
+AbstractGameState::AbstractGameState(std::shared_ptr<Board> board) : game(std::make_shared<Game>(std::move(board))) {
 
 }
 
-AbstractGameState::AbstractGameState(std::shared_ptr<Game> model) : model(std::move(model)) {
+AbstractGameState::AbstractGameState(std::shared_ptr<Game> game) : game(std::move(game)) {
 
 }
 
-void AbstractGameState::OnEntry(StateContext &game) {
-    model->StartTimer();
-    gfx::out << gfx::clear;
+void AbstractGameState::OnEntry(StateContext &stateContext) {
+    game->StartTimer();
 }
 
-void AbstractGameState::Update(StateContext &game) {
+void AbstractGameState::Update(StateContext &stateContext) {
 
 }
 
-void AbstractGameState::OnExit(StateContext &game) {
+void AbstractGameState::OnExit(StateContext &stateContext) {
 
 }
 

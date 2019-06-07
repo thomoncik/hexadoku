@@ -8,15 +8,15 @@ class AbstractState {
 public:
     virtual ~AbstractState() = 0;
 
-    virtual void OnEntry(StateContext &game) = 0;
+    virtual void OnEntry(StateContext &stateContext) = 0;
 
-    virtual void Update(StateContext &game) = 0;
+    virtual void Update(StateContext &stateContext) = 0;
 
-    virtual void HandleInput(StateContext &game, char input) = 0;
+    virtual void HandleInput(StateContext &stateContext, char input) = 0;
 
-    virtual void Draw(StateContext &game) = 0;
+    virtual void Draw(StateContext &stateContext) = 0;
 
-    virtual void OnExit(StateContext &game) = 0;
+    virtual void OnExit(StateContext &stateContext) = 0;
 };
 
 #endif //HEXADOKU_ABSTRACTSTATE_HPP

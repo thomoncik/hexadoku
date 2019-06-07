@@ -15,7 +15,7 @@ LoadBoardMenuState::LoadBoardMenuState(int size) : size(size) {
     }
 }
 
-void LoadBoardMenuState::OnEntry(StateContext &game) {
+void LoadBoardMenuState::OnEntry(StateContext &stateContext) {
     filePathToName.clear();
     for (const auto &entry : boost::filesystem::directory_iterator(loadingPath)) {
         if (entry.path().extension().string() == Board::SAVED_BOARD_FILE_EXTENSION) {
@@ -25,11 +25,11 @@ void LoadBoardMenuState::OnEntry(StateContext &game) {
     option = filePathToName.begin();
 }
 
-void LoadBoardMenuState::Update(StateContext &game) {
+void LoadBoardMenuState::Update(StateContext &stateContext) {
 
 }
 
-void LoadBoardMenuState::HandleInput(StateContext &game, char input) {
+void LoadBoardMenuState::HandleInput(StateContext &stateContext, char input) {
     if (input == 'j') {
         option++;
         if (option == filePathToName.end()) {
@@ -44,11 +44,11 @@ void LoadBoardMenuState::HandleInput(StateContext &game, char input) {
         auto board = std::make_shared<Board>(size);
         board->LoadFromFile(option->first);
 
-        game.SetState(std::make_shared<MoveBoardCreatorState>(board));
+        stateContext.SetState(std::make_shared<MoveBoardCreatorState>(board));
     }
 }
 
-void LoadBoardMenuState::Draw(StateContext &game) {
+void LoadBoardMenuState::Draw(StateContext &stateContext) {
     gfx::out << gfx::clear;
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
     gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
@@ -70,7 +70,7 @@ void LoadBoardMenuState::Draw(StateContext &game) {
     }
 }
 
-void LoadBoardMenuState::OnExit(StateContext &game) {
+void LoadBoardMenuState::OnExit(StateContext &stateContext) {
 
 }
 
