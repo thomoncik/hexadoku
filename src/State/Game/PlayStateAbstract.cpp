@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <State/Game/PlayStateAbstract.hpp>
 #include <Graphics/GfxStream.hpp>
+#include "State/Game/EndGameState.hpp"
 
 
 PlayStateAbstract::PlayStateAbstract(int boardSize) : model(std::make_shared<PlayStateModel>(boardSize)) {
@@ -28,7 +29,9 @@ void PlayStateAbstract::OnEntry(Game &game) {
 }
 
 void PlayStateAbstract::Update(Game &game) {
-
+    if (model->GetBoard().IsFilled() && !model->GetBoard().IsViolatingRules()) {
+        game.SetState(std::make_shared<EndGameState>(std::move(model)));
+    }
 }
 
 void PlayStateAbstract::OnExit(Game &game) {

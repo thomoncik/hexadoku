@@ -45,7 +45,8 @@ set(SOURCE_FILES
         ../src/View/BoardCreator/InsertionBoardCreatorView.cpp
         ../src/State/Menu/LoadBoardSizeMenuState.cpp
         ../src/State/Menu/LoadBoardMenuState.cpp
-        ../src/State/BoardCreator/SaveBoardCreatorState.cpp)
+        ../src/State/BoardCreator/SaveBoardCreatorState.cpp
+        ../src/State/Game/EndGameState.cpp)
 
 add_definitions(-DTESTING)
 
