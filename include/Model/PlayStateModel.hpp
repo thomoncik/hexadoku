@@ -24,6 +24,8 @@ public:
 
     void SetSelected(bool isSelected, int column, int row);
 
+    void SetIsCorrect(bool isCorrect, int column, int row);
+
     void SetValue(int value, int column, int row);
 
     int GetSize() const;
@@ -35,6 +37,8 @@ public:
     void SetX(int x);
 
     void SetY(int y);
+
+    bool IsCorrect(int column, int row) const;
 
 private:
     std::shared_ptr<std::time_t> creationTime;

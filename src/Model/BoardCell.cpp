@@ -32,3 +32,7 @@ bool BoardCell::IsSelected() const {
     return this->isSelected;
 }
 
+bool BoardCell::IsCorrect() const {
+    return this->isCorrect;
+}
+

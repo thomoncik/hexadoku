@@ -24,6 +24,8 @@ public:
 
     bool IsSelected() const;
 
+    bool IsCorrect() const;
+
 private:
     int value;
     bool isSelected;
