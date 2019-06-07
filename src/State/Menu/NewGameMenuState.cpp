@@ -1,6 +1,6 @@
 #include <State/Menu/NewGameMenuState.hpp>
 #include <State/Menu/MainMenuState.hpp>
-#include <State/Game/MovePlayState.hpp>
+#include <State/Game/MoveGameState.hpp>
 
 const std::string NewGameMenuState::STANDARD_SIZE_OPTION{"Standard"};
 const std::string NewGameMenuState::HEXADOKU_OPTION{"Hexadoku"};
@@ -16,11 +16,11 @@ NewGameMenuState::NewGameMenuState() {
     };
 }
 
-void NewGameMenuState::UseOption(Game &game, const std::string &option) {
+void NewGameMenuState::UseOption(StateContext &game, const std::string &option) {
     if (option == STANDARD_SIZE_OPTION) {
-        game.SetState(std::make_shared<MovePlayState>(Board::STANDARD_SIZE));
+        game.SetState(std::make_shared<MoveGameState>(Board::STANDARD_SIZE));
     } else if (option == HEXADOKU_OPTION) {
-        game.SetState(std::make_shared<MovePlayState>(Board::HEXADOKU_SIZE));
+        game.SetState(std::make_shared<MoveGameState>(Board::HEXADOKU_SIZE));
     } else if (option == FROM_FILE_OPTION) {
         game.SetState(nullptr);
     } else if (option == BACK_OPTION) {

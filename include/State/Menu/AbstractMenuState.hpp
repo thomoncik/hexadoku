@@ -7,22 +7,22 @@
 
 class AbstractMenuState : public AbstractState {
 public:
-    void OnEntry(Game &game) override;
+    void OnEntry(StateContext &game) override;
 
-    void Update(Game &game) override;
+    void Update(StateContext &game) override;
 
-    void HandleInput(Game &game, char input) override;
+    void HandleInput(StateContext &game, char input) override;
 
-    void Draw(Game &game) override;
+    void Draw(StateContext &game) override;
 
-    void OnExit(Game &game) override;
+    void OnExit(StateContext &game) override;
 
 protected:
     std::vector<std::string> options;
     unsigned long selectedOption;
     unsigned long labelSize{15};
 
-    virtual void UseOption(Game &game, const std::string &option) = 0;
+    virtual void UseOption(StateContext &game, const std::string &option) = 0;
 };
 
 #endif //HEXADOKU_ABSTRACTMENUSTATE_HPP

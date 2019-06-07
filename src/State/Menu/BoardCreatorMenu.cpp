@@ -17,7 +17,7 @@ BoardCreatorMenu::BoardCreatorMenu() {
     };
 }
 
-void BoardCreatorMenu::UseOption(Game &game, const std::string &option) {
+void BoardCreatorMenu::UseOption(StateContext &game, const std::string &option) {
     if (option == STANDARD_SIZE_OPTION) {
         game.SetState(std::make_shared<MoveBoardCreatorState>(Board::STANDARD_SIZE));
     } else if (option == HEXADOKU_OPTION) {

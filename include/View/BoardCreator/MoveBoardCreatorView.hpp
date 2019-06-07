@@ -1,9 +1,9 @@
 #ifndef HEXADOKU_MOVEBOARDCREATORVIEW_HPP
 #define HEXADOKU_MOVEBOARDCREATORVIEW_HPP
 
-#include <View/BoardCreator/BoardCreatorViewAbstract.hpp>
+#include <View/BoardCreator/AbstractBoardCreatorView.hpp>
 
-class MoveBoardCreatorView : public BoardCreatorViewAbstract {
+class MoveBoardCreatorView : public AbstractBoardCreatorView {
 public:
     explicit MoveBoardCreatorView(std::shared_ptr<BoardCreator> boardCreator);
 

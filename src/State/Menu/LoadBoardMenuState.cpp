@@ -15,19 +15,21 @@ LoadBoardMenuState::LoadBoardMenuState(int size) : size(size) {
     }
 }
 
-void LoadBoardMenuState::OnEntry(Game &game) {
+void LoadBoardMenuState::OnEntry(StateContext &game) {
     filePathToName.clear();
     for (const auto &entry : boost::filesystem::directory_iterator(loadingPath)) {
-        filePathToName[entry.path().filename().string()] = entry.path().stem().string();
+        if (entry.path().extension().string() == Board::SAVED_BOARD_FILE_EXTENSION) {
+            filePathToName[entry.path().string()] = entry.path().stem().string();
+        }
     }
     option = filePathToName.begin();
 }
 
-void LoadBoardMenuState::Update(Game &game) {
+void LoadBoardMenuState::Update(StateContext &game) {
 
 }
 
-void LoadBoardMenuState::HandleInput(Game &game, char input) {
+void LoadBoardMenuState::HandleInput(StateContext &game, char input) {
     if (input == 'j') {
         option++;
         if (option == filePathToName.end()) {
@@ -46,7 +48,7 @@ void LoadBoardMenuState::HandleInput(Game &game, char input) {
     }
 }
 
-void LoadBoardMenuState::Draw(Game &game) {
+void LoadBoardMenuState::Draw(StateContext &game) {
     gfx::out << gfx::clear;
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
     gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
@@ -68,7 +70,7 @@ void LoadBoardMenuState::Draw(Game &game) {
     }
 }
 
-void LoadBoardMenuState::OnExit(Game &game) {
+void LoadBoardMenuState::OnExit(StateContext &game) {
 
 }
 

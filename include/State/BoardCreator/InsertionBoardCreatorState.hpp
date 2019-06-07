@@ -12,9 +12,9 @@ public:
 
     explicit InsertionBoardCreatorState(std::shared_ptr<BoardCreator> boardCreator);
 
-    void HandleInput(Game &game, char input) override;
+    void HandleInput(StateContext &game, char input) override;
 
-    void Draw(Game &game) override;
+    void Draw(StateContext &game) override;
 
 };
 

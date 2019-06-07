@@ -13,7 +13,7 @@ public:
     NewGameMenuState();
 
 protected:
-    void UseOption(Game &game, const std::string &option) override;
+    void UseOption(StateContext &game, const std::string &option) override;
 };
 
 #endif //HEXADOKU_NEWGAMEMENUSTATE_HPP

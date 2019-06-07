@@ -18,7 +18,7 @@ MoveBoardCreatorState::MoveBoardCreatorState(std::shared_ptr<BoardCreator> board
 
 }
 
-void MoveBoardCreatorState::HandleInput(Game &game, char input) {
+void MoveBoardCreatorState::HandleInput(StateContext &game, char input) {
     boardCreator->GetBoard()->SetSelected(false, boardCreator->GetSelectedColumn(), boardCreator->GetSelectedRow());
     if (input == 'l') {
         int newColumn = (boardCreator->GetSelectedColumn() + 1) % boardCreator->GetBoard()->GetSize();
@@ -58,7 +58,7 @@ void MoveBoardCreatorState::HandleInput(Game &game, char input) {
     }
 }
 
-void MoveBoardCreatorState::Draw(Game &game) {
+void MoveBoardCreatorState::Draw(StateContext &game) {
     MoveBoardCreatorView view(boardCreator);
     view.Draw();
 }

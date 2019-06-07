@@ -6,9 +6,9 @@
 #include <Model/BoardCreator.hpp>
 #include <View/AbstractView.hpp>
 
-class BoardCreatorViewAbstract : public AbstractView {
+class AbstractBoardCreatorView : public AbstractView {
 public:
-    explicit BoardCreatorViewAbstract(std::shared_ptr<BoardCreator> boardCreator);
+    explicit AbstractBoardCreatorView(std::shared_ptr<BoardCreator> boardCreator);
 
     void Draw() const override;
 

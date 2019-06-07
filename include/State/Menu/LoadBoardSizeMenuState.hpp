@@ -12,7 +12,7 @@ public:
     LoadBoardSizeMenuState();
 
 protected:
-    void UseOption(Game &game, const std::string &option) override;
+    void UseOption(StateContext &game, const std::string &option) override;
 };
 
 #endif //HEXADOKU_LOADBOARDSIZEMENUSTATE_HPP

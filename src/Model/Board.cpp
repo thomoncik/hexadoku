@@ -17,6 +17,7 @@ const int Board::HEXADOKU_SIZE = 16;
 
 const std::string Board::SAVED_STANDARD_BOARD_PATH = std::string(std::getenv("HOME")) + "/.hexadoku/board/standard/";
 const std::string Board::SAVED_HEXADOKU_BOARD_PATH = std::string(std::getenv("HOME")) + "/.hexadoku/board/hexadoku/";
+const std::string Board::SAVED_BOARD_FILE_EXTENSION = ".sudkb";
 
 Board Board::FromGrid(const std::vector<std::vector<int>> &&grid) {
     Board board(grid.size());
@@ -157,23 +158,15 @@ int Board::GetValue(int column, int row) const {
 
 void Board::LoadFromFile(const std::string &filename) {
     std::ifstream fileStream;
-    if (this->size == Board::STANDARD_SIZE) {
-        fileStream.open(Board::SAVED_STANDARD_BOARD_PATH + filename);
-    } else if (this->size == Board::HEXADOKU_SIZE) {
-        fileStream.open(Board::SAVED_HEXADOKU_BOARD_PATH + filename);
-    }
-    this->LoadFromStream(fileStream);
+    fileStream.open(filename);
+    LoadFromStream(fileStream);
     fileStream.close();
 }
 
 void Board::SaveToFile(const std::string &filename) const {
     std::ofstream fileStream;
-    if (this->size == Board::STANDARD_SIZE) {
-        fileStream.open(Board::SAVED_STANDARD_BOARD_PATH + filename);
-    } else if (this->size == Board::HEXADOKU_SIZE) {
-        fileStream.open(Board::SAVED_HEXADOKU_BOARD_PATH + filename);
-    }
-    this->SaveToStream(fileStream);
+    fileStream.open(filename + Board::SAVED_BOARD_FILE_EXTENSION);
+    SaveToStream(fileStream);
     fileStream.close();
 }
 

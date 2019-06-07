@@ -3,9 +3,9 @@
 //
 
 #include "View/Game/MoveGameView.hpp"
-#include "View/Game/GameViewAbstract.hpp"
+#include "View/Game/AbstractGameView.hpp"
 
-MoveGameView::MoveGameView(Board board, std::string gameTime) : GameViewAbstract(board, gameTime) {}
+MoveGameView::MoveGameView(Board board, std::string gameTime) : AbstractGameView(board, gameTime) {}
 
 void MoveGameView::DrawMovementInfo(int x, int y) const {
     gfx::out << gfx::nodecor << Color::Magenta << Position(x, y);

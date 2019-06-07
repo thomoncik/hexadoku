@@ -2,6 +2,7 @@
 #include <State/Menu/MainMenuState.hpp>
 #include <State/BoardCreator/MoveBoardCreatorState.hpp>
 #include <State/BoardCreator/InsertionBoardCreatorState.hpp>
+#include <State/BoardCreator/SaveBoardCreatorState.hpp>
 #include <algorithm>
 
 InsertionBoardCreatorState::InsertionBoardCreatorState(int size) : AbstractBoardCreatorState(size) {
@@ -18,7 +19,7 @@ InsertionBoardCreatorState::InsertionBoardCreatorState(std::shared_ptr<BoardCrea
 
 }
 
-void InsertionBoardCreatorState::HandleInput(Game &game, char input) {
+void InsertionBoardCreatorState::HandleInput(StateContext &game, char input) {
     std::vector<char> boardCharacters;
     boardCharacters = {' ', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     if (boardCreator->GetBoard()->GetSize() == Board::STANDARD_SIZE) {
@@ -44,10 +45,12 @@ void InsertionBoardCreatorState::HandleInput(Game &game, char input) {
         game.SetState(std::make_shared<MainMenuState>());
     } else if (input == 'm') {
         game.SetState(std::make_shared<MoveBoardCreatorState>(std::move(boardCreator)));
+    } else if (input == 's') {
+        game.SetState(std::make_shared<SaveBoardCreatorState>(std::move(boardCreator)));
     }
 }
 
-void InsertionBoardCreatorState::Draw(Game &game) {
+void InsertionBoardCreatorState::Draw(StateContext &game) {
     InsertionBoardCreatorView view(boardCreator);
     view.Draw();
 }

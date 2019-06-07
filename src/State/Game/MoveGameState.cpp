@@ -1,21 +1,21 @@
 #include <utility>
 
-#include <State/Game/MovePlayState.hpp>
+#include <State/Game/MoveGameState.hpp>
 #include <State/Menu/MainMenuState.hpp>
 #include <View/Game/MoveGameView.hpp>
-#include "State/Game/InsertionPlayState.hpp"
+#include "State/Game/InsertionGameState.hpp"
 
-MovePlayState::MovePlayState(int boardSize) : PlayStateAbstract(boardSize) {
-
-}
-
-MovePlayState::MovePlayState(std::shared_ptr<Board> board) : PlayStateAbstract(std::move(board)) {
+MoveGameState::MoveGameState(int boardSize) : AbstractGameState(boardSize) {
 
 }
 
-MovePlayState::MovePlayState(std::shared_ptr<PlayStateModel> model) : PlayStateAbstract(std::move(model)) {}
+MoveGameState::MoveGameState(std::shared_ptr<Board> board) : AbstractGameState(std::move(board)) {
 
-void MovePlayState::HandleInput(Game &game, char input) {
+}
+
+MoveGameState::MoveGameState(std::shared_ptr<Game> model) : AbstractGameState(std::move(model)) {}
+
+void MoveGameState::HandleInput(StateContext &game, char input) {
     model->SetSelected(false, model->GetX(), model->GetY());
     if (input == 'l') {
         model->SetX((model->GetX() + 1) % model->GetSize());
@@ -31,11 +31,11 @@ void MovePlayState::HandleInput(Game &game, char input) {
     if (input == 'q') {
         game.SetState(std::make_shared<MainMenuState>());
     } else if (input == 'm') {
-        game.SetState(std::make_shared<InsertionPlayState>(std::move(model)));
+        game.SetState(std::make_shared<InsertionGameState>(std::move(model)));
     }
 }
 
-void MovePlayState::Draw(Game &game) {
+void MoveGameState::Draw(StateContext &game) {
     MoveGameView gameView(model->GetBoard(), model->GetGameTimeString());
     gameView.Draw();
 }

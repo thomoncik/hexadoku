@@ -5,9 +5,9 @@
 #ifndef HEXADOKU_INSERTIONGAMEVIEW_HPP
 #define HEXADOKU_INSERTIONGAMEVIEW_HPP
 
-#include "GameViewAbstract.hpp"
+#include "AbstractGameView.hpp"
 
-class InsertionGameView : public GameViewAbstract {
+class InsertionGameView : public AbstractGameView {
 public:
     explicit InsertionGameView(Board board, std::string gameTime);
 

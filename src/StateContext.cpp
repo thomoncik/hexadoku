@@ -4,13 +4,13 @@
 #include <ncurses.h>
 #include <State/Menu/MainMenuState.hpp>
 
-#include "Game.hpp"
+#include "StateContext.hpp"
 
-Game::Game() : state(nullptr) {
+StateContext::StateContext() : state(nullptr) {
     SetState(std::make_shared<MainMenuState>());
 }
 
-void Game::Run() {
+void StateContext::Run() {
     while (state != nullptr) {
         if (state != nullptr) {
             state->Draw(*this);
@@ -25,7 +25,7 @@ void Game::Run() {
     }
 }
 
-void Game::SetState(std::shared_ptr<AbstractState> newState) {
+void StateContext::SetState(std::shared_ptr<AbstractState> newState) {
     if (state != nullptr) {
         state->OnExit(*this);
     }
@@ -37,6 +37,6 @@ void Game::SetState(std::shared_ptr<AbstractState> newState) {
     }
 }
 
-AbstractState *Game::GetState() const {
+AbstractState *StateContext::GetState() const {
     return state.get();
 }

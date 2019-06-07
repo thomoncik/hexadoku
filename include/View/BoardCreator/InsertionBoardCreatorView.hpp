@@ -1,9 +1,9 @@
 #ifndef HEXADOKU_INSERTIONBOARDCREATORVIEW_HPP
 #define HEXADOKU_INSERTIONBOARDCREATORVIEW_HPP
 
-#include <View/BoardCreator/BoardCreatorViewAbstract.hpp>
+#include <View/BoardCreator/AbstractBoardCreatorView.hpp>
 
-class InsertionBoardCreatorView : public BoardCreatorViewAbstract {
+class InsertionBoardCreatorView : public AbstractBoardCreatorView {
 public:
     explicit InsertionBoardCreatorView(std::shared_ptr<BoardCreator> boardCreator);
 

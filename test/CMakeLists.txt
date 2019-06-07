@@ -15,16 +15,16 @@ set(SOURCE_FILES
         ../src/Graphics/Assets.cpp
         ../src/Graphics/Attributes.cpp
         ../src/Graphics/Color.cpp
-        ../src/Game.cpp
+        ../src/StateContext.cpp
         ../src/Graphics/GfxStream.cpp
-        ../src/State/Game/MovePlayState.cpp
+        ../src/State/Game/MoveGameState.cpp
         ../src/Graphics/Position.cpp
         ../src/View/AbstractView.cpp
         ../src/View/Board/CellView.cpp
         ../src/View/Board/BoardView.cpp
         ../src/View/Board/SectionView.cpp
-        ../src/State/Game/PlayStateAbstract.cpp
-        ../src/State/Game/InsertionPlayState.cpp
+        ../src/State/Game/AbstractGameState.cpp
+        ../src/State/Game/InsertionGameState.cpp
         ../src/State/Menu/AbstractMenuState.cpp
         ../src/State/Menu/MainMenuState.cpp
         ../src/State/Menu/NewGameMenuState.cpp
@@ -34,18 +34,19 @@ set(SOURCE_FILES
         ../src/State/BoardCreator/AbstractBoardCreatorState.cpp
         ../src/View/Game/MoveGameView.cpp
         ../src/View/Game/InsertionGameView.cpp
-        ../src/Model/PlayStateModel.cpp
-        ../src/View/Game/GameViewAbstract.cpp
+        ../src/Model/Game.cpp
+        ../src/View/Game/AbstractGameView.cpp
         ../src/Model/Hint.cpp
         ../src/State/BoardCreator/InsertionBoardCreatorState.cpp
         ../src/State/BoardCreator/MoveBoardCreatorState.cpp
         ../src/Model/BoardCreator.cpp
-        ../src/View/BoardCreator/BoardCreatorViewAbstract.cpp
+        ../src/View/BoardCreator/AbstractBoardCreatorView.cpp
         ../src/View/BoardCreator/MoveBoardCreatorView.cpp
         ../src/View/BoardCreator/InsertionBoardCreatorView.cpp
         ../src/State/Menu/LoadBoardSizeMenuState.cpp
         ../src/State/Menu/LoadBoardMenuState.cpp
-        ../src/State/BoardCreator/SaveBoardCreatorState.cpp)
+        ../src/State/BoardCreator/SaveBoardCreatorState.cpp
+        ../src/State/Game/SaveGameState.cpp)
 
 add_definitions(-DTESTING)
 

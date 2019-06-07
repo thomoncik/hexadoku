@@ -3,9 +3,9 @@
 //
 
 #include "View/Game/InsertionGameView.hpp"
-#include "View/Game/GameViewAbstract.hpp"
+#include "View/Game/AbstractGameView.hpp"
 
-InsertionGameView::InsertionGameView(Board board, std::string gameTime) : GameViewAbstract(board, gameTime) {}
+InsertionGameView::InsertionGameView(Board board, std::string gameTime) : AbstractGameView(board, gameTime) {}
 
 void InsertionGameView::DrawMovementInfo(int x, int y) const {
     gfx::out << gfx::nodecor << Color::Magenta << Position(x, y);

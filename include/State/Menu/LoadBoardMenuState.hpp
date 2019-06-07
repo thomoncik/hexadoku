@@ -3,22 +3,22 @@
 
 #include <map>
 #include <string>
-#include <Game.hpp>
+#include <StateContext.hpp>
 #include <State/AbstractState.hpp>
 
 class LoadBoardMenuState : public AbstractState {
 public:
     explicit LoadBoardMenuState(int size);
 
-    void OnEntry(Game &game) override;
+    void OnEntry(StateContext &game) override;
 
-    void Update(Game &game) override;
+    void Update(StateContext &game) override;
 
-    void HandleInput(Game &game, char input) override;
+    void HandleInput(StateContext &game, char input) override;
 
-    void Draw(Game &game) override;
+    void Draw(StateContext &game) override;
 
-    void OnExit(Game &game) override;
+    void OnExit(StateContext &game) override;
 
 protected:
     std::string loadingPath;

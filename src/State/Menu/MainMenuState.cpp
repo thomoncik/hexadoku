@@ -17,7 +17,7 @@ MainMenuState::MainMenuState() {
     };
 }
 
-void MainMenuState::UseOption(Game &game, const std::string &option) {
+void MainMenuState::UseOption(StateContext &game, const std::string &option) {
     if (option == NEW_GAME_OPTION) {
         game.SetState(std::make_shared<NewGameMenuState>());
     } else if (option == LOAD_GAME_OPTION) {

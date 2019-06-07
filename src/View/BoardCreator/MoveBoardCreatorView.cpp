@@ -4,7 +4,7 @@
 #include <Model/BoardCreator.hpp>
 
 MoveBoardCreatorView::MoveBoardCreatorView(std::shared_ptr<BoardCreator> boardCreator) :
-        BoardCreatorViewAbstract(std::move(boardCreator)) {
+        AbstractBoardCreatorView(std::move(boardCreator)) {
 
 }
 
@@ -14,9 +14,10 @@ void MoveBoardCreatorView::DrawActionsInfo(int x, int y) const {
     gfx::out << gfx::nodecor << Color::Magenta << Position(x, y + 1);
     gfx::out << " q - Quit to main menu" << Position(x, y + 2);
     gfx::out << " m - Enter insertion mode" << Position(x, y + 3);
-    gfx::out << " z - Generate easy board" << Position(x, y + 4);
-    gfx::out << " x - Generate normal board" << Position(x, y + 5);
-    gfx::out << " c - Generate hard board" << Position(x, y + 6);
+    gfx::out << " s - Save board to file" << Position(x, y + 4);
+    gfx::out << " z - Generate easy board" << Position(x, y + 5);
+    gfx::out << " x - Generate normal board" << Position(x, y + 6);
+    gfx::out << " c - Generate hard board" << Position(x, y + 7);
     gfx::out << gfx::nodecor;
 }
 

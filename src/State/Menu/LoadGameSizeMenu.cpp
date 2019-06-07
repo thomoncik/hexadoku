@@ -15,7 +15,7 @@ LoadGameSizeMenu::LoadGameSizeMenu() {
     };
 }
 
-void LoadGameSizeMenu::UseOption(Game &game, const std::string &option) {
+void LoadGameSizeMenu::UseOption(StateContext &game, const std::string &option) {
     if (option == STANDARD_SIZE_OPTION) {
         game.SetState(std::make_shared<LoadGameMenu>(Board::STANDARD_SIZE));
     } else if (option == HEXADOKU_OPTION) {

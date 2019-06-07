@@ -1,14 +1,14 @@
-#ifndef HEXADOKU_GAME_HPP
-#define HEXADOKU_GAME_HPP
+#ifndef HEXADOKU_STATECONTEXT_HPP
+#define HEXADOKU_STATECONTEXT_HPP
 
 #include "State/AbstractState.hpp"
 #include <memory>
 
 class AbstractState;
 
-class Game {
+class StateContext {
 public:
-    Game();
+    StateContext();
 
     void Run();
 
@@ -20,4 +20,4 @@ private:
     std::shared_ptr<AbstractState> state;
 };
 
-#endif //HEXADOKU_GAME_HPP
+#endif //HEXADOKU_STATECONTEXT_HPP
