@@ -1,8 +1,8 @@
 #include <utility>
 
 #include <Graphics/GfxStream.hpp>
-#include <View/SectionView.hpp>
-#include <View/CellView.hpp>
+#include <View/Board/SectionView.hpp>
+#include <View/Board/CellView.hpp>
 #include <cmath>
 
 SectionView::SectionView(BoardSection boardSection) : section(std::move(boardSection)) {

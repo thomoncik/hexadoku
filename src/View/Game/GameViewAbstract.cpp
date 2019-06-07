@@ -1,6 +1,6 @@
 #include <utility>
-#include <View/GameViewAbstract.hpp>
-#include <View/BoardView.hpp>
+#include <View/Game/GameViewAbstract.hpp>
+#include <View/Board/BoardView.hpp>
 
 
 GameViewAbstract::GameViewAbstract(Board board, std::string gameTime) : board(std::move(board)), gameTime(std::move(gameTime)) {}

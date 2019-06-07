@@ -1,6 +1,6 @@
 #include <State/Menu/NewGameMenuState.hpp>
 #include <State/Menu/MainMenuState.hpp>
-#include <State/MovePlayState.hpp>
+#include <State/Game/MovePlayState.hpp>
 
 const std::string NewGameMenuState::STANDARD_SIZE_OPTION{"Standard"};
 const std::string NewGameMenuState::HEXADOKU_OPTION{"Hexadoku"};

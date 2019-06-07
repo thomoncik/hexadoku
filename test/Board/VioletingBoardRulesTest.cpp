@@ -66,7 +66,7 @@ SCENARIO("Duplicates in column are reported") {
 }
 
 SCENARIO("Duplicates in section are reported") {
-    GIVEN("Board with duplicate in section") {
+    GIVEN("BoardCreator with duplicate in section") {
         Board board(Board::STANDARD_SIZE);
         board.SetValue(3, 0, 0);
         board.SetValue(3, 0, 1);

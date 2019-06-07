@@ -2,8 +2,8 @@
 // Created by Jakub Kiermasz on 2019-06-05.
 //
 
-#include "View/MoveGameView.hpp"
-#include "View/GameViewAbstract.hpp"
+#include "View/Game/MoveGameView.hpp"
+#include "View/Game/GameViewAbstract.hpp"
 
 MoveGameView::MoveGameView(Board board, std::string gameTime) : GameViewAbstract(board, gameTime) {}
 

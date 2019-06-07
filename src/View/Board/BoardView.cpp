@@ -1,5 +1,5 @@
-#include <View/SectionView.hpp>
-#include <View/BoardView.hpp>
+#include <View/Board/SectionView.hpp>
+#include <View/Board/BoardView.hpp>
 #include <Graphics/Attributes.hpp>
 #include <Graphics/GfxStream.hpp>
 #include <cmath>

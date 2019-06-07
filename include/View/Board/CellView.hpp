@@ -2,7 +2,7 @@
 #define HEXADOKU_CELLVIEW_HPP
 
 #include <Model/BoardCell.hpp>
-#include "AbstractView.hpp"
+#include "View/AbstractView.hpp"
 
 class CellView : public AbstractView {
 public:

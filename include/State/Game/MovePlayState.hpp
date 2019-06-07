@@ -7,7 +7,7 @@
 
 #include <Model/Board.hpp>
 #include <Model/PlayStateModel.hpp>
-#include <State/PlayStateAbstract.hpp>
+#include <State/Game/PlayStateAbstract.hpp>
 
 class MovePlayState : public PlayStateAbstract {
 public:

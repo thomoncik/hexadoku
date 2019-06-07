@@ -1,7 +1,7 @@
 #ifndef HEXADOKU_SECTIONVIEW_HPP
 #define HEXADOKU_SECTIONVIEW_HPP
 
-#include "AbstractView.hpp"
+#include "View/AbstractView.hpp"
 #include <vector>
 #include <Model/BoardSection.hpp>
 

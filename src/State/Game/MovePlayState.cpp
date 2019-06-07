@@ -1,9 +1,9 @@
 #include <utility>
 
-#include <State/MovePlayState.hpp>
+#include <State/Game/MovePlayState.hpp>
 #include <State/Menu/MainMenuState.hpp>
-#include <View/MoveGameView.hpp>
-#include "State/InsertionPlayState.hpp"
+#include <View/Game/MoveGameView.hpp>
+#include "State/Game/InsertionPlayState.hpp"
 
 MovePlayState::MovePlayState(int boardSize) : PlayStateAbstract(boardSize) {
 

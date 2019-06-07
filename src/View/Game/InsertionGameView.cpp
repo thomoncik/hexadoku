@@ -2,8 +2,8 @@
 // Created by Jakub Kiermasz on 2019-06-05.
 //
 
-#include "View/InsertionGameView.hpp"
-#include "View/GameViewAbstract.hpp"
+#include "View/Game/InsertionGameView.hpp"
+#include "View/Game/GameViewAbstract.hpp"
 
 InsertionGameView::InsertionGameView(Board board, std::string gameTime) : GameViewAbstract(board, gameTime) {}
 

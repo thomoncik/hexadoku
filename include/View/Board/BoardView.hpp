@@ -1,7 +1,7 @@
 #ifndef HEXADOKU_BOARDVIEW_HPP
 #define HEXADOKU_BOARDVIEW_HPP
 
-#include "AbstractView.hpp"
+#include "View/AbstractView.hpp"
 #include <vector>
 #include <Model/Board.hpp>
 

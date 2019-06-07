@@ -1,15 +1,13 @@
-#include <utility>
-
-#include <State/Menu/LoadGameMenu.hpp>
-#include <boost/filesystem.hpp>
-#include <Graphics/GfxStream.hpp>
-#include <iomanip>
-#include <Graphics/Attributes.hpp>
+#include <State/Menu/LoadBoardMenuState.hpp>
 #include <Model/Board.hpp>
-#include <State/Game/MovePlayState.hpp>
+#include <boost/filesystem/operations.hpp>
+#include <State/BoardCreator/MoveBoardCreatorState.hpp>
+#include <Graphics/GfxStream.hpp>
 #include <Graphics/Assets.hpp>
+#include <Graphics/Attributes.hpp>
+#include <iomanip>
 
-LoadGameMenu::LoadGameMenu(int size) : size(size) {
+LoadBoardMenuState::LoadBoardMenuState(int size) : size(size) {
     if (size == Board::STANDARD_SIZE) {
         loadingPath = Board::SAVED_STANDARD_BOARD_PATH;
     } else if (size == Board::HEXADOKU_SIZE) {
@@ -17,7 +15,7 @@ LoadGameMenu::LoadGameMenu(int size) : size(size) {
     }
 }
 
-void LoadGameMenu::OnEntry(Game &game) {
+void LoadBoardMenuState::OnEntry(Game &game) {
     filePathToName.clear();
     for (const auto &entry : boost::filesystem::directory_iterator(loadingPath)) {
         filePathToName[entry.path().filename().string()] = entry.path().stem().string();
@@ -25,11 +23,11 @@ void LoadGameMenu::OnEntry(Game &game) {
     option = filePathToName.begin();
 }
 
-void LoadGameMenu::Update(Game &game) {
+void LoadBoardMenuState::Update(Game &game) {
 
 }
 
-void LoadGameMenu::HandleInput(Game &game, char input) {
+void LoadBoardMenuState::HandleInput(Game &game, char input) {
     if (input == 'j') {
         option++;
         if (option == filePathToName.end()) {
@@ -44,11 +42,11 @@ void LoadGameMenu::HandleInput(Game &game, char input) {
         auto board = std::make_shared<Board>(size);
         board->LoadFromFile(option->first);
 
-        game.SetState(std::make_shared<MovePlayState>(board));
+        game.SetState(std::make_shared<MoveBoardCreatorState>(board));
     }
 }
 
-void LoadGameMenu::Draw(Game &game) {
+void LoadBoardMenuState::Draw(Game &game) {
     gfx::out << gfx::clear;
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
     gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
@@ -70,6 +68,7 @@ void LoadGameMenu::Draw(Game &game) {
     }
 }
 
-void LoadGameMenu::OnExit(Game &game) {
+void LoadBoardMenuState::OnExit(Game &game) {
 
 }
+
