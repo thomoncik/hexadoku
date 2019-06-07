@@ -1,6 +1,7 @@
 set(TEST_SOURCES
         main.cpp
         Game/StateChangingTest.cpp
+        Game/GameLoadingTest.cpp
         Board/BoardLoadingTest.cpp
         Board/BoardSaveTest.cpp
         Board/SolveTest.cpp
@@ -28,9 +29,9 @@ set(SOURCE_FILES
         ../src/State/Menu/AbstractMenuState.cpp
         ../src/State/Menu/MainMenuState.cpp
         ../src/State/Menu/NewGameMenuState.cpp
-        ../src/State/Menu/BoardCreatorMenu.cpp
-        ../src/State/Menu/LoadGameMenu.cpp
-        ../src/State/Menu/LoadGameSizeMenu.cpp
+        ../src/State/Menu/BoardCreatorMenuState.cpp
+        ../src/State/Menu/LoadGameMenuState.cpp
+        ../src/State/Menu/LoadGameSizeMenuState.cpp
         ../src/State/BoardCreator/AbstractBoardCreatorState.cpp
         ../src/View/Game/MoveGameView.cpp
         ../src/View/Game/InsertionGameView.cpp
@@ -43,10 +44,12 @@ set(SOURCE_FILES
         ../src/View/BoardCreator/AbstractBoardCreatorView.cpp
         ../src/View/BoardCreator/MoveBoardCreatorView.cpp
         ../src/View/BoardCreator/InsertionBoardCreatorView.cpp
-        ../src/State/Menu/LoadBoardSizeMenuState.cpp
+        ../src/State/Menu/LoadOrCreateBoardMenuState.cpp
         ../src/State/Menu/LoadBoardMenuState.cpp
         ../src/State/BoardCreator/SaveBoardCreatorState.cpp
-        ../src/State/Game/SaveGameState.cpp)
+        ../src/State/Game/SaveGameState.cpp
+        ../src/State/Menu/NewGameDifficultyMenuState.cpp
+        ../src/State/Menu/NewGameFromFileMenuState.cpp)
 
 add_definitions(-DTESTING)
 

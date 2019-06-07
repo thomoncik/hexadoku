@@ -24,7 +24,7 @@ void InsertionGameView::DrawActionsInfo(int x, int y) const {
     gfx::out << Attribute::BOLD << "Actions";
     gfx::out << gfx::nodecor << Color::Magenta << Position(x, y + 1);
     gfx::out << " q - Quit to main menu" << Position(x, y + 2);
-    gfx::out << " m - Exit insertion mode" << Position(x, y + 3);
+    gfx::out << " i -Exit insertion mode" << Position(x, y + 3);
     gfx::out << " s - Save game" << Position(x, y + 4);
     gfx::out << gfx::nodecor;
 }

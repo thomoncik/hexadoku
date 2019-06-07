@@ -51,7 +51,7 @@ void MoveBoardCreatorState::HandleInput(StateContext &stateContext, char input) 
 
     if (input == 'q') {
         stateContext.SetState(std::make_shared<MainMenuState>());
-    } else if (input == 'm') {
+    } else if (input == 'i') {
         stateContext.SetState(std::make_shared<InsertionBoardCreatorState>(std::move(boardCreator)));
     } else if (input == 's') {
         stateContext.SetState(std::make_shared<SaveBoardCreatorState>(std::move(boardCreator)));

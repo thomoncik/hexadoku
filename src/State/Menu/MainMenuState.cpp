@@ -1,6 +1,6 @@
 #include <State/Menu/NewGameMenuState.hpp>
-#include <State/Menu/BoardCreatorMenu.hpp>
-#include <State/Menu/LoadGameSizeMenu.hpp>
+#include <State/Menu/BoardCreatorMenuState.hpp>
+#include <State/Menu/LoadGameSizeMenuState.hpp>
 #include "State/Menu/MainMenuState.hpp"
 
 const std::string MainMenuState::NEW_GAME_OPTION{"New game"};
@@ -21,9 +21,9 @@ void MainMenuState::UseOption(StateContext &stateContext, const std::string &opt
     if (option == NEW_GAME_OPTION) {
         stateContext.SetState(std::make_shared<NewGameMenuState>());
     } else if (option == LOAD_GAME_OPTION) {
-        stateContext.SetState(std::make_shared<LoadGameSizeMenu>());
+        stateContext.SetState(std::make_shared<LoadGameSizeMenuState>());
     } else if (option == BOARD_CREATOR_OPTION) {
-        stateContext.SetState(std::make_shared<BoardCreatorMenu>());
+        stateContext.SetState(std::make_shared<BoardCreatorMenuState>());
     } else if (option == EXIT_OPTION) {
         stateContext.SetState(nullptr);
     }

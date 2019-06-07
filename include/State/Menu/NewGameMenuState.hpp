@@ -7,7 +7,6 @@ class NewGameMenuState : public AbstractMenuState {
 public:
     static const std::string STANDARD_SIZE_OPTION;
     static const std::string HEXADOKU_OPTION;
-    static const std::string FROM_FILE_OPTION;
     static const std::string BACK_OPTION;
 
     NewGameMenuState();
