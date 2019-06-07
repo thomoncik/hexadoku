@@ -27,9 +27,9 @@ void InsertionPlayState::HandleInput(Game &game, char input) {
     if (std::find(boardCharacters.begin(), boardCharacters.end(), input) != boardCharacters.end()) {
         auto value = distance(boardCharacters.begin(), find(boardCharacters.begin(), boardCharacters.end(), input));
         model->SetValue(value, model->GetX(), model->GetY());
+        model->SetIsCorrect(model->IsCorrect(model->GetX(), model->GetY()), model->GetX(), model->GetY());
     }
     model->SetSelected(true, model->GetX(), model->GetY());
-
     if (input == 'q') {
         game.SetState(std::make_shared<MainMenuState>());
     } else if (input == 'm') {

@@ -4,6 +4,7 @@
 
 #include "Model/PlayStateModel.hpp"
 #include <chrono>
+#include <algorithm>
 
 PlayStateModel::PlayStateModel(int boardSize) : board(std::make_shared<Board>(boardSize)) {
 
@@ -57,4 +58,21 @@ void PlayStateModel::SetX(int x) {
 
 void PlayStateModel::SetY(int y) {
     this->y = y;
+}
+
+bool PlayStateModel::IsCorrect(int column, int row) const {
+    int value = this->board->GetValue(column, row);
+    std::vector<int> columnValues = this->board->GetValuesInColumn(column);
+    std::vector<int> rowValues = this->board->GetValuesInRow(row);
+    if (std::count(columnValues.begin(), columnValues.end(), value) > 1) {
+        return false;
+    }
+    if (std::count(rowValues.begin(), rowValues.end(), value) > 1) {
+        return false;
+    }
+    return true;
+}
+
+void PlayStateModel::SetIsCorrect(bool isCorrect, int column, int row) {
+    this->board->SetIsCorrect(isCorrect, column, row);
 }
