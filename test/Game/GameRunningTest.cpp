@@ -1,7 +1,7 @@
 #include "catch2/catch.hpp"
 #include "fakeit/fakeit.hpp"
 
-#include "Game.hpp"
+#include "StateContext.hpp"
 #include "State/AbstractState.hpp"
 
 using namespace fakeit;
@@ -9,7 +9,7 @@ using namespace fakeit;
 SCENARIO("Game can be ran") {
 
     GIVEN("A game and state") {
-        Game game;
+        StateContext stateContext;
         Mock<AbstractState> stateMock;
         Fake(Method(stateMock, OnEntry));
         Fake(Method(stateMock, Draw));
@@ -19,13 +19,13 @@ SCENARIO("Game can be ran") {
          * which is the last one called by Ran() in game loop.
          * As the game state is set to nullptr the game loop stops.
          */
-        When(Method(stateMock, Update)).Do([](Game &g) { g.SetState(nullptr); });
+        When(Method(stateMock, Update)).Do([](StateContext &g) { g.SetState(nullptr); });
         Fake(Method(stateMock, OnExit));
 
-        game.SetState(std::shared_ptr<AbstractState>(&stateMock.get()));
+        stateContext.SetState(std::shared_ptr<AbstractState>(&stateMock.get()));
 
         WHEN("game is ran") {
-            game.Run();
+            stateContext.Run();
 
             THEN("Draw is called from state") {
                 Verify(Method(stateMock, Draw)).Once();

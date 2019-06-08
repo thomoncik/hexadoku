@@ -1,7 +1,7 @@
 #include "catch2/catch.hpp"
 #include "fakeit/fakeit.hpp"
 
-#include "Game.hpp"
+#include "StateContext.hpp"
 #include "State/AbstractState.hpp"
 
 using namespace fakeit;
@@ -14,12 +14,12 @@ SCENARIO("States can be changed") {
         Fake(Method(newStateMock, OnEntry), Method(newStateMock, OnExit));
         Fake(Method(oldStateMock, OnEntry), Method(oldStateMock, OnExit));
 
-        Game game;
+        StateContext stateContext;
 
-        game.SetState(std::shared_ptr<AbstractState>(&oldStateMock.get()));
+        stateContext.SetState(std::shared_ptr<AbstractState>(&oldStateMock.get()));
 
         WHEN("game state is changed to new one") {
-            game.SetState(std::shared_ptr<AbstractState>(&newStateMock.get()));
+            stateContext.SetState(std::shared_ptr<AbstractState>(&newStateMock.get()));
 
             THEN("OnExit is called from old state") {
                 Verify(Method(oldStateMock, OnExit)).Once();

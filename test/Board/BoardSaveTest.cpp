@@ -6,7 +6,7 @@
 
 using namespace fakeit;
 
-SCENARIO("Board can be saved to stream") {
+SCENARIO("BoardCreator can be saved to stream") {
     GIVEN("Standard sized filled board") {
         Board board(Board::STANDARD_SIZE);
         std::vector<std::vector<int>> values{
@@ -26,11 +26,11 @@ SCENARIO("Board can be saved to stream") {
             }
         }
         
-        WHEN("Board is saved to stream") {
+        WHEN("BoardCreator is saved to stream") {
             std::stringstream stream;
             board.SaveToStream(stream);
 
-            THEN("Board is loaded") {
+            THEN("BoardCreator is loaded") {
                 std::vector<std::vector<int>> loadedValues(Board::STANDARD_SIZE, std::vector<int>(Board::STANDARD_SIZE));
                 for (int y = 0; y < Board::STANDARD_SIZE; ++y) {
                     for (int x = 0; x < Board::STANDARD_SIZE; ++x) {
@@ -68,11 +68,11 @@ SCENARIO("Board can be saved to stream") {
             }
         }
 
-        WHEN("Board is saved to stream") {
+        WHEN("BoardCreator is saved to stream") {
             std::stringstream stream;
             board.SaveToStream(stream);
 
-            THEN("Board is loaded") {
+            THEN("BoardCreator is loaded") {
                 std::vector<std::vector<int>> loadedValues(Board::HEXADOKU_SIZE, std::vector<int>(Board::HEXADOKU_SIZE));
                 for (int y = 0; y < Board::HEXADOKU_SIZE; ++y) {
                     for (int x = 0; x < Board::HEXADOKU_SIZE; ++x) {
