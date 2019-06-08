@@ -2,10 +2,12 @@
 // Created by Jakub Kiermasz on 2019-06-05.
 //
 
-#include "View/Game/MoveGameView.hpp"
-#include "View/Game/GameViewAbstract.hpp"
+#include <View/Game/MoveGameView.hpp>
+#include <View/Game/GameViewAbstract.hpp>
+#include <utility>
 
-MoveGameView::MoveGameView(Board board, std::string gameTime) : GameViewAbstract(board, gameTime) {}
+
+MoveGameView::MoveGameView(Board board, std::string gameTime) : GameViewAbstract(std::move(board), std::move(gameTime)) {}
 
 void MoveGameView::DrawMovementInfo(int x, int y) const {
     gfx::out << gfx::nodecor << Color::Magenta << Position(x, y);
@@ -24,5 +26,6 @@ void MoveGameView::DrawActionsInfo(int x, int y) const {
     gfx::out << gfx::nodecor << Color::Magenta << Position(x, y + 1);
     gfx::out << " q - Quit to main menu" << Position(x, y + 2);
     gfx::out << " m - Enter insertion mode" << Position(x, y + 3);
+    gfx::out << " ? - Get hint" << Position(x, y + 4);
     gfx::out << gfx::nodecor;
 }

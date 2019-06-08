@@ -30,7 +30,9 @@ void InsertionPlayState::HandleInput(Game &game, char input) {
         model->SetIsCorrect(model->IsCorrect(model->GetX(), model->GetY()), model->GetX(), model->GetY());
     }
     model->SetSelected(true, model->GetX(), model->GetY());
-    if (input == 'q') {
+    if (input == '?') {
+        model->MakeHint();
+    } else if (input == 'q') {
         game.SetState(std::make_shared<MainMenuState>());
     } else if (input == 'm') {
         game.SetState(std::make_shared<MovePlayState>(std::move(model)));
