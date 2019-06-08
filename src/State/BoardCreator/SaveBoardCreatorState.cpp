@@ -44,7 +44,7 @@ void SaveBoardCreatorState::Draw(StateContext &stateContext) {
     gfx::out << gfx::nodecor;
     gfx::out << Position(x, y) << "Save as: " << std::string(MAX_FILENAME_LENGTH, ' ');
     gfx::out << Position(x, y) << "Save as: " << filename;
-    gfx::out << Position(x, y + 1) << Color::Yellow << "  or press ESC to go back";
-    gfx::out << Position(x, y + 2) << "  to creator without saving";
+    gfx::out << Position(x, y + 1) << Color::Yellow << "  ENTER saves";
+    gfx::out << Position(x, y + 2) << Color::Yellow << "  ESC aborts";
     gfx::out << gfx::nodecor;
 }
