@@ -3,6 +3,7 @@
 
 #include <State/AbstractState.hpp>
 #include <map>
+#include <string>
 
 class NewGameFromFileMenuState : public AbstractState {
 public:
