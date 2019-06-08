@@ -2,11 +2,11 @@
 #include "fakeit/fakeit.hpp"
 
 #include "Game.hpp"
-#include "AbstractState.hpp"
+#include "State/AbstractState.hpp"
 
 using namespace fakeit;
 
-SCENARIO("Game can be ran", "[Game]") {
+SCENARIO("Game can be ran") {
 
     GIVEN("A game and state") {
         Game game;
@@ -22,8 +22,7 @@ SCENARIO("Game can be ran", "[Game]") {
         When(Method(stateMock, Update)).Do([](Game &g) { g.SetState(nullptr); });
         Fake(Method(stateMock, OnExit));
 
-        AbstractState *state = &stateMock.get();
-        game.SetState(state);
+        game.SetState(std::shared_ptr<AbstractState>(&stateMock.get()));
 
         WHEN("game is ran") {
             game.Run();

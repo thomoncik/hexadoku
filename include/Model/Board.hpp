@@ -9,6 +9,7 @@
 #include <istream>
 #include <ostream>
 #include "BoardSection.hpp"
+#include "Hint.hpp"
 
 class Board {
 public:
@@ -112,6 +113,8 @@ public:
      * @return true if no empty cell is present in board
      */
     bool IsFilled() const;
+
+    Hint GetHint() const;
 
     /**
      * Fills board with EMPTY_VALUE.

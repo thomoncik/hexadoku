@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "Position.hpp"
-#include "Color.hpp"
+#include "Graphics/Color.hpp"
 
 class GfxStream;
 

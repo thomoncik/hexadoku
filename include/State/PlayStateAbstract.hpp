@@ -5,15 +5,18 @@
 #ifndef HEXADOKU_PLAYSTATEABSTRACT_HPP
 #define HEXADOKU_PLAYSTATEABSTRACT_HPP
 
-#include "AbstractState.hpp"
-#include "Model/Board.hpp"
+#include <State/AbstractState.hpp>
+#include <Model/PlayStateModel.hpp>
 #include <ctime>
 #include <memory>
-#include <iostream>
 
 class PlayStateAbstract : public AbstractState {
 public:
-    explicit PlayStateAbstract(int boardSize, std::shared_ptr<Board> board = nullptr, int x = 0, int y = 0);
+    explicit PlayStateAbstract(int boardSize);
+
+    explicit PlayStateAbstract(std::shared_ptr<Board> board);
+
+    explicit PlayStateAbstract(std::shared_ptr<PlayStateModel> model);
 
     void OnEntry(Game &game) override;
 
@@ -22,12 +25,7 @@ public:
     void OnExit(Game &game) override;
 
 protected:
-    std::time_t creationTime{};
-    std::time_t gameTime{};
-    std::shared_ptr<Board> board;
-    int x;
-    int y;
-    std::string GetGameTimeString() const;
+    std::shared_ptr<PlayStateModel> model;
 };
 
 

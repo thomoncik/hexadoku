@@ -2,27 +2,24 @@
 #include "fakeit/fakeit.hpp"
 
 #include "Game.hpp"
-#include "AbstractState.hpp"
+#include "State/AbstractState.hpp"
 
 using namespace fakeit;
 
-SCENARIO("States can be changed", "[Game]") {
+SCENARIO("States can be changed") {
 
     GIVEN("A game and state") {
-        Game game;
         Mock<AbstractState> oldStateMock, newStateMock;
-        Fake(Method(newStateMock, OnEntry));
-        Fake(Method(newStateMock, OnExit));
-        Fake(Method(oldStateMock, OnEntry));
-        Fake(Method(oldStateMock, OnExit));
+        Fake(Dtor(oldStateMock), Dtor(newStateMock));
+        Fake(Method(newStateMock, OnEntry), Method(newStateMock, OnExit));
+        Fake(Method(oldStateMock, OnEntry), Method(oldStateMock, OnExit));
 
-        AbstractState *oldState = &oldStateMock.get();
-        AbstractState *newState = &newStateMock.get();
-        
-        game.SetState(oldState);
+        Game game;
+
+        game.SetState(std::shared_ptr<AbstractState>(&oldStateMock.get()));
 
         WHEN("game state is changed to new one") {
-            game.SetState(newState);
+            game.SetState(std::shared_ptr<AbstractState>(&newStateMock.get()));
 
             THEN("OnExit is called from old state") {
                 Verify(Method(oldStateMock, OnExit)).Once();

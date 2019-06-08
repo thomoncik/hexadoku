@@ -1,6 +1,6 @@
 # Hexadoku [![Build Status](https://travis-ci.org/thomoncik/hexadoku.svg?branch=master)](https://travis-ci.org/thomoncik/hexadoku)
 
-Hexadoku is a a sudoku game where you can choose to play 9x9 or 15x15 grid
+Hexadoku is a a sudoku game where you can choose to play 9x9 or 16x16 grid
 
 ## Installation
 
