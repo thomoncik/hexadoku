@@ -1,18 +1,17 @@
-#ifndef HEXADOKU_NEWGAMEMENUSTATE_HPP
-#define HEXADOKU_NEWGAMEMENUSTATE_HPP
-
+#ifndef HEXADOKU_BOARDCREATORMENUSTATE_HPP
+#define HEXADOKU_BOARDCREATORMENUSTATE_HPP
 #include "AbstractMenuState.hpp"
 
-class NewGameMenuState : public AbstractMenuState {
+class BoardCreatorMenuState : public AbstractMenuState {
 public:
     static const std::string STANDARD_SIZE_OPTION;
     static const std::string HEXADOKU_OPTION;
     static const std::string BACK_OPTION;
 
-    NewGameMenuState();
+    BoardCreatorMenuState();
 
 protected:
     void UseOption(StateContext &stateContext, const std::string &option) override;
 };
 
-#endif //HEXADOKU_NEWGAMEMENUSTATE_HPP
+#endif //HEXADOKU_BOARDCREATORMENUSTATE_HPP

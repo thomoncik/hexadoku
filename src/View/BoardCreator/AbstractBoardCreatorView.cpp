@@ -1,14 +1,14 @@
-#include <View/BoardCreator/BoardCreatorViewAbstract.hpp>
+#include <View/BoardCreator/AbstractBoardCreatorView.hpp>
 #include <View/Board/BoardView.hpp>
 #include <Graphics/GfxStream.hpp>
 
-BoardCreatorViewAbstract::BoardCreatorViewAbstract(std::shared_ptr<BoardCreator> boardCreator) :
+AbstractBoardCreatorView::AbstractBoardCreatorView(std::shared_ptr<BoardCreator> boardCreator) :
         boardCreator(std::move(boardCreator)) {
 
 }
 
 
-void BoardCreatorViewAbstract::Draw() const {
+void AbstractBoardCreatorView::Draw() const {
     gfx::out << gfx::clear;
 
     BoardView boardView(*boardCreator->GetBoard());

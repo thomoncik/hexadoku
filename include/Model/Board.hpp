@@ -24,6 +24,7 @@ public:
 
     static const std::string SAVED_STANDARD_BOARD_PATH;
     static const std::string SAVED_HEXADOKU_BOARD_PATH;
+    static const std::string SAVED_BOARD_FILE_EXTENSION;
 
     /**
      * Creates Board object from grid of given values

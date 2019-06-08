@@ -5,25 +5,25 @@
 #include <iomanip>
 #include <algorithm>
 
-void AbstractMenuState::OnEntry(Game &game) {
+void AbstractMenuState::OnEntry(StateContext &stateContext) {
     selectedOption = 0;
 }
 
-void AbstractMenuState::Update(Game &game) {
+void AbstractMenuState::Update(StateContext &stateContext) {
 
 }
 
-void AbstractMenuState::HandleInput(Game &game, char input) {
+void AbstractMenuState::HandleInput(StateContext &stateContext, char input) {
     if (input == 'j') {
         selectedOption = (selectedOption + 1) % options.size();
     } else if (input == 'k') {
         selectedOption == 0 ? (selectedOption = options.size() - 1) : (selectedOption--);
     } else if (input == ' ') {
-        UseOption(game, options[selectedOption]);
+        UseOption(stateContext, options[selectedOption]);
     }
 }
 
-void AbstractMenuState::Draw(Game &game) {
+void AbstractMenuState::Draw(StateContext &stateContext) {
     gfx::out << gfx::clear;
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
     gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
@@ -37,7 +37,7 @@ void AbstractMenuState::Draw(Game &game) {
     }
 }
 
-void AbstractMenuState::OnExit(Game &game) {
+void AbstractMenuState::OnExit(StateContext &stateContext) {
 
 }
 

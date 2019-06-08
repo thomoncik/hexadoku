@@ -18,7 +18,7 @@ MoveBoardCreatorState::MoveBoardCreatorState(std::shared_ptr<BoardCreator> board
 
 }
 
-void MoveBoardCreatorState::HandleInput(Game &game, char input) {
+void MoveBoardCreatorState::HandleInput(StateContext &stateContext, char input) {
     boardCreator->GetBoard()->SetSelected(false, boardCreator->GetSelectedColumn(), boardCreator->GetSelectedRow());
     if (input == 'l') {
         int newColumn = (boardCreator->GetSelectedColumn() + 1) % boardCreator->GetBoard()->GetSize();
@@ -50,15 +50,15 @@ void MoveBoardCreatorState::HandleInput(Game &game, char input) {
     }
 
     if (input == 'q') {
-        game.SetState(std::make_shared<MainMenuState>());
-    } else if (input == 'm') {
-        game.SetState(std::make_shared<InsertionBoardCreatorState>(std::move(boardCreator)));
+        stateContext.SetState(std::make_shared<MainMenuState>());
+    } else if (input == 'i') {
+        stateContext.SetState(std::make_shared<InsertionBoardCreatorState>(std::move(boardCreator)));
     } else if (input == 's') {
-        game.SetState(std::make_shared<SaveBoardCreatorState>(std::move(boardCreator)));
+        stateContext.SetState(std::make_shared<SaveBoardCreatorState>(std::move(boardCreator)));
     }
 }
 
-void MoveBoardCreatorState::Draw(Game &game) {
+void MoveBoardCreatorState::Draw(StateContext &stateContext) {
     MoveBoardCreatorView view(boardCreator);
     view.Draw();
 }

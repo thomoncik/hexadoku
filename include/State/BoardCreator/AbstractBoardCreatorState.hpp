@@ -13,15 +13,15 @@ public:
 
     explicit AbstractBoardCreatorState(std::shared_ptr<BoardCreator> boardCreator);
 
-    void OnEntry(Game &game) override;
+    void OnEntry(StateContext &stateContext) override;
 
-    void Update(Game &game) override;
+    void Update(StateContext &stateContext) override;
 
-    void OnExit(Game &game) override;
+    void OnExit(StateContext &stateContext) override;
 
-    void HandleInput(Game &game, char input) override;
+    void HandleInput(StateContext &stateContext, char input) override;
 
-    void Draw(Game &game) override;
+    void Draw(StateContext &stateContext) override;
 
 protected:
     std::shared_ptr<BoardCreator> boardCreator;

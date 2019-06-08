@@ -1,35 +1,37 @@
-#include <State/Menu/LoadBoardMenuState.hpp>
-#include <Model/Board.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <State/BoardCreator/MoveBoardCreatorState.hpp>
-#include <Graphics/GfxStream.hpp>
-#include <Graphics/Assets.hpp>
-#include <Graphics/Attributes.hpp>
-#include <iomanip>
+#include <utility>
 
-LoadBoardMenuState::LoadBoardMenuState(int size) : size(size) {
+#include <State/Menu/LoadGameMenuState.hpp>
+#include <boost/filesystem.hpp>
+#include <Graphics/GfxStream.hpp>
+#include <iomanip>
+#include <Graphics/Attributes.hpp>
+#include <Model/Board.hpp>
+#include <State/Game/MoveGameState.hpp>
+#include <Graphics/Assets.hpp>
+
+LoadGameMenuState::LoadGameMenuState(int size) : size(size) {
     if (size == Board::STANDARD_SIZE) {
-        loadingPath = Board::SAVED_STANDARD_BOARD_PATH;
+        loadingPath = Game::SAVED_STANDARD_GAME_PATH;
     } else if (size == Board::HEXADOKU_SIZE) {
-        loadingPath = Board::SAVED_HEXADOKU_BOARD_PATH;
+        loadingPath = Game::SAVED_HEXADOKU_GAME_PATH;
     }
 }
 
-void LoadBoardMenuState::OnEntry(StateContext &stateContext) {
+void LoadGameMenuState::OnEntry(StateContext &stateContext) {
     filePathToName.clear();
     for (const auto &entry : boost::filesystem::directory_iterator(loadingPath)) {
-        if (entry.path().extension().string() == Board::SAVED_BOARD_FILE_EXTENSION) {
+        if (entry.path().extension().string() == Game::SAVED_GAME_FILE_EXTENSION) {
             filePathToName[entry.path().string()] = entry.path().stem().string();
         }
     }
     option = filePathToName.begin();
 }
 
-void LoadBoardMenuState::Update(StateContext &stateContext) {
+void LoadGameMenuState::Update(StateContext &stateContext) {
 
 }
 
-void LoadBoardMenuState::HandleInput(StateContext &stateContext, char input) {
+void LoadGameMenuState::HandleInput(StateContext &stateContext, char input) {
     if (input == 'j') {
         option++;
         if (option == filePathToName.end()) {
@@ -41,14 +43,14 @@ void LoadBoardMenuState::HandleInput(StateContext &stateContext, char input) {
         }
         option--;
     } else if (input == ' ') {
-        auto board = std::make_shared<Board>(size);
-        board->LoadFromFile(option->first);
+        auto game = std::make_shared<Game>(size);
+        game->LoadFromFile(option->first);
 
-        stateContext.SetState(std::make_shared<MoveBoardCreatorState>(board));
+        stateContext.SetState(std::make_shared<MoveGameState>(game));
     }
 }
 
-void LoadBoardMenuState::Draw(StateContext &stateContext) {
+void LoadGameMenuState::Draw(StateContext &stateContext) {
     gfx::out << gfx::clear;
     gfx::out << Position(0, 3) << Color::Blue << Attribute::BOLD;
     gfx::out << Assets::HEXADOKU_LOGO << gfx::nodecor;
@@ -70,7 +72,6 @@ void LoadBoardMenuState::Draw(StateContext &stateContext) {
     }
 }
 
-void LoadBoardMenuState::OnExit(StateContext &stateContext) {
+void LoadGameMenuState::OnExit(StateContext &stateContext) {
 
 }
-

@@ -9,38 +9,41 @@ set(SOURCE_FILES
         Graphics/Assets.cpp
         Graphics/Attributes.cpp
         Graphics/Color.cpp
-        Game.cpp
+        StateContext.cpp
         Graphics/GfxStream.cpp
-        State/Game/MovePlayState.cpp
+        State/Game/MoveGameState.cpp
         Graphics/Position.cpp
         View/AbstractView.cpp
         View/Board/CellView.cpp
         View/Board/BoardView.cpp
         View/Board/SectionView.cpp
-        State/Game/PlayStateAbstract.cpp
-        State/Game/InsertionPlayState.cpp
+        State/Game/AbstractGameState.cpp
+        State/Game/InsertionGameState.cpp
         State/Menu/AbstractMenuState.cpp
         State/Menu/MainMenuState.cpp
         State/Menu/NewGameMenuState.cpp
-        State/Menu/BoardCreatorMenu.cpp
-        State/Menu/LoadGameMenu.cpp
-        State/Menu/LoadGameSizeMenu.cpp
+        State/Menu/BoardCreatorMenuState.cpp
+        State/Menu/LoadGameMenuState.cpp
+        State/Menu/LoadGameSizeMenuState.cpp
         State/BoardCreator/AbstractBoardCreatorState.cpp
         View/Game/MoveGameView.cpp
         View/Game/InsertionGameView.cpp
-        Model/PlayStateModel.cpp
-        View/Game/GameViewAbstract.cpp
+        Model/Game.cpp
+        View/Game/AbstractGameView.cpp
         Model/Hint.cpp
         State/BoardCreator/InsertionBoardCreatorState.cpp
         State/BoardCreator/MoveBoardCreatorState.cpp
         Model/BoardCreator.cpp
-        View/BoardCreator/BoardCreatorViewAbstract.cpp
+        View/BoardCreator/AbstractBoardCreatorView.cpp
         View/BoardCreator/MoveBoardCreatorView.cpp
         View/BoardCreator/InsertionBoardCreatorView.cpp
-        State/Menu/LoadBoardSizeMenuState.cpp
+        State/Menu/LoadOrCreateBoardMenuState.cpp
         State/Menu/LoadBoardMenuState.cpp
         State/BoardCreator/SaveBoardCreatorState.cpp
-        State/Game/EndGameState.cpp)
+        State/Game/EndGameState.cpp
+        State/Game/SaveGameState.cpp
+        State/Menu/NewGameDifficultyMenuState.cpp
+        State/Menu/NewGameFromFileMenuState.cpp)
 
 add_executable(hexadoku ${SOURCE_FILES})
 target_link_libraries(hexadoku curses)

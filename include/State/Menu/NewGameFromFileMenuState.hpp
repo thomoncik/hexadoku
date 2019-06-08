@@ -1,14 +1,12 @@
-#ifndef HEXADOKU_LOADBOARDMENUSTATE_HPP
-#define HEXADOKU_LOADBOARDMENUSTATE_HPP
+#ifndef HEXADOKU_NEWGAMEFROMFILEMENUSTATE_HPP
+#define HEXADOKU_NEWGAMEFROMFILEMENUSTATE_HPP
 
-#include <map>
-#include <string>
-#include <StateContext.hpp>
 #include <State/AbstractState.hpp>
+#include <map>
 
-class LoadBoardMenuState : public AbstractState {
+class NewGameFromFileMenuState : public AbstractState {
 public:
-    explicit LoadBoardMenuState(int size);
+    explicit NewGameFromFileMenuState(int size);
 
     void OnEntry(StateContext &stateContext) override;
 
@@ -29,4 +27,6 @@ private:
     int size;
 };
 
-#endif //HEXADOKU_LOADBOARDMENUSTATE_HPP
+
+
+#endif //HEXADOKU_NEWGAMEFROMFILEMENUSTATE_HPP

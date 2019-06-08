@@ -5,9 +5,9 @@
 #ifndef HEXADOKU_MOVEGAMEVIEW_HPP
 #define HEXADOKU_MOVEGAMEVIEW_HPP
 
-#include "GameViewAbstract.hpp"
+#include "AbstractGameView.hpp"
 
-class MoveGameView : public GameViewAbstract {
+class MoveGameView : public AbstractGameView {
 public:
     explicit MoveGameView(Board board, std::string gameTime);
 

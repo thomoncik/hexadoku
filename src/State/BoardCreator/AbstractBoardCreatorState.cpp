@@ -2,7 +2,7 @@
 #include <State/Menu/MainMenuState.hpp>
 #include <Graphics/GfxStream.hpp>
 #include <View/Board/BoardView.hpp>
-#include <View/BoardCreator/BoardCreatorViewAbstract.hpp>
+#include <View/BoardCreator/AbstractBoardCreatorView.hpp>
 
 AbstractBoardCreatorState::AbstractBoardCreatorState(int size) : boardCreator(std::make_shared<BoardCreator>(size)) {
 
@@ -18,24 +18,24 @@ AbstractBoardCreatorState::AbstractBoardCreatorState(std::shared_ptr<BoardCreato
 
 }
 
-void AbstractBoardCreatorState::OnEntry(Game &game) {
+void AbstractBoardCreatorState::OnEntry(StateContext &stateContext) {
 
 }
 
-void AbstractBoardCreatorState::Update(Game &game) {
+void AbstractBoardCreatorState::Update(StateContext &stateContext) {
 
 }
 
-void AbstractBoardCreatorState::OnExit(Game &game) {
+void AbstractBoardCreatorState::OnExit(StateContext &stateContext) {
 
 }
 
-void AbstractBoardCreatorState::HandleInput(Game &game, char input) {
+void AbstractBoardCreatorState::HandleInput(StateContext &stateContext, char input) {
     if (input == 'q') {
-        game.SetState(std::make_shared<MainMenuState>());
+        stateContext.SetState(std::make_shared<MainMenuState>());
     }
 }
 
-void AbstractBoardCreatorState::Draw(Game &game) {
+void AbstractBoardCreatorState::Draw(StateContext &stateContext) {
 
 }

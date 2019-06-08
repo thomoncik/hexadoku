@@ -3,24 +3,24 @@
 
 
 #include <State/AbstractState.hpp>
-#include <Model/PlayStateModel.hpp>
+#include <Model/Game.hpp>
 
 class EndGameState : public AbstractState {
 public:
-    explicit EndGameState(std::shared_ptr<PlayStateModel> playStateModel);
+    explicit EndGameState(std::shared_ptr<Game> game);
 
-    void OnEntry(Game &game) override;
+    void OnEntry(StateContext &stateContext) override;
 
-    void Update(Game &game) override;
+    void Update(StateContext &stateContext) override;
 
-    void HandleInput(Game &game, char input) override;
+    void HandleInput(StateContext &stateContext, char input) override;
 
-    void Draw(Game &game) override;
+    void Draw(StateContext &stateContext) override;
 
-    void OnExit(Game &game) override;
+    void OnExit(StateContext &stateContext) override;
 
 private:
-    std::shared_ptr<PlayStateModel> playStateModel;
+    std::shared_ptr<Game> game;
     std::string timeUsed;
 };
 

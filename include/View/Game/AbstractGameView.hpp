@@ -1,5 +1,5 @@
-#ifndef HEXADOKU_GAMEVIEWABSTRACT_HPP
-#define HEXADOKU_GAMEVIEWABSTRACT_HPP
+#ifndef HEXADOKU_ABSTRACTGAMEVIEW_HPP
+#define HEXADOKU_ABSTRACTGAMEVIEW_HPP
 
 #include <string>
 #include <Model/Board.hpp>
@@ -8,9 +8,9 @@
 #include <Graphics/GfxStream.hpp>
 #include <Graphics/Attributes.hpp>
 
-class GameViewAbstract : public AbstractView {
+class AbstractGameView : public AbstractView {
 public:
-    explicit GameViewAbstract(Board board, std::string gameTime);
+    explicit AbstractGameView(Board board, std::string gameTime);
 
     void Draw() const override;
 
@@ -28,4 +28,4 @@ private:
     void DrawGameTime(int x, int y) const;
 };
 
-#endif //HEXADOKU_GAMEVIEWABSTRACT_HPP
+#endif //HEXADOKU_ABSTRACTGAMEVIEW_HPP

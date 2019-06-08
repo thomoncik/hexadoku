@@ -19,20 +19,25 @@ SaveBoardCreatorState::SaveBoardCreatorState(std::shared_ptr<BoardCreator> board
 
 }
 
-void SaveBoardCreatorState::HandleInput(Game &game, char input) {
+void SaveBoardCreatorState::HandleInput(StateContext &stateContext, char input) {
     if (isalnum(input) && filename.length() < MAX_FILENAME_LENGTH) {
         filename += input;
     } else if (filename.length() > 0 && (input == 127 || input == 8)) { // backspace
         filename.pop_back();
     } else if (input == '\n') {
+        if (boardCreator->GetBoard()->GetSize() == Board::STANDARD_SIZE) {
+            filename = Board::SAVED_STANDARD_BOARD_PATH + filename;
+        } else if (boardCreator->GetBoard()->GetSize() == Board::HEXADOKU_SIZE) {
+            filename = Board::SAVED_HEXADOKU_BOARD_PATH + filename;
+        }
         boardCreator->GetBoard()->SaveToFile(filename);
-        game.SetState(std::make_shared<MoveBoardCreatorState>(std::move(boardCreator)));
+        stateContext.SetState(std::make_shared<MoveBoardCreatorState>(std::move(boardCreator)));
     } else if (input == 27) { // ESC
-        game.SetState(std::make_shared<MoveBoardCreatorState>(std::move(boardCreator)));
+        stateContext.SetState(std::make_shared<MoveBoardCreatorState>(std::move(boardCreator)));
     }
 }
 
-void SaveBoardCreatorState::Draw(Game &game) {
+void SaveBoardCreatorState::Draw(StateContext &stateContext) {
     const int x = boardCreator->GetBoard()->GetSize() * 4 + 7;
     const int y = boardCreator->GetBoard()->GetSize() * 2;
 
