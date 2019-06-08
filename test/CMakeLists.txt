@@ -1,12 +1,13 @@
 set(TEST_SOURCES
         main.cpp
         Game/StateChangingTest.cpp
+        Game/GameRunningTest.cpp
         Game/GameLoadingTest.cpp
         Board/BoardLoadingTest.cpp
         Board/BoardSaveTest.cpp
         Board/SolveTest.cpp
-        Board/VioletingBoardRulesTest.cpp
-        Section/VioletingSectionRulesTest.cpp)
+        Board/ViolatingBoardRulesTest.cpp
+        Section/ViolatingSectionRulesTest.cpp)
 
 set(SOURCE_FILES
         ../src/Model/Board.cpp
