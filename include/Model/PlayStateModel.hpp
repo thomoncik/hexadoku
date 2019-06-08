@@ -40,6 +40,8 @@ public:
 
     bool IsCorrect(int column, int row) const;
 
+    void MakeHint();
+
 private:
     std::shared_ptr<std::time_t> creationTime;
     std::time_t gameTime{};

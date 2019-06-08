@@ -67,12 +67,20 @@ bool PlayStateModel::IsCorrect(int column, int row) const {
     if (std::count(columnValues.begin(), columnValues.end(), value) > 1) {
         return false;
     }
-    if (std::count(rowValues.begin(), rowValues.end(), value) > 1) {
-        return false;
-    }
-    return true;
+    return std::count(rowValues.begin(), rowValues.end(), value) <= 1;
 }
 
 void PlayStateModel::SetIsCorrect(bool isCorrect, int column, int row) {
     this->board->SetIsCorrect(isCorrect, column, row);
+}
+
+void PlayStateModel::MakeHint() {
+    if (!board->IsFilled()) {
+        auto hint = board->GetHint();
+        board->SetValue(hint.GetValue(), hint.GetColumn(), hint.GetRow());
+        board->SetSelected(false, x, y);
+        x = hint.GetColumn();
+        y = hint.GetRow();
+        SetSelected(true, x, y);
+    }
 }
