@@ -1,6 +1,6 @@
-#include <Game.hpp>
+#include <StateContext.hpp>
 
 int main(int argc, char **argv) {
-    Game game;
+    StateContext game;
     game.Run();
 }
