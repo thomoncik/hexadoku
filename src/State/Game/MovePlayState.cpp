@@ -30,9 +30,7 @@ void MovePlayState::HandleInput(Game &game, char input) {
 
     if (input == '?') {
         model->MakeHint();
-    }
-
-    if (input == 'q') {
+    } else if (input == 'q') {
         game.SetState(std::make_shared<MainMenuState>());
     } else if (input == 'm') {
         game.SetState(std::make_shared<InsertionPlayState>(std::move(model)));
