@@ -42,6 +42,12 @@ public:
 
     void SetY(int y);
 
+    bool IsCorrect(int column, int row) const;
+
+    void SetIsCorrect(bool isCorrect, int column, int row);
+
+    void MakeHint();
+
     void LoadFromStream(std::istream &stream);
 
     void SaveToStream(std::ostream &stream) const;

@@ -7,7 +7,7 @@
 
 using namespace fakeit;
 
-SCENARIO("Game can be loaded from file") {
+SCENARIO("game can be loaded from file") {
     GIVEN("Loaded file & standard sized board") {
         std::stringstream fileMockStream;
         std::vector<std::vector<int>> values{

@@ -57,7 +57,7 @@ public:
      */
     const BoardSection &GetSection(int column, int row) const;
 
-    void SetSelected(bool isSelectd, int column, int row);
+    void SetSelected(bool isSelected, int column, int row);
 
     void SetValue(int value, int column, int row);
 
@@ -66,6 +66,8 @@ public:
     std::vector<int> GetValuesInRow(int row) const;
 
     std::vector<int> GetValuesInColumn(int column) const;
+
+    int GetValue(int column, int row) const;
 
     std::vector<std::vector<int>> GetValuesPerSection() const;
 
@@ -135,8 +137,6 @@ private:
     int HasUniqueSolution(int filledCells);
 
     bool Solve(int filledCells);
-
-    int GetValue(int column, int row) const;
 
     std::vector<int> GetAvailableValues(int column, int row) const;
 };

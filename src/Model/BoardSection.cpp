@@ -15,9 +15,9 @@ int BoardSection::GetRowSize() const {
     return (int) sqrt(this->size);
 }
 
-void BoardSection::SetSelected(bool isSelectd, int column, int row) {
+void BoardSection::SetSelected(bool isSelected, int column, int row) {
     const int cellId = this->GetRowSize() * row + column;
-    cells[cellId].SetSelected(isSelectd);
+    cells[cellId].SetSelected(isSelected);
 }
 
 void BoardSection::SetIsCorrect(bool isCorrect, int column, int row) {

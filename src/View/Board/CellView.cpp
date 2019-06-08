@@ -12,7 +12,7 @@ CellView::CellView(BoardCell boardCell) : cell(boardCell) {
 
 
 void CellView::Draw() const {
-    gfx::out << gfx::nodecor << Color::White << Position(this->x, this->y);
+    gfx::out << gfx::nodecor << ((this->cell.IsCorrect()) ? Color::White : Color::Red) << Position(this->x, this->y);
     if (this->cell.IsSelected()) {
         gfx::out << Attribute::BLINKING << Attribute::STANDOUT;
     }

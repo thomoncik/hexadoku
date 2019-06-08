@@ -4,6 +4,7 @@
 
 #include "Model/Game.hpp"
 #include <chrono>
+#include <algorithm>
 
 const std::string Game::SAVED_STANDARD_GAME_PATH = std::string(std::getenv("HOME")) + "/.hexadoku/game/standard/";
 const std::string Game::SAVED_HEXADOKU_GAME_PATH = std::string(std::getenv("HOME")) + "/.hexadoku/game/hexadoku/";
@@ -62,6 +63,31 @@ void Game::SetX(int x) {
 
 void Game::SetY(int y) {
     this->y = y;
+}
+
+bool Game::IsCorrect(int column, int row) const {
+    int value = board->GetValue(column, row);
+    std::vector<int> columnValues = board->GetValuesInColumn(column);
+    std::vector<int> rowValues = board->GetValuesInRow(row);
+    if (std::count(columnValues.begin(), columnValues.end(), value) > 1) {
+        return false;
+    }
+    return std::count(rowValues.begin(), rowValues.end(), value) <= 1;
+}
+
+void Game::SetIsCorrect(bool isCorrect, int column, int row) {
+    board->SetIsCorrect(isCorrect, column, row);
+}
+
+void Game::MakeHint() {
+    if (!board->IsFilled()) {
+        auto hint = board->GetHint();
+        board->SetValue(hint.GetValue(), hint.GetColumn(), hint.GetRow());
+        board->SetSelected(false, x, y);
+        x = hint.GetColumn();
+        y = hint.GetRow();
+        SetSelected(true, x, y);
+    }
 }
 
 void Game::LoadFromStream(std::istream &stream) {

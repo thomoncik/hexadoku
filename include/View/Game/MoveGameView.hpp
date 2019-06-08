@@ -12,9 +12,9 @@ public:
     explicit MoveGameView(Board board, std::string gameTime);
 
 private:
-    void DrawMovementInfo(int x, int y) const;
+    void DrawMovementInfo(int x, int y) const override;
 
-    void DrawActionsInfo(int x, int y) const;
+    void DrawActionsInfo(int x, int y) const override;
 
 };
 

@@ -29,7 +29,9 @@ void MoveGameState::HandleInput(StateContext &stateContext, char input) {
     }
     game->SetSelected(true, game->GetX(), game->GetY());
 
-    if (input == 'q') {
+    if (input == '?') {
+        game->MakeHint();
+    } else if (input == 'q') {
         stateContext.SetState(std::make_shared<MainMenuState>());
     } else if (input == 'i') {
         stateContext.SetState(std::make_shared<InsertionGameState>(std::move(game)));

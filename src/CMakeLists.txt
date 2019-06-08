@@ -40,6 +40,7 @@ set(SOURCE_FILES
         State/Menu/LoadOrCreateBoardMenuState.cpp
         State/Menu/LoadBoardMenuState.cpp
         State/BoardCreator/SaveBoardCreatorState.cpp
+        State/Game/EndGameState.cpp
         State/Game/SaveGameState.cpp
         State/Menu/NewGameDifficultyMenuState.cpp
         State/Menu/NewGameFromFileMenuState.cpp)

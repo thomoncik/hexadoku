@@ -47,6 +47,7 @@ set(SOURCE_FILES
         ../src/State/Menu/LoadOrCreateBoardMenuState.cpp
         ../src/State/Menu/LoadBoardMenuState.cpp
         ../src/State/BoardCreator/SaveBoardCreatorState.cpp
+        ../src/State/Game/EndGameState.cpp
         ../src/State/Game/SaveGameState.cpp
         ../src/State/Menu/NewGameDifficultyMenuState.cpp
         ../src/State/Menu/NewGameFromFileMenuState.cpp)

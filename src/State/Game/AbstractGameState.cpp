@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <State/Game/AbstractGameState.hpp>
 #include <Graphics/GfxStream.hpp>
+#include <State/Game/EndGameState.hpp>
 
 
 AbstractGameState::AbstractGameState(int boardSize) : game(std::make_shared<Game>(boardSize)) {
@@ -26,7 +27,9 @@ void AbstractGameState::OnEntry(StateContext &stateContext) {
 }
 
 void AbstractGameState::Update(StateContext &stateContext) {
-
+    if (game->GetBoard()->IsFilled() && !game->GetBoard()->IsViolatingRules()) {
+        stateContext.SetState(std::make_shared<EndGameState>(std::move(game)));
+    }
 }
 
 void AbstractGameState::OnExit(StateContext &stateContext) {
