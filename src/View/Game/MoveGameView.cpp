@@ -1,11 +1,8 @@
-#include <utility>
-
-#include <utility>
-
 //
 // Created by Jakub Kiermasz on 2019-06-05.
 //
 
+#include <utility>
 #include "View/Game/MoveGameView.hpp"
 #include "View/Game/AbstractGameView.hpp"
 
@@ -27,7 +24,7 @@ void MoveGameView::DrawActionsInfo(int x, int y) const {
     gfx::out << Attribute::BOLD << "Actions";
     gfx::out << gfx::nodecor << Color::Magenta << Position(x, y + 1);
     gfx::out << " q - Quit to main menu" << Position(x, y + 2);
-    gfx::out << " i -Enter insertion mode" << Position(x, y + 3);
+    gfx::out << " i - Enter insertion mode" << Position(x, y + 3);
     gfx::out << " s - Save game" << Position(x, y + 4);
     gfx::out << gfx::nodecor;
 }
