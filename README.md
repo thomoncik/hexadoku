@@ -6,6 +6,8 @@ Hexadoku is a a sudoku game where you can choose to play 9x9 or 16x16 grid
 
 Make sure you have [conan](https://github.com/conan-io/conan) installed.
 
+Add `export TERMINFO=$(infocmp -0qQ1)` to your .bashrc 
+
 ```bash
 git clone https://github.com/thomoncik/hexadoku.git
 mkdir hexadoku/build
