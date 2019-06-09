@@ -18,10 +18,10 @@ public:
     void OnExit(StateContext &stateContext) override;
 
 protected:
+    void DrawInfo() const;
     std::vector<std::string> options;
     unsigned long selectedOption;
     unsigned long labelSize{15};
-
     virtual void UseOption(StateContext &stateContext, const std::string &option) = 0;
 };
 
