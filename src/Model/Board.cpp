@@ -125,10 +125,12 @@ std::vector<std::vector<int>> Board::GetValuesAsGrid() const {
 
 void Board::LoadFromStream(std::istream &stream) {
     int value;
+    bool isCorrect;
     for (int y = 0; y < this->size; ++y) {
         for (int x = 0; x < this->size; ++x) {
-            stream >> value;
+            stream >> value >> isCorrect;
             this->SetValue(value, x, y);
+            this->SetIsCorrect(isCorrect, x, y);
         }
     }
 }
@@ -136,7 +138,7 @@ void Board::LoadFromStream(std::istream &stream) {
 void Board::SaveToStream(std::ostream &stream) const {
     for (int y = 0; y < this->size; ++y) {
         for (int x = 0; x < this->size; ++x) {
-            stream << this->GetValue(x, y) << " ";
+            stream << this->GetValue(x, y) << " " << this->IsCorrect(x, y) << " ";
         }
     }
 }
@@ -147,6 +149,14 @@ int Board::GetValue(int column, int row) const {
     const int sectionRow = row % this->GetSectionRowSize();
 
     return sections[sectionId].GetValue(sectionColumn, sectionRow);
+}
+
+bool Board::IsCorrect(int column, int row) const {
+    const int sectionId = this->GetSectionId(column, row);
+    const int sectionColumn = column % this->GetSectionRowSize();
+    const int sectionRow = row % this->GetSectionRowSize();
+
+    return sections[sectionId].IsCorrect(sectionColumn, sectionRow);
 }
 
 void Board::LoadFromFile(const std::string &filename) {

@@ -32,6 +32,8 @@ public:
 
     int GetValue(int column, int row) const;
 
+    bool IsCorrect(int column, int row) const;
+
     BoardCell GetCell(int column, int row) const;
 
     /**

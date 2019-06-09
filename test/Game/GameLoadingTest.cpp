@@ -25,7 +25,7 @@ SCENARIO("game can be loaded from file") {
         fileMockStream << timeInSeconds << " ";
         for (const auto &row : values) {
             for (auto element : row) {
-                fileMockStream << element << " ";
+                fileMockStream << element << " " << true << " ";
             }
         }
 
@@ -68,7 +68,7 @@ SCENARIO("game can be loaded from file") {
         fileMockStream << timeInSeconds << " ";
         for (const auto &row : values) {
             for (auto element : row) {
-                fileMockStream << element << " ";
+                fileMockStream << element << " " << true << " ";
             }
         }
 
