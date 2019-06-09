@@ -7,7 +7,9 @@ set(TEST_SOURCES
         Board/BoardSaveTest.cpp
         Board/SolveTest.cpp
         Board/ViolatingBoardRulesTest.cpp
-        Section/ViolatingSectionRulesTest.cpp)
+        Section/ViolatingSectionRulesTest.cpp
+        ../src/State/Game/ConfirmExitGameState.cpp
+        ../src/View/Game/ConfirmExitGameView.cpp)
 
 add_definitions(-DTESTING)
 add_executable(tests ${SOURCE_FILES} ${TEST_SOURCES})

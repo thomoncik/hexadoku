@@ -5,6 +5,7 @@
 #include <View/Game/MoveGameView.hpp>
 #include <State/Game/SaveGameState.hpp>
 #include "State/Game/InsertionGameState.hpp"
+#include <State/Game/ConfirmExitGameState.hpp>
 
 MoveGameState::MoveGameState(int boardSize) : AbstractGameState(boardSize) {
 
@@ -32,7 +33,7 @@ void MoveGameState::HandleInput(StateContext &stateContext, char input) {
     if (input == '?') {
         game->MakeHint();
     } else if (input == 'q') {
-        stateContext.SetState(std::make_shared<MainMenuState>());
+        stateContext.SetState(std::make_shared<ConfirmExitGameState>(false, std::move(game)));
     } else if (input == 'i') {
         stateContext.SetState(std::make_shared<InsertionGameState>(std::move(game)));
     } else if (input == 's') {
