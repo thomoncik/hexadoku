@@ -5,6 +5,7 @@
 #include "Model/Game.hpp"
 #include <chrono>
 #include <algorithm>
+#include <Model/BoardCell.hpp>
 
 const std::string Game::SAVED_STANDARD_GAME_PATH = std::string(std::getenv("HOME")) + "/.hexadoku/game/standard/";
 const std::string Game::SAVED_HEXADOKU_GAME_PATH = std::string(std::getenv("HOME")) + "/.hexadoku/game/hexadoku/";
@@ -67,6 +68,9 @@ void Game::SetY(int y) {
 
 bool Game::IsCorrect(int column, int row) const {
     int value = board->GetValue(column, row);
+    if (value == BoardCell::EMPTY_VALUE) {
+        return true;
+    }
     std::vector<int> columnValues = board->GetValuesInColumn(column);
     std::vector<int> rowValues = board->GetValuesInRow(row);
     if (std::count(columnValues.begin(), columnValues.end(), value) > 1) {
