@@ -33,7 +33,7 @@ void InsertionBoardCreatorState::HandleInput(StateContext &stateContext, char in
         auto column = boardCreator->GetSelectedColumn();
         auto row = boardCreator->GetSelectedRow();
         boardCreator->SetValue(value, column, row);
-        boardCreator->SetIsCorrect(boardCreator->IsCorrect(column, row), column, row);
+        boardCreator->Validate(column, row);
     }
 
     if (input == 'z') {

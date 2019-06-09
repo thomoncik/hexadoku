@@ -28,7 +28,7 @@ void InsertionGameState::HandleInput(StateContext &stateContext, char input) {
     if (std::find(boardCharacters.begin(), boardCharacters.end(), input) != boardCharacters.end()) {
         auto value = distance(boardCharacters.begin(), find(boardCharacters.begin(), boardCharacters.end(), input));
         game->SetValue(value, game->GetX(), game->GetY());
-        game->SetIsCorrect(game->IsCorrect(game->GetX(), game->GetY()), game->GetX(), game->GetY());
+        game->Validate(game->GetX(), game->GetY());
     }
     game->SetSelected(true, game->GetX(), game->GetY());
 

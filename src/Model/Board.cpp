@@ -75,6 +75,10 @@ void Board::SetIsCorrect(bool isCorrect, int column, int row) {
     sections[sectionId].SetIsCorrect(isCorrect, sectionColumn, sectionRow);
 }
 
+void Board::SetIsCorrect(int sectionId, int cellId, bool isCorrect) {
+    sections[sectionId].SetIsCorrect(isCorrect, cellId);
+}
+
 void Board::SetValue(int value, int column, int row) {
     const int sectionId = this->GetSectionId(column, row);
     const int sectionColumn = column % this->GetSectionRowSize();
@@ -105,17 +109,6 @@ std::vector<int> Board::GetValuesInColumn(int column) const {
     std::vector<int> values(this->size);
     for (int row = 0; row < this->size; ++row) {
         values[row] = this->GetValue(column, row);
-    }
-
-    return values;
-}
-
-std::vector<std::vector<int>> Board::GetValuesPerSection() const {
-    std::vector<std::vector<int>> values;
-    values.reserve(this->sections.size());
-
-    for (const auto &section : this->sections) {
-        values.push_back(section.GetValues());
     }
 
     return values;

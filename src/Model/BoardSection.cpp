@@ -25,6 +25,10 @@ void BoardSection::SetIsCorrect(bool isCorrect, int column, int row) {
     cells[cellId].SetIsCorrect(isCorrect);
 }
 
+void BoardSection::SetIsCorrect(bool isCorrect, int index) {
+    cells[index].SetIsCorrect(isCorrect);
+}
+
 void BoardSection::SetValue(int value, int column, int row) {
     const int cellId = this->GetRowSize() * row + column;
     cells[cellId].SetValue(value);

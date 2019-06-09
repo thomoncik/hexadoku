@@ -42,9 +42,7 @@ public:
 
     void SetY(int y);
 
-    bool IsCorrect(int column, int row) const;
-
-    void SetIsCorrect(bool isCorrect, int column, int row);
+    void Validate(int column, int row);
 
     void MakeHint();
 
@@ -57,6 +55,9 @@ public:
     void SaveToFile(const std::string &filename) const;
 
 private:
+    void ValidateColumn(int column, int value);
+    void ValidateRow(int row, int value);
+    void ValidateSection(int column, int row, int value);
     std::shared_ptr<std::chrono::steady_clock::time_point> creationTime;
     std::time_t gameTime{};
     std::shared_ptr<Board> board;
