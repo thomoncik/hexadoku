@@ -1,5 +1,5 @@
 #include <catch2/catch.hpp>
-#include <fakeit/fakeit.hpp>
+#include <fakeit.hpp>
 
 #include <Model/BoardSection.hpp>
 #include <Model/Board.hpp>

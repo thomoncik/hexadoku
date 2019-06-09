@@ -56,8 +56,6 @@ set(SOURCE_FILES
 add_definitions(-DTESTING)
 
 add_executable(tests ${SOURCE_FILES} ${TEST_SOURCES})
-target_link_libraries(tests Catch)
-target_link_libraries(tests curses)
-target_link_libraries(tests ${Boost_LIBRARIES})
+target_link_libraries(tests ${CONAN_LIBS})
 
 add_test(NAME tests COMMAND tests -s -d yes --use-colour yes)
