@@ -1,9 +1,5 @@
 #include <catch2/catch.hpp>
-#include <fakeit.hpp>
-
 #include <Model/Board.hpp>
-
-using namespace fakeit;
 
 SCENARIO("BoardCreator can be solved by solver") {
     GIVEN("Standard sized board with values leading to unique solutions") {

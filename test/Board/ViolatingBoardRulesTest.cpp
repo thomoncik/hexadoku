@@ -1,9 +1,5 @@
 #include <catch2/catch.hpp>
-#include <fakeit.hpp>
-
 #include <Model/Board.hpp>
-
-using namespace fakeit;
 
 SCENARIO("Duplicates in row are reported") {
     GIVEN("Standard sized board with duplicate in row") {

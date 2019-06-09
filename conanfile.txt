@@ -2,10 +2,7 @@
 boost/1.70.0@conan/stable
 ncurses/6.1@conan/stable
 Catch2/2.5.0@catchorg/stable
-FakeIt/2.0.5@gasuketsu/stable
 
-[options]
-FakeIt:integration=standalone
 
 [generators]
 cmake

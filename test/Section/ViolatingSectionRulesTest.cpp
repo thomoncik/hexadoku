@@ -1,10 +1,6 @@
 #include <catch2/catch.hpp>
-#include <fakeit.hpp>
-
 #include <Model/BoardSection.hpp>
 #include <Model/Board.hpp>
-
-using namespace fakeit;
 
 SCENARIO("Duplicates in sections are reported") {
     GIVEN("Standard sized section with duplicate") {
