@@ -7,10 +7,7 @@ set(TEST_SOURCES
         Board/BoardSaveTest.cpp
         Board/SolveTest.cpp
         Board/ViolatingBoardRulesTest.cpp
-        Section/ViolatingSectionRulesTest.cpp
-        ../src/State/Game/ConfirmExitGameState.cpp
-        ../src/View/Game/ConfirmExitGameView.cpp)
-
+        Section/ViolatingSectionRulesTest.cpp)
 add_definitions(-DTESTING)
 add_executable(tests ${SOURCE_FILES} ${TEST_SOURCES})
 target_link_libraries(tests hexadoku_lib ${CONAN_LIBS})
