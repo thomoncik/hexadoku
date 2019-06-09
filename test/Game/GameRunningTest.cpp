@@ -1,6 +1,5 @@
-#include "catch2/catch.hpp"
-#include "fakeit/fakeit.hpp"
-
+#include <catch2/catch.hpp>
+#include "fakeit.hpp"
 #include "StateContext.hpp"
 #include "State/AbstractState.hpp"
 
@@ -9,7 +8,6 @@ using namespace fakeit;
 SCENARIO("Game can be ran") {
 
     GIVEN("A game and state") {
-        StateContext stateContext;
         Mock<AbstractState> stateMock;
         Fake(Method(stateMock, OnEntry));
         Fake(Method(stateMock, Draw));
@@ -22,6 +20,7 @@ SCENARIO("Game can be ran") {
         When(Method(stateMock, Update)).Do([](StateContext &g) { g.SetState(nullptr); });
         Fake(Method(stateMock, OnExit));
 
+        StateContext stateContext;
         stateContext.SetState(std::shared_ptr<AbstractState>(&stateMock.get()));
 
         WHEN("game is ran") {

@@ -4,20 +4,18 @@ project(hexadoku)
 enable_testing()
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${CMAKE_SOURCE_DIR}/vendor/include)
+if(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    conan_basic_setup()
+else()
+    message(WARNING "The file conanbuildinfo.cmake doesn't exist, you have to run conan install first")
+endif()
 
 set(CURSES_NEED_WIDE TRUE)
 set(CURSES_USE_NCURSES TRUE)
-find_package(Curses REQUIRED)
-include_directories(${CURSES_INCLUDE_DIR})
 
-find_package(Boost REQUIRED COMPONENTS filesystem)
-include_directories(${Boost_INCLUDE_DIRS})
-
-set(CATCH_INCLUDE_DIR vendor/include/catch2)
-add_library(Catch INTERFACE)
-target_include_directories(Catch INTERFACE include/catch2)
+include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/vendor/include)
 
 add_subdirectory(src)
 add_subdirectory(test)

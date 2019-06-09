@@ -1,5 +1,5 @@
-#include "catch2/catch.hpp"
-#include "fakeit/fakeit.hpp"
+#include <catch2/catch.hpp>
+#include "fakeit.hpp"
 
 #include "StateContext.hpp"
 #include "State/AbstractState.hpp"
@@ -15,7 +15,6 @@ SCENARIO("States can be changed") {
         Fake(Method(oldStateMock, OnEntry), Method(oldStateMock, OnExit));
 
         StateContext stateContext;
-
         stateContext.SetState(std::shared_ptr<AbstractState>(&oldStateMock.get()));
 
         WHEN("game state is changed to new one") {

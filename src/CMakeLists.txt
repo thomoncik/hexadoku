@@ -1,7 +1,6 @@
 set(TARGET_NAME hexadoku)
 
 set(SOURCE_FILES
-        main.cpp
         Model/Board.cpp
         Model/BoardCell.cpp
         Model/BoardSection.cpp
@@ -45,9 +44,9 @@ set(SOURCE_FILES
         State/Menu/NewGameDifficultyMenuState.cpp
         State/Menu/NewGameFromFileMenuState.cpp)
 
-add_executable(hexadoku ${SOURCE_FILES})
-target_link_libraries(hexadoku curses)
-target_link_libraries(hexadoku ${Boost_LIBRARIES})
+add_library(hexadoku_lib ${SOURCE_FILES})
+add_executable(hexadoku main.cpp)
+target_link_libraries(hexadoku hexadoku_lib ${CONAN_LIBS})
 
 install(TARGETS ${TARGET_NAME} DESTINATION $ENV{HOME}/.local/bin)
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/data/ DESTINATION $ENV{HOME}/.hexadoku/)

@@ -1,11 +1,7 @@
 #include <catch2/catch.hpp>
-#include <fakeit/fakeit.hpp>
-
 #include <sstream>
 #include <Model/Board.hpp>
 #include <Model/Game.hpp>
-
-using namespace fakeit;
 
 SCENARIO("game can be loaded from file") {
     GIVEN("Loaded file & standard sized board") {

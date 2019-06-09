@@ -1,10 +1,6 @@
 #include <catch2/catch.hpp>
-#include <fakeit/fakeit.hpp>
-
 #include <sstream>
 #include <Model/Board.hpp>
-
-using namespace fakeit;
 
 SCENARIO("BoardCreator can be loaded from file") {
 
