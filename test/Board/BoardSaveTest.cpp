@@ -34,7 +34,8 @@ SCENARIO("BoardCreator can be saved to stream") {
                 std::vector<std::vector<int>> loadedValues(Board::STANDARD_SIZE, std::vector<int>(Board::STANDARD_SIZE));
                 for (int y = 0; y < Board::STANDARD_SIZE; ++y) {
                     for (int x = 0; x < Board::STANDARD_SIZE; ++x) {
-                        stream >> loadedValues[y][x];
+                        bool absorber;
+                        stream >> loadedValues[y][x] >> absorber;
                     }
                 }
                 REQUIRE(board.GetValuesAsGrid() == loadedValues);
@@ -76,7 +77,8 @@ SCENARIO("BoardCreator can be saved to stream") {
                 std::vector<std::vector<int>> loadedValues(Board::HEXADOKU_SIZE, std::vector<int>(Board::HEXADOKU_SIZE));
                 for (int y = 0; y < Board::HEXADOKU_SIZE; ++y) {
                     for (int x = 0; x < Board::HEXADOKU_SIZE; ++x) {
-                        stream >> loadedValues[y][x];
+                        bool absorber;
+                        stream >> loadedValues[y][x] >> absorber;
                     }
                 }
                 REQUIRE(board.GetValuesAsGrid() == loadedValues);

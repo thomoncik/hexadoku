@@ -71,6 +71,11 @@ int BoardSection::GetValue(int column, int row) const {
     return cells[cellId].GetValue();
 }
 
+bool BoardSection::IsCorrect(int column, int row) const {
+    const int cellId = this->GetRowSize() * row + column;
+    return cells[cellId].IsCorrect();
+}
+
 bool BoardSection::IsViolatingRules() const {
     std::vector<bool> ifExists(this->size + 1, false);
     for (const auto &cell : this->cells) {

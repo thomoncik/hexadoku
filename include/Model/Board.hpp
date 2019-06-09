@@ -71,6 +71,8 @@ public:
 
     int GetValue(int column, int row) const;
 
+    bool IsCorrect(int column, int row) const;
+
     std::vector<std::vector<int>> GetValuesAsGrid() const;
 
     int GetSectionId(int column, int row) const;

@@ -23,7 +23,7 @@ SCENARIO("BoardCreator can be loaded from file") {
         };
         for (const auto &row : values) {
             for (auto element : row) {
-                fileMockStream << element << " ";
+                fileMockStream << element << " " << true << " ";
             }
         }
 
@@ -60,7 +60,7 @@ SCENARIO("BoardCreator can be loaded from file") {
         };
         for (const auto &row : values) {
             for (auto element : row) {
-                fileMockStream << element << " ";
+                fileMockStream << element << " " << true << " ";
             }
         }
 
