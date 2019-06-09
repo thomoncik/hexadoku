@@ -4,9 +4,6 @@ project(hexadoku)
 enable_testing()
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${CMAKE_SOURCE_DIR}/vendor/include)
-
 if(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     conan_basic_setup()
@@ -17,6 +14,8 @@ endif()
 set(CURSES_NEED_WIDE TRUE)
 set(CURSES_USE_NCURSES TRUE)
 
+include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/vendor/include)
+
 add_subdirectory(src)
 add_subdirectory(test)
-
