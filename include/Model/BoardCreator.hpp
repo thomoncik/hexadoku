@@ -22,6 +22,10 @@ public:
 
     void SetValue(int value, int column, int row);
 
+    bool IsCorrect(int column, int row) const;
+
+    void SetIsCorrect(bool isCorrect, int column, int row);
+
     std::shared_ptr<Board> GetBoard() const;
 
 private:

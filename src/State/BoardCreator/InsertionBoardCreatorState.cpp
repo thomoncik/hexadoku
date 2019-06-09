@@ -30,7 +30,10 @@ void InsertionBoardCreatorState::HandleInput(StateContext &stateContext, char in
 
     if (std::find(boardCharacters.begin(), boardCharacters.end(), input) != boardCharacters.end()) {
         auto value = distance(boardCharacters.begin(), find(boardCharacters.begin(), boardCharacters.end(), input));
-        boardCreator->SetValue(value, boardCreator->GetSelectedColumn(), boardCreator->GetSelectedRow());
+        auto column = boardCreator->GetSelectedColumn();
+        auto row = boardCreator->GetSelectedRow();
+        boardCreator->SetValue(value, column, row);
+        boardCreator->SetIsCorrect(boardCreator->IsCorrect(column, row), column, row);
     }
 
     if (input == 'z') {

@@ -1,4 +1,5 @@
 #include <Model/BoardCreator.hpp>
+#include <algorithm>
 
 BoardCreator::BoardCreator(int size) : board(std::make_shared<Board>(size)) {
 
@@ -38,3 +39,17 @@ std::shared_ptr<Board> BoardCreator::GetBoard() const {
     return board;
 }
 
+bool BoardCreator::IsCorrect(int column, int row) const {
+    int value = board->GetValue(column, row);
+    if (value == BoardCell::EMPTY_VALUE) return true;
+    std::vector<int> columnValues = board->GetValuesInColumn(column);
+    std::vector<int> rowValues = board->GetValuesInRow(row);
+    if (std::count(columnValues.begin(), columnValues.end(), value) > 1) {
+        return false;
+    }
+    return std::count(rowValues.begin(), rowValues.end(), value) <= 1;
+}
+
+void BoardCreator::SetIsCorrect(bool isCorrect, int column, int row) {
+    board->SetIsCorrect(isCorrect, column, row);
+}
