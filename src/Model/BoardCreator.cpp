@@ -41,9 +41,6 @@ std::shared_ptr<Board> BoardCreator::GetBoard() const {
 
 void BoardCreator::Validate(int column, int row) {
     int value = board->GetValue(column, row);
-    if (value == BoardCell::EMPTY_VALUE) {
-        return;
-    }
     ValidateColumn(column, value);
     ValidateRow(row, value);
     ValidateSection(column, row, value);

@@ -21,6 +21,10 @@ int BoardCell::GetValue() const {
 }
 
 void BoardCell::SetIsCorrect(bool isCorrect) {
+    if (value == BoardCell::EMPTY_VALUE) {
+        this->isCorrect = true;
+        return;
+    }
     this->isCorrect = isCorrect;
 }
 
