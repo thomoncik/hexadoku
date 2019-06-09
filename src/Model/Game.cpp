@@ -68,7 +68,9 @@ void Game::SetY(int y) {
 
 bool Game::IsCorrect(int column, int row) const {
     int value = board->GetValue(column, row);
-    if (value == BoardCell::EMPTY_VALUE) return true;
+    if (value == BoardCell::EMPTY_VALUE) {
+        return true;
+    }
     std::vector<int> columnValues = board->GetValuesInColumn(column);
     std::vector<int> rowValues = board->GetValuesInRow(row);
     if (std::count(columnValues.begin(), columnValues.end(), value) > 1) {
