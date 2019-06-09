@@ -22,14 +22,14 @@ public:
 
     void SetValue(int value, int column, int row);
 
-    bool IsCorrect(int column, int row) const;
-
-    void SetIsCorrect(bool isCorrect, int column, int row);
+    void Validate(int column, int row);
 
     std::shared_ptr<Board> GetBoard() const;
 
 private:
-
+    void ValidateColumn(int column, int value);
+    void ValidateRow(int row, int value);
+    void ValidateSection(int column, int row, int value);
     std::shared_ptr<Board> board;
     int column{0};
 

@@ -22,6 +22,8 @@ public:
 
     void SetIsCorrect(bool isCorrect, int column, int row);
 
+    void SetIsCorrect(bool isCorrect, int index);
+
     std::vector<int> GetValuesInRow(int row) const;
 
     std::vector<int> GetValuesInColumn(int column) const;

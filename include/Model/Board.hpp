@@ -63,13 +63,13 @@ public:
 
     void SetIsCorrect(bool isCorrect, int column, int row);
 
+    void SetIsCorrect(int sectionId, int cellId, bool isCorrect);
+
     std::vector<int> GetValuesInRow(int row) const;
 
     std::vector<int> GetValuesInColumn(int column) const;
 
     int GetValue(int column, int row) const;
-
-    std::vector<std::vector<int>> GetValuesPerSection() const;
 
     std::vector<std::vector<int>> GetValuesAsGrid() const;
 
