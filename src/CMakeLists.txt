@@ -44,7 +44,9 @@ set(SOURCE_FILES
         State/Menu/NewGameDifficultyMenuState.cpp
         State/Menu/NewGameFromFileMenuState.cpp
         State/Game/ConfirmExitGameState.cpp
-        View/Game/ConfirmExitGameView.cpp )
+        View/Game/ConfirmExitGameView.cpp
+        State/BoardCreator/ConfirmExitBoardCreatorState.cpp
+        View/BoardCreator/ConfirmExitBoardCreatorView.cpp)
 
 add_library(hexadoku_lib ${SOURCE_FILES})
 add_executable(hexadoku main.cpp)
