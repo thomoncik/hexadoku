@@ -10,5 +10,5 @@ To generate sudoku \(hexadoku\) board backtracking algorithm is used. In first s
 
 There is one unofficial, additional rule in the world of sudoku: there can be only one solution. After running backtracking while constantly permuting vector of possible values we get random sudoku board.
 
-To generate puzzle all we have to do is to remove some of values while remaining only one solution.
+To generate puzzle all we have to do is to remove some of the values while remaining only one solution.
 
