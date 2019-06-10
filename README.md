@@ -1,7 +1,3 @@
----
-description: Hexadoku is a sudoku puzzle where you can choose to play 9x9 or 16x16 grid.
----
-
 # Hexadoku
 
 ## Building on Linux and macOS
