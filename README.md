@@ -20,7 +20,7 @@ $ make install
 If everything goes well you can type `hexadoku` in terminal and enjoy.
 
 {% hint style="info" %}
-Try adding following line to your .bashrc or .bash\_profile if you get error opening `terminal.export TERMINFO=$(infocmp -0qQ1)`
+Try adding following line to your .bashrc or .bash\_profile if you get error opening terminal. `export TERMINFO=$(infocmp -0qQ1)`
 {% endhint %}
 
 ## Building on Windows
