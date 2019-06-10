@@ -6,6 +6,7 @@
 
 * [Controllers](classes/controllers.md)
 * [Views](classes/views.md)
+* [Models](classes/models.md)
 
 ## Board
 
