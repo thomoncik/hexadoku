@@ -10,3 +10,8 @@
 
 * [Generating board](board/using-board-creator.md)
 
+## Files
+
+* [Save files](files/save-files.md)
+* [Filesystem](files/filesystem.md)
+
