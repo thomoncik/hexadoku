@@ -5,6 +5,7 @@
 ## Classes
 
 * [Controllers](classes/controllers.md)
+* [Views](classes/views.md)
 
 ## Board
 
