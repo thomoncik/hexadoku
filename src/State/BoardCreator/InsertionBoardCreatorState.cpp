@@ -3,6 +3,7 @@
 #include <State/BoardCreator/MoveBoardCreatorState.hpp>
 #include <State/BoardCreator/InsertionBoardCreatorState.hpp>
 #include <State/BoardCreator/SaveBoardCreatorState.hpp>
+#include "State/BoardCreator/ConfirmExitBoardCreatorState.hpp"
 #include <algorithm>
 
 InsertionBoardCreatorState::InsertionBoardCreatorState(int size) : AbstractBoardCreatorState(size) {
@@ -45,7 +46,7 @@ void InsertionBoardCreatorState::HandleInput(StateContext &stateContext, char in
     }
 
     if (input == 'q') {
-        stateContext.SetState(std::make_shared<MainMenuState>());
+        stateContext.SetState(std::make_shared<ConfirmExitBoardCreatorState>(true, std::move(boardCreator)));
     } else if (input == 'i') {
         stateContext.SetState(std::make_shared<MoveBoardCreatorState>(std::move(boardCreator)));
     } else if (input == 's') {
